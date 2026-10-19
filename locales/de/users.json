@@ -1,0 +1,21 @@
+{
+  "title": "Benutzer",
+  "subtitle": "Systembenutzer verwalten",
+  "add": "Benutzer hinzufügen",
+  "columns": {
+    "name": "Name",
+    "email": "E-Mail",
+    "role": "Rolle",
+    "createdAt": "Erstellt am"
+  },
+  "form": {
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "role": "Rolle",
+    "password": "Passwort"
+  },
+  "table": {
+    "empty": "Keine Benutzer gefunden"
+  }
+}

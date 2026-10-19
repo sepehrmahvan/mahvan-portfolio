@@ -1,0 +1,16 @@
+{
+  "appName": "Mahvan",
+  "loading": "加载中...",
+  "save": "保存",
+  "cancel": "取消",
+  "close": "关闭",
+  "search": "搜索",
+  "actions": "操作",
+  "empty": "暂无内容",
+  "language": "语言",
+  "dashboard": "控制台",
+  "users": "用户",
+  "logout": "退出登录",
+  "welcome": "欢迎来到 Mahvan",
+  "welcomeDescription": "现成的多语言基础设施，完整支持从右到左与从左到右布局。"
+}

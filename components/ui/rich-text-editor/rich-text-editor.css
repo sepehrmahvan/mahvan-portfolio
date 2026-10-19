@@ -1,0 +1,103 @@
+.rich-text-editor {
+  text-align: start;
+}
+
+.rich-text-editor[dir="rtl"] {
+  direction: rtl;
+}
+
+.rich-text-editor[dir="ltr"] {
+  direction: ltr;
+}
+
+.rich-text-editor .ck-toolbar {
+  border: 0 !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.rich-text-editor[dir="rtl"] .ck-toolbar {
+  direction: rtl;
+}
+
+.rich-text-editor[dir="ltr"] .ck-toolbar {
+  direction: ltr;
+}
+
+.rich-text-editor .ck.ck-editor {
+  border-radius: 12px;
+}
+
+.rich-text-editor .ck-editor__editable,
+.rich-text-editor .ck-editor__editable_inline,
+.rich-text-editor .ck-content {
+  unicode-bidi: plaintext;
+  min-height: var(--rich-text-min-height, 200px);
+  line-height: 1.9;
+  padding: 12px 16px;
+  border: 0 !important;
+  border-radius: 0 0 12px 12px !important;
+  box-shadow: none !important;
+}
+
+.rich-text-editor[dir="rtl"] .ck-editor__editable,
+.rich-text-editor[dir="rtl"] .ck-editor__editable_inline,
+.rich-text-editor[dir="rtl"] .ck-content {
+  direction: rtl;
+  text-align: right;
+}
+
+.rich-text-editor[dir="ltr"] .ck-editor__editable,
+.rich-text-editor[dir="ltr"] .ck-editor__editable_inline,
+.rich-text-editor[dir="ltr"] .ck-content {
+  direction: ltr;
+  text-align: left;
+}
+
+.rich-text-editor .ck-content p {
+  margin: 0 0 16px;
+}
+
+.rich-text-editor .ck-content p:last-of-type {
+  margin-bottom: 0;
+}
+
+.rich-text-editor .ck-content h2 {
+  margin: 18px 0 10px;
+  font-weight: 800;
+  font-size: 1.35rem;
+  line-height: 1.4;
+}
+
+.rich-text-editor .ck-content h3 {
+  margin: 14px 0 8px;
+  font-weight: 750;
+  font-size: 1.15rem;
+  line-height: 1.45;
+}
+
+.rich-text-editor[dir="rtl"] .ck-content ul,
+.rich-text-editor[dir="rtl"] .ck-content ol {
+  margin: 8px 0 12px;
+  padding-right: 1.25rem;
+  padding-left: 0;
+}
+
+.rich-text-editor[dir="ltr"] .ck-content ul,
+.rich-text-editor[dir="ltr"] .ck-content ol {
+  margin: 8px 0 12px;
+  padding-left: 1.25rem;
+  padding-right: 0;
+}
+
+.rich-text-editor[dir="rtl"] .ck-content blockquote {
+  margin: 12px 0;
+  padding-right: 12px;
+  border-right: 3px solid #0448F5;
+}
+
+.rich-text-editor[dir="ltr"] .ck-content blockquote {
+  margin: 12px 0;
+  padding-left: 12px;
+  border-left: 3px solid #0448F5;
+}

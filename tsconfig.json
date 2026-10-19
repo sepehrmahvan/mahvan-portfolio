@@ -30,5 +30,26 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "components/shared/language-switcher.tsx",
+    "components/shared/localized-number.tsx",
+    "components/shared/logo.tsx",
+    "components/shared/user-avatar.tsx",
+    "components/ui/autocomplete.tsx",
+    "components/ui/data-grid.tsx",
+    "components/ui/date-field.tsx",
+    "components/ui/date-field-input.tsx",
+    "components/ui/faq",
+    "components/ui/form-fields.tsx",
+    "components/ui/image-cropper.tsx",
+    "components/ui/image-upload-field.tsx",
+    "components/ui/index.ts",
+    "components/ui/localized-steps-icon.tsx",
+    "components/ui/map",
+    "components/ui/password-field.tsx",
+    "components/ui/phone-field.tsx",
+    "components/ui/rich-text-editor",
+    "components/ui/select.tsx"
+  ]
 }

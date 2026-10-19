@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "Сепехр Махван | Full-stack продуктовый инженер",
+    "description": "Full-stack инженер на TypeScript. Помогаю продуктовым командам превратить новую идею в ПО, которое реально можно выпустить — архитектура, интерфейс и всё между ними."
+  },
+  "nav": {
+    "name": "Сепехр Махван",
+    "role": "Продуктовый инженер",
+    "stack": "TypeScript",
+    "availability": "Открыт к проектам",
+    "menuOpen": "Открыть меню",
+    "menuClose": "Закрыть меню",
+    "sections": [
+      {
+        "id": "skills",
+        "index": "02",
+        "label": "Идея"
+      },
+      {
+        "id": "soft-skills",
+        "index": "03",
+        "label": "Сборка"
+      },
+      {
+        "id": "experience",
+        "index": "04",
+        "label": "Релиз"
+      },
+      {
+        "id": "projects",
+        "index": "05",
+        "label": "Работы"
+      }
+    ],
+    "contact": "Связаться",
+    "language": "Язык",
+    "progress": "Прогресс истории"
+  },
+  "hero": {
+    "greeting": "Привет",
+    "name": "Я Махван",
+    "role": "Full-stack продуктовый инженер",
+    "body": "Работаю с продуктовыми командами, чтобы превратить новую идею в ПО, которое реально можно выпустить — архитектура, интерфейс и тихие куски между ними, с типами от начала до конца."
+  },
+  "skills": {
+    "eyebrow": "02 · Открытие",
+    "title": "Сначала — правильные вопросы",
+    "body": "До первого компонента я сижу с идеей, пока бриф не станет достаточно острым для релиза — не список желаний, а план.",
+    "listenLabel": "Я спрашиваю про",
+    "folderLabel": "Mahvan",
+    "folderItems": [
+      {
+        "title": "Sepehr Mahvan",
+        "description": "Full-stack product engineer. Архитектура, интерфейс и тихие детали между ними — типизировано от края до края."
+      },
+      {
+        "title": "Сначала открытие",
+        "description": "Проверяю идею вместе с вами, пока бриф не станет достаточно острым для релиза."
+      },
+      {
+        "title": "Стек TypeScript",
+        "description": "React, Next.js, Node, PostgreSQL — от базы данных до последней кнопки."
+      },
+      {
+        "title": "Платформенная работа",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Аналитический дашборд из платформенных работ Sepehr Mahvan"
+      },
+      {
+        "title": "Готово к ship",
+        "description": "Дашборды, CRM и админ-инструменты — в проде, измеримы и готовы расти."
+      },
+      {
+        "title": "Открыт к работе",
+        "description": "Работаю с продуктовыми командами: превращаю идею в софт, который реально можно отгрузить."
+      }
+    ],
+    "facets": [
+      {
+        "label": "Бизнес-проблема",
+        "detail": "Что должно измениться, чтобы продукт победил — и что будет, если нет."
+      },
+      {
+        "label": "Люди вокруг",
+        "detail": "Кто пользуется, кто платит, кто может остановить и кому это должно нравиться."
+      },
+      {
+        "label": "Ограничения сегодня",
+        "detail": "Срок, стек, ёмкость команды и системы, уже живущие в проде."
+      },
+      {
+        "label": "Поставляемый срез",
+        "detail": "Самый маленький кусок, который доказывает идею — записанный до сборки."
+      }
+    ]
+  },
+  "softSkills": {
+    "ariaLabel": "Технические навыки",
+    "eyebrow": "03 · Сборка",
+    "typeLines": [
+      "Превращаю идею в платформу к релизу.",
+      "Типы от базы данных до последней кнопки.",
+      "Достаточно быстро. Достаточно чисто, чтобы расти."
+    ],
+    "processLabel": "Перевод брифа",
+    "doneLabel": "План поставки готов",
+    "steps": [
+      "Модель предметной области и роли",
+      "API и контракты данных",
+      "Самый маленький полезный срез к релизу",
+      "Инструментирование, чтобы знать, что работает"
+    ],
+    "focus": [
+      "Продуктовая архитектура",
+      "Type-safe API",
+      "Дизайн-система",
+      "Еженедельные поставки"
+    ],
+    "stepper": {
+      "ariaLabel": "Технические этапы сборки продукта",
+      "eyebrow": "Build-пайплайн",
+      "stages": [
+        {
+          "index": "01",
+          "title": "Схема",
+          "detail": "Таблицы, связи, индексы и миграции."
+        },
+        {
+          "index": "02",
+          "title": "API",
+          "detail": "Типизированные роуты, auth, валидация."
+        },
+        {
+          "index": "03",
+          "title": "Контракты",
+          "detail": "Общие типы от базы до клиента."
+        },
+        {
+          "index": "04",
+          "title": "UI",
+          "detail": "Экраны, формы и компоненты дизайн-системы."
+        },
+        {
+          "index": "05",
+          "title": "Деплой",
+          "detail": "Docker, CI, мониторинг и безопасный rollout."
+        }
+      ]
+    },
+    "defaultSelected": 0,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind",
+      "Docker",
+      "Zustand"
+    ]
+  },
+  "experience": {
+    "galleryLabel": "Выбранные платформы",
+    "eyebrow": "04 · Релиз",
+    "typeLines": [
+      "Платформа уже у пользователей.",
+      "Дашборды, CRM, админка — живые и удобные.",
+      "Измеримо, задокументировано, готово расти."
+    ],
+    "focus": [
+      "Готово к продакшену",
+      "Наблюдаемость",
+      "Документированная передача"
+    ],
+    "status": "Развёрнуто в продакшене",
+    "gallery": [
+      {
+        "title": "Аналитический дашборд",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "KPI-плитки со спарклайнами и графиком выручки на аналитическом дашборде"
+      },
+      {
+        "title": "CRM-воронка продаж",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "Пятиэтапная доска воронки с карточками сделок и суммами"
+      },
+      {
+        "title": "Финансы и биллинг",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "Таблица счетов со статусами оплаты и плитками выручки"
+      },
+      {
+        "title": "Операции платформы",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "Сетка статуса сервисов с аптаймом, задержкой и лентой инцидентов"
+      },
+      {
+        "title": "Рабочее пространство проекта",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "Список задач со статусом, приоритетом, исполнителями и сроками"
+      },
+      {
+        "title": "Customer success",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "Тепловая карта удержания и воронка онбординга"
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "Избранные работы",
+    "eyebrow": "05 · Работы",
+    "title": "Избранные платформы",
+    "body": "Живые продукты и внутренние инструменты — выберите в списке, затем откройте.",
+    "openHint": "Нажмите превью, чтобы открыть · двойной клик по названию",
+    "items": [
+      {
+        "title": "Northline Analytics",
+        "subtitle": "Дашборд выручки и роста",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Аналитический дашборд с KPI и площадным графиком",
+        "url": "https://example.com/northline"
+      },
+      {
+        "title": "Harbor CRM",
+        "subtitle": "Рабочее пространство воронки",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "Доска CRM-воронки продаж",
+        "url": "https://example.com/harbor"
+      },
+      {
+        "title": "Ledger Reports",
+        "subtitle": "Финансы и биллинг",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "Интерфейс финансовых отчётов и счетов",
+        "url": "https://example.com/ledger"
+      },
+      {
+        "title": "Pulse Ops",
+        "subtitle": "Монитор здоровья платформы",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "Сетка операционного статуса платформы",
+        "url": "https://example.com/pulse"
+      },
+      {
+        "title": "Forge Board",
+        "subtitle": "Задачи и поставка",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "Список задач проекта",
+        "url": "https://example.com/forge"
+      },
+      {
+        "title": "Keep Customers",
+        "subtitle": "Удержание и customer success",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "Дашборд удержания и успеха клиентов",
+        "url": "https://example.com/keep"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "Контакты",
+    "eyebrow": "06 · Контакты",
+    "title": "Давайте что-нибудь соберём",
+    "body": "Открыт к продуктовой работе, платформам и долгосрочному партнёрству. Напишите, что выпускаете — отвечу в течение дня.",
+    "email": "hello@mahvan.dev",
+    "phone": "+98 912 000 0000",
+    "phoneHref": "+989120000000",
+    "location": "Тегеран · удалённо по миру",
+    "socialLabel": "Сети",
+    "portrait": "/images/carousel/contact-bust.png",
+    "socials": [
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/mahvan"
+      },
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/mahvan"
+      },
+      {
+        "id": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/mahvan"
+      },
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp",
+        "url": "https://wa.me/989120000000"
+      }
+    ]
+  }
+}

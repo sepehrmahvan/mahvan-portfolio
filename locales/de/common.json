@@ -1,0 +1,16 @@
+{
+  "appName": "Mahvan",
+  "loading": "Laden...",
+  "save": "Speichern",
+  "cancel": "Abbrechen",
+  "close": "Schließen",
+  "search": "Suchen",
+  "actions": "Aktionen",
+  "empty": "Keine Einträge gefunden",
+  "language": "Sprache",
+  "dashboard": "Dashboard",
+  "users": "Benutzer",
+  "logout": "Abmelden",
+  "welcome": "Willkommen bei Mahvan",
+  "welcomeDescription": "Ein mehrsprachiges Fundament mit vollständiger RTL- und LTR-Unterstützung."
+}

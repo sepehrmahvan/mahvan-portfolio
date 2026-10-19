@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "Sepehr Mahvan | 全栈产品工程师",
+    "description": "全栈 TypeScript 工程师。与产品团队合作，把新想法做成真正能上线的软件——架构、界面，以及中间的一切。"
+  },
+  "nav": {
+    "name": "Sepehr Mahvan",
+    "role": "产品工程师",
+    "stack": "TypeScript",
+    "availability": "可接项目",
+    "menuOpen": "打开菜单",
+    "menuClose": "关闭菜单",
+    "sections": [
+      {
+        "id": "skills",
+        "index": "02",
+        "label": "洞察"
+      },
+      {
+        "id": "soft-skills",
+        "index": "03",
+        "label": "构建"
+      },
+      {
+        "id": "experience",
+        "index": "04",
+        "label": "交付"
+      },
+      {
+        "id": "projects",
+        "index": "05",
+        "label": "作品"
+      }
+    ],
+    "contact": "联系我",
+    "language": "语言",
+    "progress": "叙事进度"
+  },
+  "hero": {
+    "greeting": "你好",
+    "name": "我是 Mahvan",
+    "role": "全栈产品工程师",
+    "body": "我与产品团队合作，把新想法做成真正能上线的软件——架构、界面，以及中间那些安静的部分，从始至终都有类型约束。"
+  },
+  "skills": {
+    "eyebrow": "02 · 发现",
+    "title": "先问对的问题",
+    "body": "在写第一个组件之前，我会和想法待在一起，直到简报足够锋利、可以交付——不是愿望清单，是计划。",
+    "listenLabel": "我在问",
+    "folderLabel": "Mahvan",
+    "folderItems": [
+      {
+        "title": "Sepehr Mahvan",
+        "description": "全栈产品工程师。架构、界面，以及其间安静的部分——端到端类型安全。"
+      },
+      {
+        "title": "先发现",
+        "description": "和你一起压测想法，直到简报足够锋利、可以交付。"
+      },
+      {
+        "title": "TypeScript 技术栈",
+        "description": "React、Next.js、Node、PostgreSQL——从数据库到最后一个按钮。"
+      },
+      {
+        "title": "平台作品",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Sepehr Mahvan 平台作品中的分析仪表盘"
+      },
+      {
+        "title": "可交付",
+        "description": "仪表盘、CRM 与管理工具——已上线、可观测、可扩展。"
+      },
+      {
+        "title": "可接洽",
+        "description": "与产品团队合作，把新想法变成真正能交付的软件。"
+      }
+    ],
+    "facets": [
+      {
+        "label": "业务问题",
+        "detail": "产品要赢必须改什么——如果不改，又会怎样。"
+      },
+      {
+        "label": "相关的人",
+        "detail": "谁用、谁付钱、谁能叫停，以及谁必须喜欢它。"
+      },
+      {
+        "label": "今天的约束",
+        "detail": "时间、技术栈、团队产能，以及已经在生产环境里的系统。"
+      },
+      {
+        "label": "可交付切片",
+        "detail": "能证明想法的最小切口——动手前先写下来。"
+      }
+    ]
+  },
+  "softSkills": {
+    "ariaLabel": "技术能力",
+    "eyebrow": "03 · 构建",
+    "typeLines": [
+      "把你的想法做成可交付的平台。",
+      "从数据库到最后一个按钮都有类型。",
+      "够快可用，也够干净以便扩展。"
+    ],
+    "processLabel": "正在翻译简报",
+    "doneLabel": "交付计划已就绪",
+    "steps": [
+      "建模领域与用户角色",
+      "设计 API 与数据契约",
+      "选择最小可用交付切片",
+      "埋点观测，确认它真的在工作"
+    ],
+    "focus": [
+      "产品架构",
+      "类型安全 API",
+      "设计系统熟练度",
+      "每周交付"
+    ],
+    "stepper": {
+      "ariaLabel": "产品技术构建阶段",
+      "eyebrow": "构建流水线",
+      "stages": [
+        {
+          "index": "01",
+          "title": "Schema",
+          "detail": "表结构、关系、索引与迁移。"
+        },
+        {
+          "index": "02",
+          "title": "API",
+          "detail": "类型化路由、鉴权与校验。"
+        },
+        {
+          "index": "03",
+          "title": "Contracts",
+          "detail": "从数据库到客户端的共享类型。"
+        },
+        {
+          "index": "04",
+          "title": "UI",
+          "detail": "页面、表单与设计系统组件。"
+        },
+        {
+          "index": "05",
+          "title": "Deploy",
+          "detail": "Docker、CI、监控与安全发布。"
+        }
+      ]
+    },
+    "defaultSelected": 0,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind",
+      "Docker",
+      "Zustand"
+    ]
+  },
+  "experience": {
+    "galleryLabel": "精选平台作品",
+    "eyebrow": "04 · 交付",
+    "typeLines": [
+      "你的平台已在用户手中。",
+      "仪表盘、CRM、管理工具——已上线可用。",
+      "可度量、有文档、能继续增长。"
+    ],
+    "focus": [
+      "生产就绪",
+      "可观测",
+      "文档化交接"
+    ],
+    "status": "已部署到生产环境",
+    "gallery": [
+      {
+        "title": "分析仪表盘",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "带 KPI 卡片、迷你图与收入面积图的分析仪表盘"
+      },
+      {
+        "title": "销售 CRM 管道",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "五阶段销售管道看板及交易卡片与金额"
+      },
+      {
+        "title": "财务与账单",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "含已付、待付、逾期状态与收入卡片的发票表"
+      },
+      {
+        "title": "平台运维",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "含正常运行时间、延迟与事故时间线的服务状态网格"
+      },
+      {
+        "title": "项目工作区",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "含状态、优先级、负责人和截止日期的问题列表"
+      },
+      {
+        "title": "客户成功",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "客户成功仪表盘上的留存热力图与入职漏斗"
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "精选作品",
+    "eyebrow": "05 · 作品",
+    "title": "精选平台",
+    "body": "线上产品与内部工具——从列表中选择，然后打开。",
+    "openHint": "点击预览打开 · 双击名称",
+    "items": [
+      {
+        "title": "Northline Analytics",
+        "subtitle": "收入与增长仪表盘",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "带 KPI 与面积图的分析仪表盘",
+        "url": "https://example.com/northline"
+      },
+      {
+        "title": "Harbor CRM",
+        "subtitle": "销售管道工作区",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "CRM 销售管道看板",
+        "url": "https://example.com/harbor"
+      },
+      {
+        "title": "Ledger Reports",
+        "subtitle": "财务与账单控制台",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "财务报告与账单界面",
+        "url": "https://example.com/ledger"
+      },
+      {
+        "title": "Pulse Ops",
+        "subtitle": "平台健康监控",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "平台运维状态网格",
+        "url": "https://example.com/pulse"
+      },
+      {
+        "title": "Forge Board",
+        "subtitle": "事务与交付工作区",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "项目问题列表工作区",
+        "url": "https://example.com/forge"
+      },
+      {
+        "title": "Keep Customers",
+        "subtitle": "留存与客户成功套件",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "客户成功与留存仪表盘",
+        "url": "https://example.com/keep"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "联系",
+    "eyebrow": "06 · 联系",
+    "title": "一起做点什么",
+    "body": "欢迎产品合作、平台项目与长期伙伴关系。告诉我你要交付什么——一天内回复。",
+    "email": "hello@mahvan.dev",
+    "phone": "+98 912 000 0000",
+    "phoneHref": "+989120000000",
+    "location": "德黑兰 · 全球远程",
+    "socialLabel": "社交网络",
+    "portrait": "/images/carousel/contact-bust.png",
+    "socials": [
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/mahvan"
+      },
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/mahvan"
+      },
+      {
+        "id": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/mahvan"
+      },
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp",
+        "url": "https://wa.me/989120000000"
+      }
+    ]
+  }
+}

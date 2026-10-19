@@ -1,0 +1,456 @@
+'use client';
+
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
+
+import { cn } from '@/utils/cn';
+
+const VIDEO_SRC = '/video/asli.mp4';
+
+/** Skip poster / turnaround still. */
+export const HERO_VIDEO_INTRO_START = 0.25;
+/** Intro ends here — hero content may enter. */
+export const HERO_VIDEO_INTRO_END = 2;
+/** Fire hero copy while intro is still settling (~0.45s before hold). */
+const HERO_CONTENT_REVEAL_AT = 1.25;
+/** Scroll-out ends here — skills content may enter. Rest unused. */
+export const HERO_VIDEO_SCROLL_END = 4.08;
+/** Forward 2→end: mild speed bump (soft in/out, faster mid). */
+const FORWARD_RATE_BASE = 1.08;
+const FORWARD_RATE_PEAK = 1.4;
+
+const CAPTURE_FPS = 30;
+const CAPTURE_INTERVAL_MS = 1000 / CAPTURE_FPS;
+const BEAT_MS = (HERO_VIDEO_SCROLL_END - HERO_VIDEO_INTRO_END) * 1000;
+/** Fire hero re-enter before reverse finishes (~0.6s early). */
+const REVERSE_ANNOUNCE_AT = 0.3;
+
+/** Approximate wall-clock for the eased forward beat (avg rate ~1.28×). */
+export const HERO_FORWARD_WALL_S =
+  (HERO_VIDEO_SCROLL_END - HERO_VIDEO_INTRO_END) /
+  (FORWARD_RATE_BASE + ((FORWARD_RATE_PEAK - FORWARD_RATE_BASE) * 2) / Math.PI);
+
+export type HeroVideoHandle = {
+  playScrollOut: () => void;
+  resetToHold: () => void;
+};
+
+type Phase = 'boot' | 'intro' | 'hold' | 'forward' | 'done' | 'reverse';
+
+interface HeroVideoBackgroundProps {
+  reduceMotion: boolean;
+  onIntroHold?: () => void;
+  onScrollDone?: () => void;
+}
+
+function waitFor(
+  target: EventTarget,
+  event: string,
+  timeoutMs = 6000,
+): Promise<void> {
+  return new Promise((resolve) => {
+    let settled = false;
+    const finish = () => {
+      if (settled) return;
+      settled = true;
+      target.removeEventListener(event, finish);
+      window.clearTimeout(timer);
+      resolve();
+    };
+    const timer = window.setTimeout(finish, timeoutMs);
+    target.addEventListener(event, finish);
+  });
+}
+
+async function seekPaused(video: HTMLVideoElement, time: number) {
+  video.pause();
+  if (video.readyState < 1) await waitFor(video, 'loadedmetadata');
+  if (Math.abs(video.currentTime - time) < 0.03) return;
+  const seeked = waitFor(video, 'seeked', 2000);
+  video.currentTime = time;
+  await seeked;
+  video.pause();
+}
+
+/**
+ * Hero/skills shared video:
+ * boot → intro (0.25→2) → hold
+ * forward (2→4) + capture frames → done
+ * reverse paints captures 4→2 → hold
+ */
+export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgroundProps>(
+  function HeroVideoBackground({ reduceMotion, onIntroHold, onScrollDone }, ref) {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const overlayRef = useRef<HTMLCanvasElement>(null);
+    const grabRef = useRef<HTMLCanvasElement | null>(null);
+    const phaseRef = useRef<Phase>('boot');
+    const framesRef = useRef<HTMLCanvasElement[]>([]);
+    const rafRef = useRef(0);
+    const lastGrabRef = useRef(0);
+    const onIntroHoldRef = useRef(onIntroHold);
+    const onScrollDoneRef = useRef(onScrollDone);
+    onIntroHoldRef.current = onIntroHold;
+    onScrollDoneRef.current = onScrollDone;
+
+    const [ready, setReady] = useState(false);
+    const [overlayOn, setOverlayOn] = useState(false);
+
+    const stopRaf = useCallback(() => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = 0;
+      }
+    }, []);
+
+    const clearFrames = useCallback(() => {
+      framesRef.current = [];
+    }, []);
+
+    const grabFrame = useCallback((video: HTMLVideoElement) => {
+      const w = video.videoWidth;
+      const h = video.videoHeight;
+      if (!w || !h) return;
+
+      if (!grabRef.current) grabRef.current = document.createElement('canvas');
+      const grab = grabRef.current;
+      if (grab.width !== w || grab.height !== h) {
+        grab.width = w;
+        grab.height = h;
+      }
+      const gctx = grab.getContext('2d', { alpha: false });
+      if (!gctx) return;
+      gctx.drawImage(video, 0, 0, w, h);
+
+      const sheet = document.createElement('canvas');
+      sheet.width = w;
+      sheet.height = h;
+      const sctx = sheet.getContext('2d', { alpha: false });
+      if (!sctx) return;
+      sctx.drawImage(grab, 0, 0);
+      framesRef.current.push(sheet);
+
+      const overlay = overlayRef.current;
+      if (overlay && (overlay.width !== w || overlay.height !== h)) {
+        overlay.width = w;
+        overlay.height = h;
+      }
+    }, []);
+
+    const paintOverlay = useCallback((source: HTMLCanvasElement) => {
+      const overlay = overlayRef.current;
+      if (!overlay) return;
+      const ctx = overlay.getContext('2d', { alpha: false });
+      if (!ctx) return;
+      if (overlay.width !== source.width || overlay.height !== source.height) {
+        overlay.width = source.width;
+        overlay.height = source.height;
+      }
+      ctx.drawImage(source, 0, 0);
+    }, []);
+
+    /**
+     * Imperative show/hide. Pass `syncState: false` on reverse start so React
+     * setState does not hitch the first painted frames.
+     */
+    const showOverlayNow = useCallback((on: boolean, syncState = true) => {
+      const overlay = overlayRef.current;
+      if (overlay) {
+        overlay.style.opacity = on ? '1' : '0';
+        overlay.style.pointerEvents = on ? 'auto' : 'none';
+      }
+      if (syncState) setOverlayOn(on);
+      else {
+        requestAnimationFrame(() => setOverlayOn(on));
+      }
+    }, []);
+
+    const reachHold = useCallback(
+      async (announce: boolean) => {
+        const video = videoRef.current;
+        stopRaf();
+        phaseRef.current = 'hold';
+        // Seek under the overlay first. Do NOT await requestVideoFrameCallback —
+        // it often never fires on a paused video after seek, which freezes the
+        // overlay and blocks hero re-enter. Double-rAF is enough for a paint.
+        if (video) await seekPaused(video, HERO_VIDEO_INTRO_END);
+        await new Promise<void>((resolve) => {
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+        });
+        showOverlayNow(false);
+        requestAnimationFrame(() => clearFrames());
+        if (announce) onIntroHoldRef.current?.();
+      },
+      [clearFrames, showOverlayNow, stopRaf],
+    );
+
+    const playScrollOut = useCallback(() => {
+      const video = videoRef.current;
+      stopRaf();
+      clearFrames();
+      showOverlayNow(false);
+
+      if (!video || reduceMotion) {
+        void (async () => {
+          if (video) await seekPaused(video, HERO_VIDEO_SCROLL_END);
+          phaseRef.current = 'done';
+          onScrollDoneRef.current?.();
+        })();
+        return;
+      }
+
+      if (phaseRef.current === 'forward') return;
+
+      void (async () => {
+        phaseRef.current = 'forward';
+        lastGrabRef.current = 0;
+        video.playbackRate = FORWARD_RATE_BASE;
+        await seekPaused(video, HERO_VIDEO_INTRO_END);
+        try {
+          await video.play();
+        } catch {
+          video.playbackRate = 1;
+          await seekPaused(video, HERO_VIDEO_SCROLL_END);
+          phaseRef.current = 'done';
+          onScrollDoneRef.current?.();
+          return;
+        }
+
+        const span = HERO_VIDEO_SCROLL_END - HERO_VIDEO_INTRO_END;
+
+        const tick = (now: number) => {
+          if (phaseRef.current !== 'forward') return;
+
+          const u = Math.min(
+            1,
+            Math.max(0, (video.currentTime - HERO_VIDEO_INTRO_END) / span),
+          );
+          // Sin bump: ease in, faster mid, ease out — quicker but still natural.
+          const bump = Math.sin(u * Math.PI);
+          video.playbackRate =
+            FORWARD_RATE_BASE + bump * (FORWARD_RATE_PEAK - FORWARD_RATE_BASE);
+
+          if (now - lastGrabRef.current >= CAPTURE_INTERVAL_MS) {
+            lastGrabRef.current = now;
+            grabFrame(video);
+          }
+
+          if (video.currentTime >= HERO_VIDEO_SCROLL_END - 0.03) {
+            grabFrame(video);
+            video.pause();
+            video.playbackRate = 1;
+            video.currentTime = HERO_VIDEO_SCROLL_END;
+            phaseRef.current = 'done';
+            rafRef.current = 0;
+            onScrollDoneRef.current?.();
+            return;
+          }
+
+          rafRef.current = requestAnimationFrame(tick);
+        };
+
+        rafRef.current = requestAnimationFrame(tick);
+      })();
+    }, [clearFrames, grabFrame, reduceMotion, showOverlayNow, stopRaf]);
+
+    const resetToHold = useCallback(() => {
+      const video = videoRef.current;
+      stopRaf();
+      if (!video) return;
+
+      video.pause();
+      video.playbackRate = 1;
+
+      if (reduceMotion) {
+        void reachHold(true);
+        return;
+      }
+
+      const frames = framesRef.current;
+      if (frames.length < 2) {
+        // No strip — realtime reverse scrub with seeked waits.
+        void (async () => {
+          phaseRef.current = 'reverse';
+          let announced = false;
+          const from = Math.min(
+            HERO_VIDEO_SCROLL_END,
+            Math.max(video.currentTime, HERO_VIDEO_INTRO_END),
+          );
+          const steps = 30;
+          for (let i = 1; i <= steps; i++) {
+            if (phaseRef.current !== 'reverse') return;
+            const t = i / steps;
+            const eased = t * t * (3 - 2 * t);
+            await seekPaused(video, from + (HERO_VIDEO_INTRO_END - from) * eased);
+            if (!announced && t >= REVERSE_ANNOUNCE_AT) {
+              announced = true;
+              onIntroHoldRef.current?.();
+            }
+          }
+          await reachHold(!announced);
+        })();
+        return;
+      }
+
+      phaseRef.current = 'reverse';
+      const last = frames.length - 1;
+      // Hold the end frame on the overlay before the loop so the handoff is instant.
+      paintOverlay(frames[last]!);
+      showOverlayNow(true, false);
+
+      let announced = false;
+      let lastIndex = last;
+      // Ease-out: moves on the first tick (no flat start), softens into hold.
+      const easeOut = (t: number) => 1 - (1 - t) ** 2.4;
+      const started = performance.now();
+
+      const tick = (now: number) => {
+        if (phaseRef.current !== 'reverse') return;
+        const t = Math.min(1, (now - started) / BEAT_MS);
+        const eased = easeOut(t);
+        const index = Math.max(0, Math.min(last, Math.round(last * (1 - eased))));
+        if (index !== lastIndex) {
+          lastIndex = index;
+          const frame = frames[index];
+          if (frame) paintOverlay(frame);
+        }
+
+        if (!announced && t >= REVERSE_ANNOUNCE_AT) {
+          announced = true;
+          onIntroHoldRef.current?.();
+        }
+
+        if (t < 1) {
+          rafRef.current = requestAnimationFrame(tick);
+          return;
+        }
+
+        void reachHold(!announced);
+      };
+
+      rafRef.current = requestAnimationFrame(tick);
+    }, [paintOverlay, reachHold, reduceMotion, showOverlayNow, stopRaf]);
+
+    useImperativeHandle(ref, () => ({ playScrollOut, resetToHold }), [
+      playScrollOut,
+      resetToHold,
+    ]);
+
+    useEffect(() => {
+      const video = videoRef.current;
+      if (!video) return;
+
+      let cancelled = false;
+      stopRaf();
+      clearFrames();
+      setOverlayOn(false);
+      setReady(false);
+      phaseRef.current = 'boot';
+
+      const run = async () => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+
+        if (reduceMotion) {
+          await seekPaused(video, HERO_VIDEO_INTRO_END);
+          if (cancelled) return;
+          setReady(true);
+          phaseRef.current = 'hold';
+          onIntroHoldRef.current?.();
+          return;
+        }
+
+        try {
+          video.load();
+        } catch {
+          // ignore
+        }
+
+        if (video.readyState < 2) {
+          await Promise.race([waitFor(video, 'loadeddata'), waitFor(video, 'canplay')]);
+        }
+        if (cancelled) return;
+
+        await seekPaused(video, HERO_VIDEO_INTRO_START);
+        if (cancelled) return;
+
+        phaseRef.current = 'intro';
+        try {
+          await video.play();
+        } catch {
+          if (cancelled) return;
+          await seekPaused(video, HERO_VIDEO_INTRO_END);
+          setReady(true);
+          phaseRef.current = 'hold';
+          onIntroHoldRef.current?.();
+          return;
+        }
+
+        if (cancelled) {
+          video.pause();
+          return;
+        }
+        setReady(true);
+
+        let announced = false;
+        const tick = () => {
+          if (cancelled || phaseRef.current !== 'intro') return;
+          if (!announced && video.currentTime >= HERO_CONTENT_REVEAL_AT) {
+            announced = true;
+            onIntroHoldRef.current?.();
+          }
+          if (video.currentTime >= HERO_VIDEO_INTRO_END - 0.02) {
+            video.pause();
+            video.currentTime = HERO_VIDEO_INTRO_END;
+            phaseRef.current = 'hold';
+            rafRef.current = 0;
+            if (!announced) onIntroHoldRef.current?.();
+            return;
+          }
+          rafRef.current = requestAnimationFrame(tick);
+        };
+        rafRef.current = requestAnimationFrame(tick);
+      };
+
+      void run();
+
+      return () => {
+        cancelled = true;
+        stopRaf();
+        clearFrames();
+        video.pause();
+      };
+    }, [clearFrames, reduceMotion, stopRaf]);
+
+    return (
+      <div aria-hidden className="relative h-full w-full overflow-hidden bg-zinc-950">
+        <video
+          ref={videoRef}
+          className={cn(
+            'h-full w-full object-cover',
+            ready ? 'opacity-100' : 'opacity-0',
+          )}
+          src={VIDEO_SRC}
+          muted
+          playsInline
+          preload="auto"
+          disablePictureInPicture
+          controls={false}
+        />
+        <canvas
+          ref={overlayRef}
+          className={cn(
+            'absolute inset-0 z-1 h-full w-full object-cover',
+            overlayOn ? 'opacity-100' : 'pointer-events-none opacity-0',
+          )}
+        />
+      </div>
+    );
+  },
+);

@@ -1,0 +1,27 @@
+stages:
+  - lint
+  - build
+
+variables:
+  NODE_VERSION: "22"
+
+lint:
+  stage: lint
+  image: node:${NODE_VERSION}-alpine
+  script:
+    - npm ci
+    - npm run lint
+    - npx tsx scripts/check-translations.ts
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+build:
+  stage: build
+  image: node:${NODE_VERSION}-alpine
+  script:
+    - npm ci
+    - npm run build
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH

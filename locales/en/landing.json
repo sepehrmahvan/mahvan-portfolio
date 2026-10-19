@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "Sepehr Mahvan | Full-Stack Product Engineer",
+    "description": "Full-stack TypeScript engineer. I partner with product teams to turn a new idea into software they can actually ship — architecture, interface, and everything in between."
+  },
+  "nav": {
+    "name": "Sepehr Mahvan",
+    "role": "Product engineer",
+    "stack": "TypeScript",
+    "availability": "Open for work",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "sections": [
+      {
+        "id": "skills",
+        "index": "02",
+        "label": "Discover"
+      },
+      {
+        "id": "soft-skills",
+        "index": "03",
+        "label": "Build"
+      },
+      {
+        "id": "experience",
+        "index": "04",
+        "label": "Ship"
+      },
+      {
+        "id": "projects",
+        "index": "05",
+        "label": "Work"
+      }
+    ],
+    "contact": "Contact me",
+    "language": "Language",
+    "progress": "Story progress"
+  },
+  "hero": {
+    "greeting": "Hello",
+    "name": "I'm Mahvan",
+    "role": "Full-stack Product Engineer",
+    "body": "I partner with product teams to turn a new idea into software you can actually ship — architecture, interface, and the quiet pieces in between, typed end to end."
+  },
+  "skills": {
+    "eyebrow": "02 · Discover",
+    "title": "First, the right questions",
+    "body": "Before a single component, I sit with the idea until the brief is sharp enough to ship — not a wish list, a plan.",
+    "listenLabel": "I'm asking about",
+    "folderLabel": "Mahvan",
+    "folderItems": [
+      {
+        "title": "Sepehr Mahvan",
+        "description": "Full-stack Product Engineer. Architecture, interface, and the quiet pieces in between — typed end to end."
+      },
+      {
+        "title": "Discover first",
+        "description": "I pressure-test the idea with you until the brief is sharp enough to ship."
+      },
+      {
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node, PostgreSQL — from the database up to the last button."
+      },
+      {
+        "title": "Platform work",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Analytics dashboard from Sepehr Mahvan's selected platform work"
+      },
+      {
+        "title": "Ship ready",
+        "description": "Dashboards, CRMs, and admin tools — live, measured, and ready to grow."
+      },
+      {
+        "title": "Open for work",
+        "description": "Partnering with product teams to turn a new idea into software they can actually ship."
+      }
+    ],
+    "facets": [
+      {
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and what happens if it doesn't."
+      },
+      {
+        "label": "The people around it",
+        "detail": "Who uses it, who pays for it, who can kill it, and who has to love it."
+      },
+      {
+        "label": "Today's constraints",
+        "detail": "Time, stack, team capacity, and the systems already live in production."
+      },
+      {
+        "label": "The shippable slice",
+        "detail": "The smallest cut that proves the idea — written down before we build."
+      }
+    ]
+  },
+  "softSkills": {
+    "ariaLabel": "Technical skills",
+    "eyebrow": "03 · Build",
+    "typeLines": [
+      "I turn your idea into a shippable platform.",
+      "Typed from the database up to the last button.",
+      "Fast enough to use. Clean enough to extend."
+    ],
+    "processLabel": "Translating the brief",
+    "doneLabel": "Delivery plan ready",
+    "steps": [
+      "Model the domain and user roles",
+      "Design the API and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument it so we know it works"
+    ],
+    "focus": [
+      "Product architecture",
+      "Type-safe APIs",
+      "Design-system fluency",
+      "Weekly delivery"
+    ],
+    "stepper": {
+      "ariaLabel": "Technical stages of building a product",
+      "eyebrow": "Build pipeline",
+      "stages": [
+        {
+          "index": "01",
+          "title": "Schema",
+          "detail": "Tables, relations, indexes, and migrations."
+        },
+        {
+          "index": "02",
+          "title": "API",
+          "detail": "Typed routes, auth, validation, and errors."
+        },
+        {
+          "index": "03",
+          "title": "Contracts",
+          "detail": "Shared types from database to the client."
+        },
+        {
+          "index": "04",
+          "title": "UI",
+          "detail": "Screens, forms, and design-system components."
+        },
+        {
+          "index": "05",
+          "title": "Deploy",
+          "detail": "Docker, CI, monitoring, and a safe rollout."
+        }
+      ]
+    },
+    "defaultSelected": 0,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind",
+      "Docker",
+      "Zustand"
+    ]
+  },
+  "experience": {
+    "galleryLabel": "Selected platform work",
+    "eyebrow": "04 · Ship",
+    "typeLines": [
+      "Your platform is in your users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to grow."
+    ],
+    "focus": [
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
+    ],
+    "status": "Deployed to production",
+    "gallery": [
+      {
+        "title": "Analytics dashboard",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "KPI tiles with sparklines and a revenue area chart on an analytics dashboard"
+      },
+      {
+        "title": "Sales CRM pipeline",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "Five-stage sales pipeline board with deal cards and amounts"
+      },
+      {
+        "title": "Finance & billing",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "Invoice table with paid, pending and overdue statuses and revenue tiles"
+      },
+      {
+        "title": "Platform operations",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "Service status grid with uptime, latency and incident timeline"
+      },
+      {
+        "title": "Project workspace",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "Issue list with status, priority, assignees and due dates"
+      },
+      {
+        "title": "Customer success",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "Retention heatmap and onboarding funnel on a customer success dashboard"
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "Selected work",
+    "eyebrow": "05 · Work",
+    "title": "Selected platforms",
+    "body": "Live platforms and internal tools — pick one from the list, then open it.",
+    "openHint": "Click the preview to open · double-click a name",
+    "items": [
+      {
+        "title": "Northline Analytics",
+        "subtitle": "Revenue & growth dashboard",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Analytics dashboard with KPI tiles and area chart",
+        "url": "https://example.com/northline"
+      },
+      {
+        "title": "Harbor CRM",
+        "subtitle": "Sales pipeline workspace",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "CRM sales pipeline board",
+        "url": "https://example.com/harbor"
+      },
+      {
+        "title": "Ledger Reports",
+        "subtitle": "Finance & billing console",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "Finance and billing reports interface",
+        "url": "https://example.com/ledger"
+      },
+      {
+        "title": "Pulse Ops",
+        "subtitle": "Platform health monitor",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "Platform operations status grid",
+        "url": "https://example.com/pulse"
+      },
+      {
+        "title": "Forge Board",
+        "subtitle": "Issue & delivery workspace",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "Project issue list workspace",
+        "url": "https://example.com/forge"
+      },
+      {
+        "title": "Keep Customers",
+        "subtitle": "Retention & success suite",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "Customer success retention dashboard",
+        "url": "https://example.com/keep"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "Contact",
+    "eyebrow": "06 · Contact",
+    "title": "Let's build something",
+    "body": "Open for product work, platforms, and long-term partnerships. Tell me what you're shipping — I'll reply within a day.",
+    "email": "hello@mahvan.dev",
+    "phone": "+98 912 000 0000",
+    "phoneHref": "+989120000000",
+    "location": "Tehran · Remote worldwide",
+    "socialLabel": "Elsewhere",
+    "portrait": "/images/carousel/contact-bust.png",
+    "socials": [
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/mahvan"
+      },
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/mahvan"
+      },
+      {
+        "id": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/mahvan"
+      },
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp",
+        "url": "https://wa.me/989120000000"
+      }
+    ]
+  }
+}

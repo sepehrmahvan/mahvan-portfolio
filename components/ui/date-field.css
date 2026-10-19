@@ -1,0 +1,53 @@
+.boushehr-date-picker.rmdp-wrapper {
+  direction: rtl;
+  font-family: Kalameh, system-ui, sans-serif;
+}
+
+.boushehr-date-picker .rmdp-wrapper {
+  border-radius: 12px;
+  border: 1px solid #b8c8d3;
+  box-shadow: 0 16px 40px rgba(0, 43, 71, 0.14);
+}
+
+.boushehr-date-picker .rmdp-header-values,
+.boushehr-date-picker .rmdp-week-day {
+  color: #1a2b35;
+  font-weight: 600;
+}
+
+.boushehr-date-picker .rmdp-day span {
+  color: #1a2b35;
+  font-weight: 600;
+}
+
+.boushehr-date-picker .rmdp-arrow {
+  border-color: #3d5563;
+}
+
+.boushehr-date-picker .rmdp-day.rmdp-selected span:not(.highlight) {
+  background-color: #0448f5;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.boushehr-date-picker .rmdp-day:not(.rmdp-disabled):not(.rmdp-day-hidden) span:hover {
+  background-color: rgba(4, 72, 245, 0.1);
+  color: #1a2b35;
+}
+
+.boushehr-date-picker .rmdp-day.rmdp-today span {
+  background-color: rgba(4, 72, 245, 0.08);
+  color: #0448f5;
+}
+
+.boushehr-date-picker .rmdp-day.rmdp-disabled span {
+  color: #5c7280;
+}
+
+.boushehr-date-picker.rmdp-rtl .rmdp-arrow {
+  margin-top: 0;
+}
+
+.boushehr-date-picker-ltr.rmdp-wrapper {
+  direction: ltr;
+}

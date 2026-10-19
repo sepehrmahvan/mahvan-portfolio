@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "Sepehr Mahvan | フルスタック・プロダクトエンジニア",
+    "description": "TypeScript のフルスタックエンジニア。プロダクトチームと一緒に、新しいアイデアを本当に出荷できるソフトウェアへ——設計、UI、そのあいだのすべて。"
+  },
+  "nav": {
+    "name": "Sepehr Mahvan",
+    "role": "プロダクトエンジニア",
+    "stack": "TypeScript",
+    "availability": "案件受付中",
+    "menuOpen": "メニューを開く",
+    "menuClose": "メニューを閉じる",
+    "sections": [
+      {
+        "id": "skills",
+        "index": "02",
+        "label": "発見"
+      },
+      {
+        "id": "soft-skills",
+        "index": "03",
+        "label": "構築"
+      },
+      {
+        "id": "experience",
+        "index": "04",
+        "label": "出荷"
+      },
+      {
+        "id": "projects",
+        "index": "05",
+        "label": "実績"
+      }
+    ],
+    "contact": "お問い合わせ",
+    "language": "言語",
+    "progress": "ストーリーの進行"
+  },
+  "hero": {
+    "greeting": "こんにちは",
+    "name": "Mahvan です",
+    "role": "フルスタック・プロダクトエンジニア",
+    "body": "プロダクトチームと組み、新しいアイデアを本当に出荷できるソフトウェアにします——設計、UI、そのあいだの静かな部分まで、最初から最後まで型付きで。"
+  },
+  "skills": {
+    "eyebrow": "02 · 発見",
+    "title": "まず、正しい問い",
+    "body": "コンポーネントを書く前に、ブリーフが出荷できるほど鋭くなるまでアイデアと向き合います。ウィッシュリストではなく、計画です。",
+    "listenLabel": "いま聞いていること",
+    "folderLabel": "Mahvan",
+    "folderItems": [
+      {
+        "title": "Sepehr Mahvan",
+        "description": "フルスタックのプロダクトエンジニア。アーキテクチャ、UI、その間の静かな部分まで型安全に。"
+      },
+      {
+        "title": "まず発見",
+        "description": "出荷できるほどブリーフが鋭くなるまで、一緒にアイデアを詰めます。"
+      },
+      {
+        "title": "TypeScriptスタック",
+        "description": "React、Next.js、Node、PostgreSQL — データベースから最後のボタンまで。"
+      },
+      {
+        "title": "プラットフォーム実績",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "Sepehr Mahvanのプラットフォーム実績の分析ダッシュボード"
+      },
+      {
+        "title": "Ship ready",
+        "description": "ダッシュボード、CRM、管理ツール — 本番で動き、計測でき、伸ばせる状態で。"
+      },
+      {
+        "title": "稼働可能",
+        "description": "プロダクトチームと組み、新しいアイデアを本当に出荷できるソフトウェアにします。"
+      }
+    ],
+    "facets": [
+      {
+        "label": "ビジネス課題",
+        "detail": "プロダクトが勝つために何を変えるか。変えなければ何が起きるか。"
+      },
+      {
+        "label": "まわりの人",
+        "detail": "誰が使い、誰が払い、誰が止められ、誰が愛する必要があるか。"
+      },
+      {
+        "label": "いまの制約",
+        "detail": "時間、スタック、チームの余力、すでに本番で動いているもの。"
+      },
+      {
+        "label": "出荷できるスライス",
+        "detail": "アイデアを証明する最小の切り口。作る前に書き残す。"
+      }
+    ]
+  },
+  "softSkills": {
+    "ariaLabel": "技術スキル",
+    "eyebrow": "03 · 構築",
+    "typeLines": [
+      "アイデアを出荷可能なプラットフォームにします。",
+      "データベースから最後のボタンまで型安全に。",
+      "使える速さ。伸ばせるきれいさ。"
+    ],
+    "processLabel": "ブリーフを翻訳中",
+    "doneLabel": "納品プラン準備完了",
+    "steps": [
+      "ドメインとユーザー役割をモデル化",
+      "API とデータ契約を設計",
+      "出荷できる最小のスライスを選ぶ",
+      "動いていると分かる観測を入れる"
+    ],
+    "focus": [
+      "プロダクト設計",
+      "型安全な API",
+      "デザインシステム",
+      "週次デリバリー"
+    ],
+    "stepper": {
+      "ariaLabel": "プロダクトを技術的に組み立てる段階",
+      "eyebrow": "ビルドパイプライン",
+      "stages": [
+        {
+          "index": "01",
+          "title": "Schema",
+          "detail": "テーブル・リレーション・インデックス・マイグレーション。"
+        },
+        {
+          "index": "02",
+          "title": "API",
+          "detail": "型付きルート、認証、バリデーション。"
+        },
+        {
+          "index": "03",
+          "title": "Contracts",
+          "detail": "DBからクライアントまでの共有型。"
+        },
+        {
+          "index": "04",
+          "title": "UI",
+          "detail": "画面・フォーム・デザインシステムの部品。"
+        },
+        {
+          "index": "05",
+          "title": "Deploy",
+          "detail": "Docker、CI、監視、安全なロールアウト。"
+        }
+      ]
+    },
+    "defaultSelected": 0,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind",
+      "Docker",
+      "Zustand"
+    ]
+  },
+  "experience": {
+    "galleryLabel": "選りすぐりのプラットフォーム",
+    "eyebrow": "04 · 出荷",
+    "typeLines": [
+      "プラットフォームはユーザーの手元にあります。",
+      "ダッシュボード、CRM、管理ツール——本番で使えます。",
+      "計測済み、文書化済み、成長の準備完了。"
+    ],
+    "focus": [
+      "本番対応",
+      "可観測性",
+      "文書化された引き継ぎ"
+    ],
+    "status": "本番にデプロイ済み",
+    "gallery": [
+      {
+        "title": "分析ダッシュボード",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "KPI タイルとスパークライン、収益エリアチャートの分析ダッシュボード"
+      },
+      {
+        "title": "営業 CRM パイプライン",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "案件カードと金額付きの5段階セールスパイプライン"
+      },
+      {
+        "title": "財務・請求",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "支払済・保留・延滞ステータスと収益タイルの請求テーブル"
+      },
+      {
+        "title": "プラットフォーム運用",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "稼働率・レイテンシ・インシデントタイムラインのサービス状態グリッド"
+      },
+      {
+        "title": "プロジェクトワークスペース",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "ステータス・優先度・担当・期限付きの課題リスト"
+      },
+      {
+        "title": "カスタマーサクセス",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "リテンションヒートマップとオンボーディングファネル"
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "選りすぐりの実績",
+    "eyebrow": "05 · 実績",
+    "title": "選りすぐりのプラットフォーム",
+    "body": "本番のプロダクトと社内ツール——リストから選んで開きます。",
+    "openHint": "プレビューをクリックで開く · 名前をダブルクリック",
+    "items": [
+      {
+        "title": "Northline Analytics",
+        "subtitle": "収益・成長ダッシュボード",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "KPI とエリアチャートの分析ダッシュボード",
+        "url": "https://example.com/northline"
+      },
+      {
+        "title": "Harbor CRM",
+        "subtitle": "営業パイプライン空間",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "CRM セールスパイプラインボード",
+        "url": "https://example.com/harbor"
+      },
+      {
+        "title": "Ledger Reports",
+        "subtitle": "財務・請求コンソール",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "財務レポートと請求のインターフェース",
+        "url": "https://example.com/ledger"
+      },
+      {
+        "title": "Pulse Ops",
+        "subtitle": "プラットフォーム健全性モニター",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "プラットフォーム運用ステータスグリッド",
+        "url": "https://example.com/pulse"
+      },
+      {
+        "title": "Forge Board",
+        "subtitle": "課題・デリバリー空間",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "プロジェクト課題リスト",
+        "url": "https://example.com/forge"
+      },
+      {
+        "title": "Keep Customers",
+        "subtitle": "リテンション・成功スイート",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "カスタマーサクセスとリテンションのダッシュボード",
+        "url": "https://example.com/keep"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "お問い合わせ",
+    "eyebrow": "06 · お問い合わせ",
+    "title": "何か一緒に作りましょう",
+    "body": "プロダクト開発、プラットフォーム、長期のパートナーシップに対応しています。出荷したい内容を教えてください——1日以内に返信します。",
+    "email": "hello@mahvan.dev",
+    "phone": "+98 912 000 0000",
+    "phoneHref": "+989120000000",
+    "location": "テヘラン · 世界中リモート",
+    "socialLabel": "SNS",
+    "portrait": "/images/carousel/contact-bust.png",
+    "socials": [
+      {
+        "id": "linkedin",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/mahvan"
+      },
+      {
+        "id": "github",
+        "label": "GitHub",
+        "url": "https://github.com/mahvan"
+      },
+      {
+        "id": "telegram",
+        "label": "Telegram",
+        "url": "https://t.me/mahvan"
+      },
+      {
+        "id": "whatsapp",
+        "label": "WhatsApp",
+        "url": "https://wa.me/989120000000"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "ユーザー",
+  "subtitle": "システムユーザーの管理",
+  "add": "ユーザーを追加",
+  "columns": {
+    "name": "名前",
+    "email": "メール",
+    "role": "役割",
+    "createdAt": "作成日"
+  },
+  "form": {
+    "firstName": "名",
+    "lastName": "姓",
+    "email": "メール",
+    "role": "役割",
+    "password": "パスワード"
+  },
+  "table": {
+    "empty": "ユーザーが見つかりません"
+  }
+}

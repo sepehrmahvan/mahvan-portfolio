@@ -1,0 +1,294 @@
+{
+  "meta": {
+    "title": "سهير مهوان | مهندس منتجات متكامل",
+    "description": "مهندس منتجات متكامل بـ TypeScript. أتعاون مع فرق المنتج لتحويل فكرة جديدة إلى برمجيات قابلة للتسليم فعلًا — العمارة والواجهة وكل ما بينهما."
+  },
+  "nav": {
+    "name": "سهير مهوان",
+    "role": "مهندس منتجات",
+    "stack": "TypeScript",
+    "availability": "متاح للعمل",
+    "menuOpen": "فتح القائمة",
+    "menuClose": "إغلاق القائمة",
+    "sections": [
+      {
+        "id": "skills",
+        "index": "٠٢",
+        "label": "اكتشاف"
+      },
+      {
+        "id": "soft-skills",
+        "index": "٠٣",
+        "label": "بناء"
+      },
+      {
+        "id": "experience",
+        "index": "٠٤",
+        "label": "تسليم"
+      },
+      {
+        "id": "projects",
+        "index": "٠٥",
+        "label": "أعمال"
+      }
+    ],
+    "contact": "تواصل معي",
+    "language": "اللغة",
+    "progress": "تقدّم السرد"
+  },
+  "hero": {
+    "greeting": "مرحبًا",
+    "name": "أنا مهوان",
+    "role": "مهندس منتجات متكامل",
+    "body": "أتعاون مع فرق المنتج لتحويل فكرة جديدة إلى برمجيات قابلة للتسليم فعلًا — العمارة والواجهة والقطع الهادئة بينهما، مكتوبة بأنواع صارمة من البداية حتى النهاية."
+  },
+  "skills": {
+    "eyebrow": "٠٢ · اكتشاف",
+    "title": "أولاً، الأسئلة الصحيحة",
+    "body": "قبل أي مكوّن، أجلس مع الفكرة حتى يصبح الموجز حاداً بما يكفي للشحن — ليست قائمة أمنيات، بل خطة.",
+    "listenLabel": "أسأل عن",
+    "folderLabel": "ماهوان",
+    "folderItems": [
+      {
+        "title": "Sepehr Mahvan",
+        "description": "مهندس منتج Full-stack. المعمارية والواجهة والتفاصيل الهادئة — بأنواع صارمة من الطرف إلى الطرف."
+      },
+      {
+        "title": "الاكتشاف أولاً",
+        "description": "أختبر الفكرة معك حتى يصبح الموجز حاداً بما يكفي للشحن."
+      },
+      {
+        "title": "مكدس TypeScript",
+        "description": "React و Next.js و Node و PostgreSQL — من قاعدة البيانات حتى آخر زر."
+      },
+      {
+        "title": "عمل المنصات",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "لوحة تحليلات من أعمال منصات Sepehr Mahvan"
+      },
+      {
+        "title": "جاهز للشحن",
+        "description": "لوحات وCRM وأدوات إدارة — حية ومقاسة وجاهزة للنمو."
+      },
+      {
+        "title": "متاح للعمل",
+        "description": "أشارك فرق المنتج لتحويل فكرة جديدة إلى برمجيات يمكنهم شحنها فعلاً."
+      }
+    ],
+    "facets": [
+      {
+        "label": "مشكلة العمل",
+        "detail": "ما الذي يجب أن يتغير ليفوز المنتج — وماذا لو لم يتغير."
+      },
+      {
+        "label": "الأشخاص حولها",
+        "detail": "من يستخدمه، من يدفع، من يمكنه إيقافه، ومن يجب أن يحبه."
+      },
+      {
+        "label": "قيود اليوم",
+        "detail": "الوقت، التقنية، سعة الفريق، والأنظمة الحية في الإنتاج."
+      },
+      {
+        "label": "الشريحة القابلة للشحن",
+        "detail": "أصغر قطع يثبت الفكرة — مكتوباً قبل أن نبني."
+      }
+    ]
+  },
+  "softSkills": {
+    "ariaLabel": "المهارات التقنية",
+    "eyebrow": "٠٣ · بناء",
+    "typeLines": [
+      "أحوّل فكرتك إلى منصة قابلة للتسليم.",
+      "أنواع صارمة من قاعدة البيانات حتى آخر زر.",
+      "سريعة بما يكفي للاستخدام. نظيفة بما يكفي للتوسعة."
+    ],
+    "processLabel": "ترجمة الموجز",
+    "doneLabel": "خطة التسليم جاهزة",
+    "steps": [
+      "نمذجة النطاق وأدوار المستخدم",
+      "تصميم واجهة API وعقود البيانات",
+      "اختيار أصغر شريحة مفيدة للتسليم",
+      "تجهيز القياس لنعرف أنها تعمل"
+    ],
+    "focus": [
+      "هندسة المنتج",
+      "واجهات API آمنة الأنواع",
+      "إتقان نظام التصميم",
+      "تسليم أسبوعي"
+    ],
+    "stepper": {
+      "ariaLabel": "المراحل التقنية لبناء المنتج",
+      "eyebrow": "خط البناء",
+      "stages": [
+        {
+          "index": "٠١",
+          "title": "المخطط",
+          "detail": "جداول وعلاقات وفهارس وترحيلات."
+        },
+        {
+          "index": "٠٢",
+          "title": "API",
+          "detail": "مسارات مكتوبة الأنواع وتوثيق وتحقق."
+        },
+        {
+          "index": "٠٣",
+          "title": "العقود",
+          "detail": "أنواع مشتركة من قاعدة البيانات إلى العميل."
+        },
+        {
+          "index": "٠٤",
+          "title": "UI",
+          "detail": "شاشات ونماذج ومكوّنات نظام التصميم."
+        },
+        {
+          "index": "٠٥",
+          "title": "النشر",
+          "detail": "Docker وCI ومراقبة وطرح آمن."
+        }
+      ]
+    },
+    "defaultSelected": 0,
+    "stack": [
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind",
+      "Docker",
+      "Zustand"
+    ]
+  },
+  "experience": {
+    "galleryLabel": "نماذج منصات مختارة",
+    "eyebrow": "٠٤ · تسليم",
+    "typeLines": [
+      "منصتك بين يدي المستخدمين.",
+      "لوحات، CRM، أدوات إدارة — حيّة وقابلة للاستخدام.",
+      "مقاسة، موثّقة، جاهزة للنمو."
+    ],
+    "focus": [
+      "جاهز للإنتاج",
+      "قابل للمراقبة",
+      "تسليم موثّق"
+    ],
+    "status": "منشور على الإنتاج",
+    "gallery": [
+      {
+        "title": "لوحة تحليلات",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "بطاقات مؤشرات مع مخططات صغيرة ورسم إيرادات على لوحة تحليلات"
+      },
+      {
+        "title": "مسار مبيعات CRM",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "لوحة مسار مبيعات من خمس مراحل مع بطاقات الصفقات والمبالغ"
+      },
+      {
+        "title": "تقارير مالية",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "جدول فواتير بحالات مدفوع ومعلّق ومتأخر وبلاطات إيرادات"
+      },
+      {
+        "title": "تشغيل المنصة",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "شبكة حالة الخدمات مع وقت التشغيل وزمن الاستجابة وجدول الحوادث"
+      },
+      {
+        "title": "مساحة عمل المشروع",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "قائمة مهام بالحالة والأولوية والمسؤولين وتواريخ الاستحقاق"
+      },
+      {
+        "title": "نجاح العملاء",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "خريطة حرارية للاحتفاظ وقمع الإعداد على لوحة نجاح العملاء"
+      }
+    ]
+  },
+  "projects": {
+    "ariaLabel": "أعمال مختارة",
+    "eyebrow": "٠٥ · أعمال",
+    "title": "منصات مختارة",
+    "body": "منصات حيّة وأدوات داخلية — اختر من القائمة ثم افتحها.",
+    "openHint": "انقر المعاينة للفتح · انقر مزدوجًا على الاسم",
+    "items": [
+      {
+        "title": "Northline Analytics",
+        "subtitle": "لوحة الإيرادات والنمو",
+        "image": "/images/carousel/platform-analytics.jpg",
+        "alt": "لوحة تحليلات ببطاقات مؤشرات ومخطط مساحي",
+        "url": "https://example.com/northline"
+      },
+      {
+        "title": "Harbor CRM",
+        "subtitle": "مساحة مسار المبيعات",
+        "image": "/images/carousel/platform-crm.jpg",
+        "alt": "لوحة مسار مبيعات CRM",
+        "url": "https://example.com/harbor"
+      },
+      {
+        "title": "Ledger Reports",
+        "subtitle": "وحدة المالية والفواتير",
+        "image": "/images/carousel/platform-reports.jpg",
+        "alt": "واجهة تقارير مالية وفواتير",
+        "url": "https://example.com/ledger"
+      },
+      {
+        "title": "Pulse Ops",
+        "subtitle": "مراقب صحة المنصة",
+        "image": "/images/carousel/platform-ops.jpg",
+        "alt": "شبكة حالة تشغيل المنصة",
+        "url": "https://example.com/pulse"
+      },
+      {
+        "title": "Forge Board",
+        "subtitle": "مساحة التسليم والمهام",
+        "image": "/images/carousel/platform-project.jpg",
+        "alt": "قائمة مهام المشروع",
+        "url": "https://example.com/forge"
+      },
+      {
+        "title": "Keep Customers",
+        "subtitle": "حزمة الاحتفاظ ونجاح العملاء",
+        "image": "/images/carousel/platform-customers.jpg",
+        "alt": "لوحة نجاح العملاء والاحتفاظ",
+        "url": "https://example.com/keep"
+      }
+    ]
+  },
+  "contact": {
+    "ariaLabel": "تواصل",
+    "eyebrow": "٠٦ · تواصل",
+    "title": "لنبنِ شيئًا معًا",
+    "body": "متاح لعمل المنتج والمنصات والشراكات طويلة الأمد. أخبرني بما تريد تسليمه — أرد خلال يوم.",
+    "email": "hello@mahvan.dev",
+    "phone": "٠٩١٢ ٠٠٠ ٠٠٠٠",
+    "phoneHref": "+989120000000",
+    "location": "طهران · عن بُعد حول العالم",
+    "socialLabel": "الشبكات",
+    "portrait": "/images/carousel/contact-bust.png",
+    "socials": [
+      {
+        "id": "linkedin",
+        "label": "لينكدإن",
+        "url": "https://linkedin.com/in/mahvan"
+      },
+      {
+        "id": "github",
+        "label": "غيتهاب",
+        "url": "https://github.com/mahvan"
+      },
+      {
+        "id": "telegram",
+        "label": "تيليجرام",
+        "url": "https://t.me/mahvan"
+      },
+      {
+        "id": "whatsapp",
+        "label": "واتساب",
+        "url": "https://wa.me/989120000000"
+      }
+    ]
+  }
+}

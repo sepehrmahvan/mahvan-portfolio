@@ -1,0 +1,21 @@
+{
+  "title": "Users",
+  "subtitle": "Manage system users",
+  "add": "Add user",
+  "columns": {
+    "name": "Name",
+    "email": "Email",
+    "role": "Role",
+    "createdAt": "Created at"
+  },
+  "form": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "role": "Role",
+    "password": "Password"
+  },
+  "table": {
+    "empty": "No users found"
+  }
+}

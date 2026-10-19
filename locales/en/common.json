@@ -1,0 +1,16 @@
+{
+  "appName": "Mahvan",
+  "loading": "Loading...",
+  "save": "Save",
+  "cancel": "Cancel",
+  "close": "Close",
+  "search": "Search",
+  "actions": "Actions",
+  "empty": "No items found",
+  "language": "Language",
+  "dashboard": "Dashboard",
+  "users": "Users",
+  "logout": "Log out",
+  "welcome": "Welcome to Mahvan",
+  "welcomeDescription": "A multilingual foundation with full RTL and LTR support."
+}
