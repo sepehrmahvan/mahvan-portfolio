@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Sepehr Mahvan | Full-Stack Product Engineer",
-    "description": "Full-stack TypeScript engineer. I partner with product teams to turn a new idea into software they can actually ship — architecture, interface, and everything in between."
+    "title": "Sepehr Mahvan | Full-Stack Product Engineer — TypeScript, Next.js, React",
+    "description": "Sepehr Mahvan is a full-stack product engineer. I design and build web platforms with TypeScript, Next.js, React, and Node.js — from product discovery to shipping dashboards, CRMs, and admin tools in production.",
+    "keywords": "Sepehr Mahvan, full-stack engineer, Next.js developer, React, TypeScript, product engineer, web platform, dashboard, CRM, Tehran"
   },
   "nav": {
     "name": "Sepehr Mahvan",
@@ -39,111 +40,112 @@
   "hero": {
     "greeting": "Hello",
     "name": "I'm Mahvan",
-    "role": "Full-stack Product Engineer",
-    "body": "I partner with product teams to turn a new idea into software you can actually ship — architecture, interface, and the quiet pieces in between, typed end to end."
+    "role": "Full-stack Product Engineer · TypeScript",
+    "body": "I design and build product software with TypeScript, Next.js, and React. From idea to a shippable platform — architecture, APIs, UI, and production deploy — partnering with product teams end to end."
   },
   "skills": {
     "eyebrow": "02 · Discover",
-    "title": "First, the right questions",
-    "body": "Before a single component, I sit with the idea until the brief is sharp enough to ship — not a wish list, a plan.",
+    "title": "Product discovery before code",
+    "body": "Before the first React component, I sharpen the product brief with the right questions — so domain, users, and the smallest shippable slice are clear. A build plan, not a wish list.",
     "listenLabel": "I'm asking about",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack Product Engineer. Architecture, interface, and the quiet pieces in between — typed end to end."
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
         "title": "Discover first",
-        "description": "I pressure-test the idea with you until the brief is sharp enough to ship."
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
         "title": "TypeScript stack",
-        "description": "React, Next.js, Node, PostgreSQL — from the database up to the last button."
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
         "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from Sepehr Mahvan's selected platform work"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
         "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin tools — live, measured, and ready to grow."
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
         "title": "Open for work",
-        "description": "Partnering with product teams to turn a new idea into software they can actually ship."
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
         "label": "The business problem",
-        "detail": "What has to change for the product to win — and what happens if it doesn't."
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "The people around it",
-        "detail": "Who uses it, who pays for it, who can kill it, and who has to love it."
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "Today's constraints",
-        "detail": "Time, stack, team capacity, and the systems already live in production."
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "The shippable slice",
-        "detail": "The smallest cut that proves the idea — written down before we build."
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Technical skills",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
     "eyebrow": "03 · Build",
+    "title": "Build platforms with TypeScript & Next.js",
     "typeLines": [
-      "I turn your idea into a shippable platform.",
-      "Typed from the database up to the last button.",
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
       "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "Translating the brief",
-    "doneLabel": "Delivery plan ready",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
       "Model the domain and user roles",
-      "Design the API and data contracts",
+      "Design type-safe APIs and data contracts",
       "Pick the smallest useful slice to ship",
-      "Instrument it so we know it works"
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
       "Product architecture",
       "Type-safe APIs",
-      "Design-system fluency",
+      "Design systems",
       "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a product",
+      "ariaLabel": "Technical stages of building a full-stack product",
       "eyebrow": "Build pipeline",
       "stages": [
         {
           "index": "01",
           "title": "Schema",
-          "detail": "Tables, relations, indexes, and migrations."
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typed routes, auth, validation, and errors."
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
           "index": "03",
           "title": "Contracts",
-          "detail": "Shared types from database to the client."
+          "detail": "Shared TypeScript types from database to client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Screens, forms, and design-system components."
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
           "index": "05",
           "title": "Deploy",
-          "detail": "Docker, CI, monitoring, and a safe rollout."
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,12 +162,13 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected platform work",
+    "galleryLabel": "Selected full-stack platform work",
     "eyebrow": "04 · Ship",
+    "title": "Ship platforms to production",
     "typeLines": [
-      "Your platform is in your users' hands.",
+      "Your web platform is in real users' hands.",
       "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to grow."
+      "Measured, documented, ready to scale."
     ],
     "focus": [
       "Production-ready",
@@ -177,32 +180,32 @@
       {
         "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles with sparklines and a revenue area chart on an analytics dashboard"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
         "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Five-stage sales pipeline board with deal cards and amounts"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
         "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table with paid, pending and overdue statuses and revenue tiles"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
         "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime, latency and incident timeline"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
         "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, assignees and due dates"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
         "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer success dashboard"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "Click the preview to open · double-click a name",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "Revenue & growth dashboard",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard with KPI tiles and area chart",
-        "url": "https://example.com/northline"
+        "title": "TVTO Ranking Platform",
+        "subtitle": "National TVTO evaluation & ranking dashboard",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "TVTO Ranking Platform dashboard with KPIs, radar and bar charts",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "National 360° evaluation and ranking platform for TVTO training centers — KPI boards, provincial vs national benchmarks, and indicator growth reports."
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "Sales pipeline workspace",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "CRM sales pipeline board",
-        "url": "https://example.com/harbor"
+        "title": "IranYari",
+        "subtitle": "Financial aid platform for patients in need",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "IranYari finance dashboard with transaction reports, charts, and social-worker list",
+        "url": "https://iranyari.com/",
+        "description": "A platform for financially supporting patients in need. Funds are deposited—on behalf of social workers nationwide—into the Iran University of Medical Sciences account to cover treatment."
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "Finance & billing console",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Finance and billing reports interface",
-        "url": "https://example.com/ledger"
+        "title": "Tamin Sanat Asia",
+        "subtitle": "Industrial wire-harness e-commerce",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "TSA products page with wire-harness equipment grid and category filters",
+        "url": "https://tsasia.ir/",
+        "description": "B2B e-commerce for wire-harness raw materials and production/test equipment — industrial catalog, category filters, and online ordering."
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "Platform health monitor",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Platform operations status grid",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "Issue & delivery workspace",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "Project issue list workspace",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "Retention & success suite",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Customer success retention dashboard",
-        "url": "https://example.com/keep"
+        "title": "iRakhsh",
+        "subtitle": "Social think-tank platform",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "iRakhsh proposed-topics page with topic cards and design-flow navigation",
+        "url": "https://irakhsh.ir/",
+        "description": "A social platform to propose topics, design problems on those topics, design solutions for the problems, and design organizations from think-tank room discussions."
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "06 · Contact",
     "title": "Let's build something",
     "body": "Open for product work, platforms, and long-term partnerships. Tell me what you're shipping — I'll reply within a day.",
-    "email": "hello@mahvan.dev",
-    "phone": "+98 912 000 0000",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "+98 939 769 9985",
+    "phoneHref": "+989397699985",
     "location": "Tehran · Remote worldwide",
     "socialLabel": "Elsewhere",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "GitHub",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "Telegram",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "WhatsApp",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

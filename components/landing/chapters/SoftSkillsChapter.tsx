@@ -5,20 +5,23 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
 } from 'motion/react';
+import Image from 'next/image';
 import { type CSSProperties, useState } from 'react';
 
 import OptionWheel from '@/components/ui/OptionWheel/OptionWheel';
 import TextType from '@/components/ui/TextType/TextType';
-import ThoughtLine from '@/components/ui/ThoughtLine/ThoughtLine';
 import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
 
 import { ProductStepper } from '../ProductStepper';
 import { useLandingScroll } from '../LandingScrollContext';
-import { LANDING_COURT_GREEN, LANDING_COURT_GREEN_CLASS } from '../shell';
+import {
+  LANDING_COURT_GREEN,
+  LANDING_COURT_GREEN_CLASS,
+  LANDING_SHELL,
+} from '../shell';
 import { isChapterStep } from '../timeline';
 
 interface SoftSkillsChapterProps {
@@ -38,12 +41,16 @@ const LAPTOP_VARS = {
   '--hairline-stroke': '1.1',
 } as CSSProperties;
 
-/** Section 3: stack wheel left; laptop + process rail + type line on the right. */
+/**
+ * Section 3 — Build.
+ * Phone: type + laptop + compact model/stepper stack.
+ * iPad: model+stepper mid-left, aside right (no wheel).
+ * Desktop / iPad Pro landscape: wheel + model/stepper + aside.
+ */
 export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
-  const { time } = useLandingScroll();
-  const reduceMotion = useReducedMotion() ?? false;
-  const [active, setActive] = useState(
-    () => reduceMotion || isChapterStep(time.get(), 'soft-skills'),
+  const { time, reduceMotion } = useLandingScroll();
+  const [active, setActive] = useState(() =>
+    isChapterStep(time.get(), 'soft-skills'),
   );
   const isRtl = isRtlLocale(locale);
   const defaultSelected = Math.min(
@@ -55,12 +62,40 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
     setActive(isChapterStep(value, 'soft-skills'));
   });
 
+  const modelStepper = (
+    <div className="flex h-full min-h-0 w-full items-stretch justify-center gap-2.5 sm:gap-3 xl:gap-4">
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0, x: -16 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.55, ease, delay: reduceMotion ? 0 : 0.1 }}
+        // Same band height as before. Large monitors: width follows image aspect (912×1724) so no crop.
+        className="relative h-full min-h-0 w-[min(28vw,7.5rem)] shrink-0 self-stretch overflow-hidden sm:w-[min(24vw,9rem)] md:w-[min(20vw,10rem)] lg:aspect-[912/1724] lg:w-auto"
+      >
+        <Image
+          src="/images/my-model.png"
+          alt="Sepehr Mahvan"
+          fill
+          sizes="(max-width: 1024px) 160px, 320px"
+          className="object-cover object-top lg:object-contain"
+        />
+      </motion.div>
+      <ProductStepper
+        ariaLabel={content.stepper.ariaLabel}
+        eyebrow={content.stepper.eyebrow}
+        stages={content.stepper.stages}
+        active={active}
+        className="h-full min-h-0 max-w-[min(100%,13.5rem)] flex-1 self-stretch sm:max-w-[14.5rem] lg:max-w-[17rem] xl:max-w-[18.5rem]"
+      />
+    </div>
+  );
+
   return (
     <div
       aria-label={content.ariaLabel}
       role="region"
       className="pointer-events-none absolute inset-0 z-25"
     >
+      {/* Stack wheel — laptop / iPad Pro landscape+ only */}
       <AnimatePresence mode="sync">
         {active ? (
           <motion.div
@@ -98,6 +133,7 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
         ) : null}
       </AnimatePresence>
 
+      {/* Model + stepper — iPad portrait+ (md); phone uses in-flow copy below */}
       <AnimatePresence mode="sync">
         {active ? (
           <motion.div
@@ -109,126 +145,115 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              // Open band between the stack wheel and the right aside (lg+).
-              'pointer-events-none absolute inset-y-0 z-10 hidden items-center justify-center lg:flex',
+              'pointer-events-none absolute top-16 bottom-[30px] z-10 hidden items-stretch justify-center md:flex lg:top-[4.25rem]',
+              // iPad: full mid band. Desktop: leave room for wheel + aside.
               isRtl
-                ? 'right-[min(40vw,20rem)] left-[min(52vw,calc(36rem+2.5rem))] font-(family-name:--font-fa)'
-                : 'left-[min(40vw,20rem)] right-[min(52vw,calc(36rem+2.5rem))] font-(family-name:--font-en)',
+                ? 'right-4 left-[min(48vw,calc(28rem+1.5rem))] font-(family-name:--font-fa) lg:right-[min(36vw,18rem)] lg:left-[min(48vw,calc(32rem+2rem))]'
+                : 'left-4 right-[min(48vw,calc(28rem+1.5rem))] font-(family-name:--font-en) lg:left-[min(36vw,18rem)] lg:right-[min(48vw,calc(32rem+2rem))]',
             )}
           >
-            <ProductStepper
-              ariaLabel={content.stepper.ariaLabel}
-              eyebrow={content.stepper.eyebrow}
-              stages={content.stepper.stages}
-              active={active}
-            />
+            {modelStepper}
           </motion.div>
         ) : null}
       </AnimatePresence>
 
-      <AnimatePresence mode="sync">
-        {active ? (
-          <motion.div
-            key="soft-skills-aside"
-            initial={reduceMotion ? false : { opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 28 }}
-            transition={{ duration: 0.6, ease, delay: reduceMotion ? 0 : 0.12 }}
-            dir={isRtl ? 'rtl' : 'ltr'}
-            lang={locale}
-            className={cn(
-              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-20 flex max-w-none flex-col items-stretch justify-start gap-4 overflow-y-auto py-2 sm:justify-center sm:gap-5 md:inset-y-0 md:left-auto md:right-6 md:inset-x-auto md:w-[min(72vw,40rem)] md:justify-center md:gap-6 md:overflow-visible md:py-24 lg:right-6 lg:w-[min(52vw,36rem)] lg:py-28 xl:right-12',
-              isRtl
-                ? 'font-(family-name:--font-fa)'
-                : 'font-(family-name:--font-en)',
-            )}
-          >
-            <motion.p
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.1, ease }}
-              className="text-center text-[0.7rem] font-black tracking-[0.22em] text-zinc-500 uppercase md:text-xs"
-            >
-              {content.eyebrow}
-            </motion.p>
-
-            <TextType
-              as="p"
-              text={content.typeLines}
-              typingSpeed={75}
-              pauseDuration={1500}
-              deletingSpeed={50}
-              deleteMode="backspace"
-              typeEffect="none"
-              mistakes={0}
-              cursorStyle="underscore"
-              cursorGlide
-              showCursor
-              cursorColor="currentColor"
-              prefixColor="currentColor"
-              cursorBlinkDuration={0.5}
-              cursorCharacter="_"
-              prefix=""
-              loop={!reduceMotion}
-              className={cn(
-                'w-full text-center text-lg font-black uppercase leading-snug tracking-tight sm:text-xl md:text-2xl lg:text-[1.85rem]',
-                LANDING_COURT_GREEN_CLASS,
-              )}
-            />
-
-            {/* Laptop first on phone; tablet gets process rail. Center stepper stays lg+. */}
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.16, ease }}
-              className="grid w-full grid-cols-1 items-center gap-4 sm:gap-5 md:grid-cols-[minmax(0,1.15fr)_minmax(12rem,0.85fr)] md:gap-6"
-            >
-              <div className="mx-auto w-full max-w-[18rem] sm:max-w-[22rem] md:mx-0 md:max-w-none" style={LAPTOP_VARS}>
-                {/* Docs: https://hairline.lucasmarkes.com/docs#figures */}
-                <Laptop
-                  theme="light"
-                  intensity={0.7}
-                  play={!reduceMotion}
-                  label="Interactive laptop"
-                  className="w-full"
+      {/* Aside + phone stack */}
+      <div
+        className={cn(
+          LANDING_SHELL,
+          'pointer-events-none absolute inset-x-0 top-0 z-20 h-full',
+        )}
+      >
+        <div className="relative h-full">
+          <AnimatePresence mode="sync">
+            {active ? (
+              <motion.div
+                key="soft-skills-aside"
+                initial={reduceMotion ? false : { opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 28 }}
+                transition={{
+                  duration: 0.6,
+                  ease,
+                  delay: reduceMotion ? 0 : 0.12,
+                }}
+                dir={isRtl ? 'rtl' : 'ltr'}
+                lang={locale}
+                className={cn(
+                  'pointer-events-auto absolute inset-x-0 top-16 bottom-3 flex max-w-none flex-col items-stretch gap-3 overflow-y-auto py-2 sm:top-20 sm:bottom-4 sm:gap-4',
+                  // Phone: stacked column. iPad+: right rail only.
+                  'justify-start md:inset-y-auto md:top-[18%] md:bottom-8 md:left-auto md:right-0 md:w-[min(44vw,24rem)] md:justify-between xl:justify-start md:gap-5 md:overflow-visible md:py-0 lg:w-[min(40vw,28rem)] lg:top-[20%]',
+                  isRtl
+                    ? 'font-(family-name:--font-fa)'
+                    : 'font-(family-name:--font-en)',
+                )}
+              >
+                <TextType
+                  as="p"
+                  text={content.typeLines}
+                  typingSpeed={75}
+                  pauseDuration={1500}
+                  deletingSpeed={50}
+                  deleteMode="backspace"
+                  typeEffect="none"
+                  mistakes={0}
+                  cursorStyle="underscore"
+                  cursorGlide
+                  showCursor
+                  cursorColor="currentColor"
+                  prefixColor="currentColor"
+                  cursorBlinkDuration={0.5}
+                  cursorCharacter="_"
+                  prefix=""
+                  loop={!reduceMotion}
+                  className={cn(
+                    'mx-auto w-full max-w-[18ch] text-center text-base font-black uppercase leading-snug tracking-tight sm:max-w-[20ch] sm:text-lg md:max-w-[17ch] md:text-[1.25rem] lg:max-w-[26ch] lg:text-[1.5rem]',
+                    LANDING_COURT_GREEN_CLASS,
+                  )}
                 />
-              </div>
 
-              <div className="hidden justify-center text-zinc-800 md:flex md:justify-start">
-                <ThoughtLine
-                  label={content.processLabel}
-                  doneLabel={content.doneLabel}
-                  steps={content.steps}
-                  working={!reduceMotion}
-                  settleAfter={0}
-                  showTimer={false}
-                  collapsible={false}
-                  collapseOnSettle={false}
-                  color={LANDING_COURT_GREEN}
-                  glyphColor={LANDING_COURT_GREEN}
-                  fontSize={13}
-                />
-              </div>
-            </motion.div>
+                <motion.div
+                  initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.55,
+                    delay: reduceMotion ? 0 : 0.16,
+                    ease,
+                  }}
+                  className="flex w-full justify-center"
+                >
+                  <div
+                    className="mx-auto -mt-2 w-full max-w-72 sm:-mt-3 sm:max-w-96 md:-mt-4 md:max-w-full"
+                    style={LAPTOP_VARS}
+                  >
+                    <Laptop
+                      theme="light"
+                      intensity={0.7}
+                      play={!reduceMotion}
+                      label="Interactive laptop"
+                      className="w-full"
+                    />
+                  </div>
+                </motion.div>
 
-            <motion.ul
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.32, ease }}
-              className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.68rem] font-black tracking-[0.16em] text-zinc-500 uppercase md:text-[0.72rem]"
-            >
-              {content.focus.map((item, index) => (
-                <li key={item} className="flex items-center gap-3">
-                  {index > 0 ? (
-                    <span aria-hidden className="h-1 w-1 rounded-full bg-zinc-400" />
-                  ) : null}
-                  <span>{item}</span>
-                </li>
-              ))}
-            </motion.ul>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
+                {/* Phone-only model + stepper under the laptop */}
+                <motion.div
+                  initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: reduceMotion ? 0 : 0.2,
+                    ease,
+                  }}
+                  className="h-[min(42dvh,17.5rem)] w-full shrink-0 md:hidden"
+                >
+                  {modelStepper}
+                </motion.div>
+              </motion.div>
+            ) : null}
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }

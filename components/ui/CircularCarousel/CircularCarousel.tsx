@@ -2,6 +2,8 @@
 
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 export interface CircularCarouselItem {
   src: string;
   alt?: string;
@@ -316,19 +318,6 @@ const Digits = ({ value }: { value: number }) => (
       ))}
   </span>
 );
-
-const usePrefersReducedMotion = () => {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const query = window.matchMedia?.('(prefers-reduced-motion: reduce)');
-    if (!query) return undefined;
-    const update = () => setReduced(query.matches);
-    update();
-    query.addEventListener?.('change', update);
-    return () => query.removeEventListener?.('change', update);
-  }, []);
-  return reduced;
-};
 
 const CircularCarousel = ({
   items = DEFAULT_ITEMS,

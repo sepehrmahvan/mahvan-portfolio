@@ -8,8 +8,12 @@ import { isLocale, isRtlLocale, locales, type Locale } from '@/types/locale';
 import '../globals.css';
 
 export const metadata: Metadata = {
-  title: 'Sepehr Mahvan',
-  description: 'Full-stack TypeScript product engineer',
+  title: {
+    default: 'Sepehr Mahvan | Full-Stack Product Engineer',
+    template: '%s',
+  },
+  description:
+    'Full-stack product engineer building web platforms with TypeScript, Next.js, and React.',
 };
 
 export function generateStaticParams() {

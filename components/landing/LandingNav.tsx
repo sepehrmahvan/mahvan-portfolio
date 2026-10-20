@@ -5,7 +5,6 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
   type Variants,
 } from 'motion/react';
 import Image from 'next/image';
@@ -57,7 +56,6 @@ function sectionIsActive(active: ChapterId | null, id: ChapterId) {
 
 export function LandingNav({ content, locale }: LandingNavProps) {
   const { time, progress, scrollToChapter, scrollToContact, reduceMotion } = useLandingScroll();
-  const prefersReduced = useReducedMotion() ?? reduceMotion;
   const [active, setActive] = useState<ChapterId | null>('hero');
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -100,6 +98,11 @@ export function LandingNav({ content, locale }: LandingNavProps) {
     scrollToChapter(id);
   };
 
+  /** Section 3 (Build): light page → dark ink, fully transparent header (no veil/blur). */
+  const onLight = active === 'soft-skills';
+  /** Sections 1–2 + 4+: dark top shadow veil (same as hero/skills). */
+  const showDarkVeil = !onLight;
+
   return (
     <>
       {/* Measured story rail */}
@@ -109,40 +112,30 @@ export function LandingNav({ content, locale }: LandingNavProps) {
           aria-label={content.progress}
           aria-valuemin={0}
           aria-valuemax={100}
-          className="relative h-px w-full bg-white/25"
+          className="relative h-1 w-full bg-white/25"
         >
           <motion.div
             style={{ scaleX: progress }}
             className="absolute inset-y-0 start-0 origin-left w-full bg-white rtl:origin-right"
           />
-          <div className="absolute inset-x-[max(1rem,calc((100%-72rem)/2))] top-0 flex h-px justify-between md:inset-x-[max(1.5rem,calc((100%-80rem)/2))]">
-            {chapterOrder.map((id, index) => (
-              <span
-                key={id}
-                aria-hidden
-                className={cn(
-                  'relative top-[-2px] size-1.5 rounded-full border border-white/80 transition-colors',
-                  active === id || (index === 0 && active === 'hero')
-                    ? 'bg-white'
-                    : 'bg-transparent',
-                )}
-                style={{ marginInlineStart: index === 0 ? 0 : undefined }}
-              />
-            ))}
-          </div>
         </div>
       </div>
 
       <motion.header
-        initial={prefersReduced ? false : 'hidden'}
+        initial={reduceMotion ? false : 'hidden'}
         animate="visible"
-        variants={prefersReduced ? undefined : shell}
+        variants={reduceMotion ? undefined : shell}
         className="pointer-events-none fixed inset-x-0 top-0 z-40"
       >
-        {/* Soft top veil in every section — never a solid black bar */}
+        {/* Transparent on Build; dark gradient veil elsewhere (incl. experience). */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-linear-to-b from-zinc-950/55 via-zinc-950/20 to-transparent"
+          className={cn(
+            'pointer-events-none absolute inset-x-0 top-0 transition-colors duration-300',
+            showDarkVeil
+              ? 'h-28 bg-linear-to-b from-zinc-950/55 via-zinc-950/20 to-transparent'
+              : 'h-16 bg-transparent lg:h-[4.25rem]',
+          )}
         />
         <div className="pointer-events-auto relative border-b border-transparent bg-transparent">
           <nav
@@ -153,13 +146,23 @@ export function LandingNav({ content, locale }: LandingNavProps) {
             )}
           >
             {/* Brand */}
-            <motion.div variants={prefersReduced ? undefined : item} className="min-w-0">
+            <motion.div variants={reduceMotion ? undefined : item} className="min-w-0">
               <button
                 type="button"
                 onClick={() => go('hero')}
-                className="group flex max-w-full items-center gap-3 text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                className={cn(
+                  'group flex max-w-full items-center gap-3 text-start focus-visible:outline-2 focus-visible:outline-offset-4',
+                  onLight
+                    ? 'focus-visible:outline-zinc-950'
+                    : 'focus-visible:outline-white',
+                )}
               >
-                <span className="relative h-9 w-[3.8rem] shrink-0 transition-opacity group-hover:opacity-90 md:h-10 md:w-[4.25rem]">
+                <span
+                  className={cn(
+                    'relative h-9 w-[3.8rem] shrink-0 transition-opacity group-hover:opacity-90 md:h-10 md:w-[4.25rem]',
+                    onLight && 'brightness-0',
+                  )}
+                >
                   <Image
                     src="/images/mahvan-logo.png"
                     alt=""
@@ -170,12 +173,24 @@ export function LandingNav({ content, locale }: LandingNavProps) {
                   />
                 </span>
                 <span className="min-w-0">
-                  <span className="block truncate text-sm font-semibold tracking-tight text-white [text-shadow:0_1px_14px_rgb(0_0_0/0.55)] md:text-[15px]">
+                  <span
+                    className={cn(
+                      'block truncate text-sm font-semibold tracking-tight md:text-[15px]',
+                      onLight
+                        ? 'text-zinc-950'
+                        : 'text-white [text-shadow:0_1px_14px_rgb(0_0_0/0.55)]',
+                    )}
+                  >
                     {content.name}
                   </span>
                   <span
                     dir="ltr"
-                    className="mt-0.5 hidden font-mono text-[10px] tracking-[0.18em] text-white/90 uppercase [text-shadow:0_1px_10px_rgb(0_0_0/0.5)] sm:block"
+                    className={cn(
+                      'mt-0.5 hidden font-mono text-[10px] tracking-[0.18em] uppercase sm:block',
+                      onLight
+                        ? 'text-zinc-600'
+                        : 'text-white/90 [text-shadow:0_1px_10px_rgb(0_0_0/0.5)]',
+                    )}
                   >
                     {content.role}
                     {content.stack ? ` · ${content.stack}` : null}
@@ -186,7 +201,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
 
             {/* Desktop sections */}
             <motion.ul
-              variants={prefersReduced ? undefined : item}
+              variants={reduceMotion ? undefined : item}
               className="hidden items-center gap-1 md:flex"
             >
               {content.sections.map((section) => {
@@ -198,19 +213,32 @@ export function LandingNav({ content, locale }: LandingNavProps) {
                       type="button"
                       onClick={() => go(id)}
                       aria-current={isActive ? 'true' : undefined}
-                      className="group relative flex items-baseline gap-2 px-3 py-2 text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white aria-[current=true]:text-white"
+                      className={cn(
+                        'group relative flex items-baseline gap-2 px-3 py-2 text-[13px] font-medium tracking-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-4',
+                        onLight
+                          ? 'text-zinc-600 hover:text-zinc-950 focus-visible:outline-zinc-950 aria-[current=true]:text-zinc-950'
+                          : 'text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] hover:text-white focus-visible:outline-white aria-[current=true]:text-white',
+                      )}
                     >
                       <span
                         dir="ltr"
-                        className="font-mono text-[10px] tracking-[0.16em] text-white/75 group-hover:text-white group-aria-[current=true]:text-white"
+                        className={cn(
+                          'font-mono text-[10px] tracking-[0.16em]',
+                          onLight
+                            ? 'text-zinc-400 group-hover:text-zinc-700 group-aria-[current=true]:text-zinc-700'
+                            : 'text-white/75 group-hover:text-white group-aria-[current=true]:text-white',
+                        )}
                       >
                         {section.index}
                       </span>
-                      <span className="text-[13px] font-medium tracking-tight">{section.label}</span>
+                      <span>{section.label}</span>
                       {isActive ? (
                         <motion.span
                           layoutId="landing-nav-underline"
-                          className="absolute inset-x-3 -bottom-px h-px bg-white"
+                          className={cn(
+                            'absolute inset-x-3 -bottom-px h-px',
+                            onLight ? 'bg-zinc-950' : 'bg-white',
+                          )}
                           transition={{ type: 'spring', stiffness: 480, damping: 38 }}
                         />
                       ) : null}
@@ -222,10 +250,17 @@ export function LandingNav({ content, locale }: LandingNavProps) {
 
             {/* Actions */}
             <motion.div
-              variants={prefersReduced ? undefined : item}
+              variants={reduceMotion ? undefined : item}
               className="flex items-center justify-end gap-2 md:gap-3"
             >
-              <p className="me-1 hidden items-center gap-2 text-[11px] text-white/90 [text-shadow:0_1px_10px_rgb(0_0_0/0.45)] lg:flex">
+              <p
+                className={cn(
+                  'me-1 hidden items-center gap-2 text-[11px] lg:flex',
+                  onLight
+                    ? 'text-zinc-600'
+                    : 'text-white/90 [text-shadow:0_1px_10px_rgb(0_0_0/0.45)]',
+                )}
+              >
                 <span className="relative flex size-1.5">
                   <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/70 opacity-60" />
                   <span className="relative size-1.5 rounded-full bg-emerald-400" />
@@ -238,14 +273,24 @@ export function LandingNav({ content, locale }: LandingNavProps) {
               <button
                 type="button"
                 onClick={scrollToContact}
-                className="hidden h-9 items-center border border-white bg-white px-3 text-[12px] font-semibold tracking-tight text-zinc-950 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:inline-flex sm:px-4"
+                className={cn(
+                  'hidden h-9 items-center px-3 text-[12px] font-semibold tracking-tight transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-px active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 sm:inline-flex sm:px-4',
+                  onLight
+                    ? 'border border-zinc-950 bg-zinc-950 text-white focus-visible:outline-zinc-950'
+                    : 'border border-white bg-white text-zinc-950 focus-visible:outline-white',
+                )}
               >
                 {content.contact}
               </button>
 
               <button
                 type="button"
-                className="grid size-9 place-items-center border border-white/25 text-white transition-colors hover:border-white hover:bg-white hover:text-zinc-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white md:hidden"
+                className={cn(
+                  'grid size-9 place-items-center transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 md:hidden',
+                  onLight
+                    ? 'border border-zinc-300 text-zinc-950 hover:border-zinc-950 focus-visible:outline-zinc-950'
+                    : 'border border-white/25 text-white hover:border-white hover:bg-white hover:text-zinc-950 focus-visible:outline-white',
+                )}
                 aria-expanded={menuOpen}
                 aria-controls="landing-mobile-nav"
                 aria-label={menuOpen ? content.menuClose : content.menuOpen}
@@ -262,9 +307,9 @@ export function LandingNav({ content, locale }: LandingNavProps) {
           {menuOpen ? (
             <motion.div
               id="landing-mobile-nav"
-              initial={prefersReduced ? false : { opacity: 0, y: -8 }}
+              initial={reduceMotion ? false : { opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={prefersReduced ? undefined : { opacity: 0, y: -8 }}
+              exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
               transition={{ duration: 0.35, ease }}
               className="pointer-events-auto border-b border-white/10 bg-zinc-950/90 py-4 backdrop-blur-xl md:hidden reduced-transparency:bg-zinc-950"
             >

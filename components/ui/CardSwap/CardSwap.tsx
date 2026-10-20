@@ -18,6 +18,8 @@ import {
 import { HugeiconsIcon } from '@hugeicons/react';
 import { BeachIcon, BridgeIcon, CloudIcon, SunsetIcon } from '@hugeicons/core-free-icons';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 const useIsomorphicLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
 export interface CardSwapItem {
@@ -446,7 +448,7 @@ const CardSwap = forwardRef<CardSwapHandle, CardSwapProps>(
       const root = rootRef.current;
       const stage = stageRef.current;
       if (!root || !stage || !count) return undefined;
-      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+      const reduce = getPrefersReducedMotion();
       const now = performance.now();
       const s0 = settingsRef.current;
 

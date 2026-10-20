@@ -2,6 +2,8 @@
 
 import { useRef, useState, useCallback, useEffect, type CSSProperties } from 'react';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 type Side = 'left' | 'right';
 
 export interface OptionWheelProps {
@@ -307,7 +309,7 @@ const OptionWheel = ({
 
   useEffect(() => {
     if (!autoplay) return;
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) return;
+    if (getPrefersReducedMotion()) return;
     const ms = Math.max(600, autoplayInterval);
     const id = window.setInterval(() => {
       if (dragRef.current) return;

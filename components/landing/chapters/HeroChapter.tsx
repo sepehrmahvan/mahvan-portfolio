@@ -5,7 +5,6 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
   type Variants,
 } from 'motion/react';
 import { type CSSProperties, useState } from 'react';
@@ -16,7 +15,7 @@ import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
 
 import { useLandingScroll } from '../LandingScrollContext';
-import { LANDING_COURT_GREEN_CLASS, LANDING_SHELL } from '../shell';
+import { LANDING_SHELL } from '../shell';
 import { isChapterStep } from '../timeline';
 
 /** Dark Hairline strokes over the light hero video. */
@@ -93,11 +92,8 @@ const lineVariants: Variants = {
 
 /** Left-band intro: each line enters/exits on its own, one after another. */
 export function HeroChapter({ content, locale }: HeroChapterProps) {
-  const { time, heroRevealReady } = useLandingScroll();
-  const reduceMotion = useReducedMotion() ?? false;
-  const [onHeroStep, setOnHeroStep] = useState(
-    () => reduceMotion || isChapterStep(time.get(), 'hero'),
-  );
+  const { time, heroRevealReady, reduceMotion } = useLandingScroll();
+  const [onHeroStep, setOnHeroStep] = useState(() => isChapterStep(time.get(), 'hero'));
   const isRtl = isRtlLocale(locale);
   /** Enter/exit from the outer edge of the open side band. */
   const fromEdge: 1 | -1 = isRtl ? 1 : -1;
@@ -112,17 +108,20 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
     {
       key: 'role',
       className: cn(
-        'mt-4 text-base sm:mt-5 sm:text-lg md:text-xl lg:text-[1.75rem]',
-        LANDING_COURT_GREEN_CLASS,
-        isRtl ? 'font-normal tracking-[0.01em]' : 'font-black tracking-tight',
+        // Mobile/iPad: separated band under a hairline. Desktop: original green role.
+        'mt-4 w-full border-t border-white/25 pt-4 text-sm tracking-[0.14em] text-white/90 uppercase sm:mt-5 sm:pt-5 sm:text-base md:text-lg',
+        'lg:mt-4 lg:w-auto lg:border-0 lg:pt-0 lg:text-[1.50rem] lg:normal-case lg:tracking-tight lg:text-[#0B6E4F]',
+        isRtl ? 'font-normal lg:tracking-[0.01em]' : 'font-black lg:tracking-tight',
       ),
       text: content.role,
     },
     {
       key: 'body',
       className: cn(
-        'mt-3 max-w-[22ch] text-base leading-snug text-zinc-700 sm:mt-4 sm:max-w-[20ch] sm:text-lg md:max-w-[22ch] md:text-xl lg:max-w-[24ch] lg:text-[1.25rem]',
-        isRtl ? 'font-normal' : 'font-bold',
+        // Mobile/iPad: softer secondary copy. Desktop: original zinc body.
+        'mt-3 max-w-[28ch] text-sm leading-relaxed text-white/65 sm:mt-3.5 sm:max-w-[26ch] sm:text-base md:max-w-[28ch] md:text-lg',
+        'lg:mt-3 lg:max-w-[24ch] lg:text-[1.25rem] lg:leading-snug lg:text-zinc-700',
+        isRtl ? 'font-normal' : 'font-medium lg:font-bold',
       ),
       text: content.body,
     },
@@ -147,35 +146,50 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
               animate="show"
               exit="exit"
               className={cn(
-                'absolute top-[42%] start-0 w-[min(100%,19.5rem)] -translate-y-1/2 perspective-[1100px] sm:top-[47%] sm:w-[min(32rem,52vw)] md:w-[min(38rem,46vw)]',
-                'flex flex-col items-start text-start',
+                // Mobile / iPad: centered white copy, 30px from bottom, soft glass panel.
+                'absolute inset-x-0 bottom-0 z-10 mx-auto flex w-[min(100%,22rem)] flex-col items-center px-4 py-5 text-center perspective-[1100px] sm:w-[min(28rem,88vw)] sm:px-5 sm:py-6 md:w-[min(34rem,72vw)]',
+                'rounded-2xl border border-white/15 bg-zinc-950/35 shadow-[0_8px_32px_rgb(0_0_0/0.2)] backdrop-blur-md backdrop-saturate-150',
+                // Desktop: original left-band layout (no glass).
+                'lg:inset-x-auto lg:inset-s-0 lg:top-[47%] lg:bottom-auto lg:mx-0 lg:w-[min(37rem,45vw)] lg:-translate-y-1/2 lg:items-start lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:text-start lg:shadow-none lg:backdrop-blur-none lg:backdrop-saturate-100',
                 isRtl
                   ? 'font-(family-name:--font-fa)'
                   : 'font-(family-name:--font-en)',
               )}
             >
-              {/* greeting */}
+              {/* greeting — eyebrow on glass; full green weight on desktop */}
               <motion.p
                 key="greeting"
                 custom={{ index: 0, from: fromEdge } satisfies LineCustom}
                 variants={reduceMotion ? undefined : lineVariants}
                 className={cn(
-                  'text-xl tracking-wide md:text-2xl lg:text-[1.75rem]',
-                  isRtl ? 'font-normal' : 'font-black',
-                  LANDING_COURT_GREEN_CLASS,
+                  'text-[0.7rem] font-black tracking-[0.22em] text-white/70 uppercase md:text-[0.75rem]',
+                  'lg:text-[1.75rem] lg:normal-case lg:tracking-wide lg:text-[#0B6E4F]',
+                  isRtl ? 'font-normal lg:font-normal' : 'lg:font-black',
                 )}
               >
                 {content.greeting}
               </motion.p>
 
-              {/* Name: TechText only on English; Persian stays solid type. */}
+              {/* Mobile/iPad: solid white name. Desktop: TechText (EN) or solid (RTL). */}
+              <motion.h1
+                key="name-compact"
+                custom={{ index: 1, from: fromEdge } satisfies LineCustom}
+                variants={reduceMotion ? undefined : lineVariants}
+                className={cn(
+                  'mt-3 max-w-[12ch] text-4xl leading-[0.95] text-white sm:mt-3.5 sm:text-5xl md:text-6xl lg:hidden',
+                  isRtl ? 'font-normal' : 'font-black',
+                )}
+              >
+                {content.name}
+              </motion.h1>
+
               {isRtl ? (
                 <motion.h1
                   key="name"
                   custom={{ index: 1, from: fromEdge } satisfies LineCustom}
                   variants={reduceMotion ? undefined : lineVariants}
                   id="hero-title"
-                  className="mt-2 -ms-1 max-w-[8.5ch] text-4xl font-normal leading-[0.95] text-zinc-950 sm:text-5xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem]"
+                  className="mt-2 -ms-1 hidden max-w-[8.5ch] text-4xl font-normal leading-[0.95] text-zinc-950 lg:block lg:text-[5.25rem] xl:text-[6rem]"
                 >
                   {content.name}
                 </motion.h1>
@@ -187,7 +201,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
                   id="hero-title"
                   role="heading"
                   aria-level={1}
-                  className="pointer-events-auto relative -ms-2 h-10 w-full max-w-[16rem] text-zinc-950 sm:-ms-5 sm:h-12 sm:max-w-[18rem] md:h-26 md:max-w-88 lg:h-30 lg:max-w-104 xl:h-33 xl:max-w-md"
+                  className="pointer-events-auto relative -ms-2 hidden h-10 w-full max-w-[16rem] text-zinc-950 lg:block lg:h-30 lg:max-w-104 xl:h-33 xl:max-w-md"
                 >
                   <TechText
                     text={content.name}
@@ -225,7 +239,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
                   key={line.key}
                   custom={{ index: index + 2, from: fromEdge } satisfies LineCustom}
                   variants={reduceMotion ? undefined : lineVariants}
-                  className={line.className}
+                  className={cn(line.className, 'max-lg:mx-auto')}
                 >
                   {line.text}
                 </motion.p>
@@ -234,7 +248,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
           ) : null}
         </AnimatePresence>
 
-        {/* Hairline Keyboard — right edge flush with header Contact button. */}
+        {/* Hairline Keyboard — desktop only (mobile/iPad use bottom-centered copy). */}
         <AnimatePresence mode="sync">
           {active ? (
             <motion.div
@@ -243,7 +257,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 28 }}
               transition={{ duration: 0.5, ease, delay: reduceMotion ? 0 : 0.06 }}
-              className="pointer-events-auto absolute top-1/2 -right-16 hidden w-[min(52vw,36rem)] -translate-y-1/2 flex-col justify-center md:flex"
+              className="pointer-events-auto absolute top-1/2 -right-16 hidden w-[min(52vw,36rem)] -translate-y-1/2 flex-col justify-center lg:flex"
               style={KEYBOARD_VARS}
             >
               {/* Docs: https://hairline.lucasmarkes.com/docs#figures */}

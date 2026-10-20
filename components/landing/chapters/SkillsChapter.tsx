@@ -4,7 +4,6 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
 } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 
@@ -30,10 +29,9 @@ const PROMPT_CYCLE_MS = 3800;
  * Character (video) left → Folder fills the mid gap → intake stage on the right.
  */
 export function SkillsChapter({ content, locale }: SkillsChapterProps) {
-  const { time, skillsRevealReady } = useLandingScroll();
-  const reduceMotion = useReducedMotion() ?? false;
-  const [onSkillsStep, setOnSkillsStep] = useState(
-    () => reduceMotion || isChapterStep(time.get(), 'skills'),
+  const { time, skillsRevealReady, reduceMotion } = useLandingScroll();
+  const [onSkillsStep, setOnSkillsStep] = useState(() =>
+    isChapterStep(time.get(), 'skills'),
   );
   const [activePrompt, setActivePrompt] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -87,7 +85,8 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ duration: 0.65, ease, delay: reduceMotion ? 0 : 0.06 }}
-            className="pointer-events-auto absolute top-1/2 left-[42%] hidden -translate-x-1/2 translate-y-[-52%] md:block lg:left-[44%]"
+            // Hidden on phones; iPad + desktop keep the folder.
+            className="pointer-events-auto absolute top-[46%] left-[36%] hidden -translate-x-1/2 -translate-y-1/2 md:block lg:top-1/2 lg:left-[42%] xl:left-[44%]"
           >
             <Folder
               label={folderLabel}
@@ -101,7 +100,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               paperColor="#ffffff"
               tabPosition="right"
               openOn="click"
-              size={1.35}
+              size={1.05}
               frost={0.2}
               tilt={0.45}
               speed={1}
@@ -111,6 +110,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               draggable
               zoomOnClick
               theme="light"
+              className="origin-center scale-100 lg:scale-[1.15] xl:scale-[1.28]"
             />
           </motion.div>
         ) : null}
@@ -128,7 +128,8 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              'pointer-events-auto absolute inset-x-3 top-20 bottom-6 z-10 flex max-w-none flex-col justify-end gap-4 overflow-y-auto pb-2 sm:justify-center sm:gap-5 md:inset-y-0 md:left-auto md:right-3 md:inset-x-auto md:w-[min(42vw,28rem)] md:justify-center md:gap-6 md:overflow-visible md:py-20 lg:right-6 lg:w-[min(38vw,28rem)] xl:right-12',
+              // Phone / iPad: start under header, padded panel. Desktop: side rail.
+              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-[4.5rem] sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-y-0 md:left-auto md:right-3 md:inset-x-auto md:w-[min(42vw,22rem)] md:justify-center md:gap-4 md:overflow-visible md:bg-transparent md:px-0 md:py-14 md:backdrop-blur-none lg:right-5 lg:w-[min(44vw,32rem)] lg:gap-5 lg:py-16 xl:right-10 xl:w-[min(38vw,36rem)]',
               isRtl
                 ? 'font-(family-name:--font-fa)'
                 : 'font-(family-name:--font-en)',
@@ -136,23 +137,12 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             onPointerEnter={() => setPaused(true)}
             onPointerLeave={() => setPaused(false)}
           >
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.12, ease }}
-              className="flex items-center gap-3"
-            >
-              <span aria-hidden className="h-px w-8 bg-zinc-300" />
-              <p className="text-[0.68rem] font-black tracking-[0.26em] text-zinc-500 uppercase md:text-[0.72rem]">
-                {content.eyebrow}
-              </p>
-            </motion.div>
 
             <motion.h2
               initial={reduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.16, ease }}
-              className="max-w-[14ch] text-2xl font-black uppercase leading-[0.96] tracking-tight text-zinc-950 sm:text-3xl md:max-w-[12ch] md:text-4xl lg:text-[2.65rem]"
+              className="max-w-[20ch] text-xl font-black uppercase leading-[0.96] tracking-tight text-zinc-950 sm:text-2xl md:max-w-[16ch] md:text-3xl lg:max-w-[22ch] lg:text-4xl xl:max-w-[24ch] xl:text-[2.65rem]"
             >
               {content.title}
             </motion.h2>
@@ -161,7 +151,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.2, ease }}
-              className="max-w-[36ch] text-sm font-medium leading-relaxed text-zinc-600 md:max-w-[34ch] md:text-base"
+              className="max-w-[42ch] text-sm font-medium leading-relaxed text-zinc-600 md:max-w-[36ch] md:text-[0.95rem] lg:max-w-[48ch] lg:text-base"
             >
               {content.body}
             </motion.p>
@@ -176,8 +166,8 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                 {content.listenLabel}
               </p>
 
-              {/* One prompt at a time — fills vertical space without accordion clutter. */}
-              <div className="relative min-h-38 md:min-h-42">
+              {/* One prompt at a time — wider copy keeps this block shorter. */}
+              <div className="relative min-h-24 sm:min-h-28 md:min-h-30 lg:min-h-32">
                 <AnimatePresence mode="wait">
                   {current ? (
                     <motion.div
@@ -196,16 +186,16 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                     >
                       <p
                         className={cn(
-                          'text-[0.7rem] font-black tracking-[0.2em] uppercase',
+                          'text-[0.65rem] font-black tracking-[0.2em] uppercase sm:text-[0.7rem]',
                           LANDING_COURT_GREEN_CLASS,
                         )}
                       >
                         {String(activePrompt + 1).padStart(2, '0')}
                       </p>
-                      <p className="mt-2 text-2xl font-black uppercase leading-[1.05] tracking-tight text-zinc-950 md:text-[1.65rem] lg:text-[1.85rem]">
+                      <p className="mt-1.5 text-xl font-black uppercase leading-[1.05] tracking-tight text-zinc-950 sm:mt-2 sm:text-2xl md:text-[1.45rem] lg:text-[1.85rem]">
                         {current.label}
                       </p>
-                      <p className="mt-3 max-w-[32ch] text-sm font-medium leading-relaxed text-zinc-500 md:text-[0.95rem]">
+                      <p className="mt-2 max-w-[40ch] text-sm font-medium leading-relaxed text-zinc-500 sm:mt-3 md:max-w-[36ch] md:text-[0.9rem] lg:max-w-[48ch] lg:text-[0.95rem]">
                         {current.detail}
                       </p>
                     </motion.div>
@@ -253,6 +243,38 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                   }
                 />
               </div>
+            </motion.div>
+
+            {/* Phone only — folder fills the empty band under the copy. */}
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.28, ease }}
+              className="mt-auto flex shrink-0 justify-center pt-6 pb-1 md:hidden"
+            >
+              <Folder
+                label={folderLabel}
+                items={folderItems}
+                onItemClick={(_item, index) => {
+                  if (index < facets.length) setActivePrompt(index);
+                }}
+                mode="flap"
+                variant="solid"
+                color={LANDING_COURT_GREEN}
+                paperColor="#ffffff"
+                tabPosition="right"
+                openOn="click"
+                size={0.92}
+                frost={0.2}
+                tilt={0.4}
+                speed={1}
+                bounce={0.4}
+                peek={!reduceMotion}
+                intro={!reduceMotion}
+                draggable
+                zoomOnClick
+                theme="light"
+              />
             </motion.div>
           </motion.div>
         ) : null}

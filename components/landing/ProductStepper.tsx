@@ -1,10 +1,10 @@
 'use client';
 
-import { motion, useReducedMotion, type Variants } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { motion, type Variants } from 'motion/react';
 
 import { cn } from '@/utils/cn';
 
+import { useLandingScroll } from './LandingScrollContext';
 import { LANDING_COURT_GREEN } from './shell';
 
 export type ProductStage = {
@@ -17,34 +17,32 @@ interface ProductStepperProps {
   ariaLabel: string;
   eyebrow: string;
   stages: ProductStage[];
-  /** When false, pause auto-advance and freeze entrance. */
+  /** When false, hide entrance. */
   active?: boolean;
   className?: string;
 }
 
 const ease = [0.16, 1, 0.3, 1] as const;
-const STEP_MS = 2200;
 
 const listVariants: Variants = {
   hidden: {},
   show: {
-    transition: { staggerChildren: 0.12, delayChildren: 0.18 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.12 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 18, filter: 'blur(6px)' },
+  hidden: { opacity: 0, y: 12 },
   show: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.55, ease },
+    transition: { duration: 0.45, ease },
   },
 };
 
 /**
- * Vertical product-build stepper for the Build chapter center rail.
- * Cascades in, then quietly cycles the active stage while mounted.
+ * Vertical build pipeline — all stages shown complete (green), no step cycling.
+ * Fills parent height so eyebrow + stages match the character column.
  */
 export function ProductStepper({
   ariaLabel,
@@ -53,139 +51,65 @@ export function ProductStepper({
   active = true,
   className,
 }: ProductStepperProps) {
-  const reduceMotion = useReducedMotion() ?? false;
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!active || reduceMotion || stages.length < 2) return undefined;
-    const id = window.setInterval(() => {
-      setCurrent((prev) => (prev + 1) % stages.length);
-    }, STEP_MS);
-    return () => window.clearInterval(id);
-  }, [active, reduceMotion, stages.length]);
-
-  useEffect(() => {
-    if (!active) setCurrent(0);
-  }, [active]);
-
-  const progress = stages.length <= 1 ? 1 : current / (stages.length - 1);
+  const { reduceMotion } = useLandingScroll();
 
   return (
-    <motion.ol
-      aria-label={ariaLabel}
+    <motion.div
       initial={reduceMotion ? false : 'hidden'}
       animate={active ? 'show' : 'hidden'}
       variants={reduceMotion ? undefined : listVariants}
       className={cn(
-        'relative flex w-full max-w-[18rem] flex-col gap-0 py-2',
+        'relative flex h-full min-h-0 w-full max-w-[14.5rem] flex-col lg:max-w-[17rem] xl:max-w-[18.5rem]',
         className,
       )}
     >
       <motion.p
         variants={reduceMotion ? undefined : itemVariants}
-        className="mb-6 text-[0.72rem] font-black tracking-[0.22em] text-zinc-400 uppercase md:text-[0.78rem]"
+        className="mb-2 shrink-0 text-[0.58rem] font-black tracking-[0.2em] text-zinc-400 uppercase sm:mb-2.5 sm:text-[0.62rem] md:mb-3 md:text-[0.68rem] lg:mb-3.5 lg:text-[0.75rem]"
       >
         {eyebrow}
       </motion.p>
 
-      {/* Spine */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-[3.25rem] bottom-3 start-[0.9rem] w-[2px] overflow-hidden bg-zinc-200"
+      <ol
+        aria-label={ariaLabel}
+        className="relative flex min-h-0 flex-1 flex-col justify-between"
       >
-        <motion.span
-          className="absolute inset-x-0 top-0 origin-top bg-[#0B6E4F]"
-          style={{ height: '100%' }}
-          initial={false}
-          animate={{
-            scaleY: reduceMotion ? 1 : Math.max(0.08, progress),
-          }}
-          transition={{ duration: 0.65, ease }}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-1.5 bottom-1.5 start-[0.55rem] w-px bg-[#0B6E4F] sm:top-2 sm:bottom-2 sm:start-[0.7rem] lg:top-2.5 lg:bottom-2.5 lg:start-[0.9rem] lg:w-0.5 xl:start-[1.05rem]"
         />
-      </div>
 
-      {stages.map((stage, index) => {
-        const isActive = index === current;
-        const isDone = index < current;
-
-        return (
+        {stages.map((stage) => (
           <motion.li
             key={stage.index}
             variants={reduceMotion ? undefined : itemVariants}
-            className="relative flex gap-4 pb-7 last:pb-0 md:gap-5 md:pb-8"
+            className="relative flex min-h-0 gap-2 sm:gap-3 md:gap-3.5 lg:gap-4"
           >
-            <span className="relative z-10 mt-0.5 flex size-[1.85rem] shrink-0 items-center justify-center">
-              <motion.span
-                aria-hidden
-                className="absolute inset-0 rounded-full border-2"
-                style={{
-                  borderColor: isActive || isDone ? LANDING_COURT_GREEN : '#d4d4d8',
-                  backgroundColor:
-                    isActive || isDone ? LANDING_COURT_GREEN : '#ffffff',
-                }}
-                animate={
-                  reduceMotion || !isActive
-                    ? { scale: 1 }
-                    : { scale: [1, 1.12, 1] }
-                }
-                transition={
-                  isActive && !reduceMotion
-                    ? { duration: 1.6, repeat: Infinity, ease: 'easeInOut' }
-                    : { duration: 0.35, ease }
-                }
-              />
-              {isActive && !reduceMotion ? (
-                <motion.span
-                  aria-hidden
-                  className="absolute inset-[-6px] rounded-full border border-[#0B6E4F]/35"
-                  initial={{ opacity: 0.7, scale: 0.85 }}
-                  animate={{ opacity: 0, scale: 1.55 }}
-                  transition={{ duration: 1.4, repeat: Infinity, ease: 'easeOut' }}
-                />
-              ) : null}
+            <span className="relative z-10 mt-0.5 flex size-[1.15rem] shrink-0 items-center justify-center sm:size-[1.4rem] lg:size-[1.85rem] xl:size-8">
               <span
-                className={cn(
-                  'relative text-[0.68rem] font-black leading-none',
-                  isActive || isDone ? 'text-white' : 'text-zinc-400',
-                )}
-              >
+                aria-hidden
+                className="absolute inset-0 rounded-full border-[1.5px] lg:border-2"
+                style={{
+                  borderColor: LANDING_COURT_GREEN,
+                  backgroundColor: LANDING_COURT_GREEN,
+                }}
+              />
+              <span className="relative text-[0.52rem] font-black leading-none text-white sm:text-[0.58rem] lg:text-[0.7rem] xl:text-[0.75rem]">
                 {stage.index}
               </span>
             </span>
 
-            <div className="min-w-0 flex-1 pt-0.5">
-              <motion.p
-                className={cn(
-                  'text-[0.95rem] font-black uppercase tracking-tight transition-colors duration-300 md:text-[1.05rem]',
-                  isActive ? 'text-[#0B6E4F]' : isDone ? 'text-zinc-700' : 'text-zinc-400',
-                )}
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : { x: isActive ? 2 : 0, opacity: isActive || isDone ? 1 : 0.72 }
-                }
-                transition={{ duration: 0.35, ease }}
-              >
+            <div className="min-w-0 flex-1 pt-px">
+              <p className="text-[0.7rem] font-black uppercase tracking-tight text-[#0B6E4F] sm:text-[0.78rem] md:text-[0.84rem] lg:text-[0.95rem] xl:text-base">
                 {stage.title}
-              </motion.p>
-              <motion.p
-                className="mt-1.5 text-[0.82rem] font-medium leading-snug text-zinc-500 md:text-[0.88rem]"
-                animate={
-                  reduceMotion
-                    ? undefined
-                    : {
-                        opacity: isActive ? 1 : 0.45,
-                        y: isActive ? 0 : 2,
-                      }
-                }
-                transition={{ duration: 0.35, ease }}
-              >
+              </p>
+              <p className="mt-0.5 line-clamp-2 text-[0.65rem] font-medium leading-snug text-zinc-500 sm:line-clamp-none sm:text-[0.7rem] md:text-[0.74rem] lg:mt-1 lg:text-[0.82rem] xl:text-[0.88rem]">
                 {stage.detail}
-              </motion.p>
+              </p>
             </div>
           </motion.li>
-        );
-      })}
-    </motion.ol>
+        ))}
+      </ol>
+    </motion.div>
   );
 }

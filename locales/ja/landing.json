@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Sepehr Mahvan | フルスタック・プロダクトエンジニア",
-    "description": "TypeScript のフルスタックエンジニア。プロダクトチームと一緒に、新しいアイデアを本当に出荷できるソフトウェアへ——設計、UI、そのあいだのすべて。"
+    "title": "Sepehr Mahvan | フルスタックプロダクトエンジニア — TypeScript / Next.js / React",
+    "description": "Sepehr Mahvanはフルスタックのプロダクトエンジニアです。TypeScript・Next.js・React・Node.jsでWebプラットフォームを設計・開発。プロダクト探索からダッシュボード、CRM、管理ツールの本番納品まで。",
+    "keywords": "Sepehr Mahvan, フルスタックエンジニア, Next.js, React, TypeScript, プロダクトエンジニア, Webプラットフォーム, ダッシュボード, CRM"
   },
   "nav": {
     "name": "Sepehr Mahvan",
@@ -38,112 +39,113 @@
   },
   "hero": {
     "greeting": "こんにちは",
-    "name": "Mahvan です",
-    "role": "フルスタック・プロダクトエンジニア",
-    "body": "プロダクトチームと組み、新しいアイデアを本当に出荷できるソフトウェアにします——設計、UI、そのあいだの静かな部分まで、最初から最後まで型付きで。"
+    "name": "Mahvanです",
+    "role": "フルスタックプロダクトエンジニア · TypeScript",
+    "body": "TypeScript・Next.js・Reactでプロダクトソフトウェアを設計・開発します。アイデアから出荷可能なプラットフォームまで — アーキテクチャ、API、UI、本番デプロイをプロダクトチームと推進します。"
   },
   "skills": {
-    "eyebrow": "02 · 発見",
-    "title": "まず、正しい問い",
-    "body": "コンポーネントを書く前に、ブリーフが出荷できるほど鋭くなるまでアイデアと向き合います。ウィッシュリストではなく、計画です。",
-    "listenLabel": "いま聞いていること",
+    "eyebrow": "02 · Discover",
+    "title": "実装前のプロダクト探索",
+    "body": "最初のReactコンポーネントの前に、正しい問い打でブリーフを研ぎ、ドメイン・ユーザー・最小の出荷単位を明確にします。ウィッシュリストではなくビルド計画です。",
+    "listenLabel": "I'm asking about",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "フルスタックのプロダクトエンジニア。アーキテクチャ、UI、その間の静かな部分まで型安全に。"
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
-        "title": "まず発見",
-        "description": "出荷できるほどブリーフが鋭くなるまで、一緒にアイデアを詰めます。"
+        "title": "Discover first",
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
-        "title": "TypeScriptスタック",
-        "description": "React、Next.js、Node、PostgreSQL — データベースから最後のボタンまで。"
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
-        "title": "プラットフォーム実績",
+        "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Sepehr Mahvanのプラットフォーム実績の分析ダッシュボード"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
         "title": "Ship ready",
-        "description": "ダッシュボード、CRM、管理ツール — 本番で動き、計測でき、伸ばせる状態で。"
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
-        "title": "稼働可能",
-        "description": "プロダクトチームと組み、新しいアイデアを本当に出荷できるソフトウェアにします。"
+        "title": "Open for work",
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
-        "label": "ビジネス課題",
-        "detail": "プロダクトが勝つために何を変えるか。変えなければ何が起きるか。"
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "まわりの人",
-        "detail": "誰が使い、誰が払い、誰が止められ、誰が愛する必要があるか。"
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "いまの制約",
-        "detail": "時間、スタック、チームの余力、すでに本番で動いているもの。"
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "出荷できるスライス",
-        "detail": "アイデアを証明する最小の切り口。作る前に書き残す。"
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "技術スキル",
-    "eyebrow": "03 · 構築",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
+    "eyebrow": "03 · Build",
+    "title": "TypeScriptとNext.jsでプラットフォームを構築",
     "typeLines": [
-      "アイデアを出荷可能なプラットフォームにします。",
-      "データベースから最後のボタンまで型安全に。",
-      "使える速さ。伸ばせるきれいさ。"
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
+      "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "ブリーフを翻訳中",
-    "doneLabel": "納品プラン準備完了",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
-      "ドメインとユーザー役割をモデル化",
-      "API とデータ契約を設計",
-      "出荷できる最小のスライスを選ぶ",
-      "動いていると分かる観測を入れる"
+      "Model the domain and user roles",
+      "Design type-safe APIs and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
-      "プロダクト設計",
-      "型安全な API",
-      "デザインシステム",
-      "週次デリバリー"
+      "Product architecture",
+      "Type-safe APIs",
+      "Design systems",
+      "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "プロダクトを技術的に組み立てる段階",
-      "eyebrow": "ビルドパイプライン",
+      "ariaLabel": "Technical stages of building a full-stack product",
+      "eyebrow": "Build pipeline",
       "stages": [
         {
           "index": "01",
           "title": "Schema",
-          "detail": "テーブル・リレーション・インデックス・マイグレーション。"
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "型付きルート、認証、バリデーション。"
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
           "index": "03",
           "title": "Contracts",
-          "detail": "DBからクライアントまでの共有型。"
+          "detail": "Shared TypeScript types from database to client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "画面・フォーム・デザインシステムの部品。"
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
           "index": "05",
           "title": "Deploy",
-          "detail": "Docker、CI、監視、安全なロールアウト。"
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,49 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "選りすぐりのプラットフォーム",
-    "eyebrow": "04 · 出荷",
+    "galleryLabel": "Selected full-stack platform work",
+    "eyebrow": "04 · Ship",
+    "title": "プラットフォームを本番へ出荷",
     "typeLines": [
-      "プラットフォームはユーザーの手元にあります。",
-      "ダッシュボード、CRM、管理ツール——本番で使えます。",
-      "計測済み、文書化済み、成長の準備完了。"
+      "Your web platform is in real users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to scale."
     ],
     "focus": [
-      "本番対応",
-      "可観測性",
-      "文書化された引き継ぎ"
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
     ],
-    "status": "本番にデプロイ済み",
+    "status": "Deployed to production",
     "gallery": [
       {
-        "title": "分析ダッシュボード",
+        "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI タイルとスパークライン、収益エリアチャートの分析ダッシュボード"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
-        "title": "営業 CRM パイプライン",
+        "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "案件カードと金額付きの5段階セールスパイプライン"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
-        "title": "財務・請求",
+        "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "支払済・保留・延滞ステータスと収益タイルの請求テーブル"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
-        "title": "プラットフォーム運用",
+        "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "稼働率・レイテンシ・インシデントタイムラインのサービス状態グリッド"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
-        "title": "プロジェクトワークスペース",
+        "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "ステータス・優先度・担当・期限付きの課題リスト"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
-        "title": "カスタマーサクセス",
+        "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "リテンションヒートマップとオンボーディングファネル"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "プレビューをクリックで開く · 名前をダブルクリック",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "収益・成長ダッシュボード",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI とエリアチャートの分析ダッシュボード",
-        "url": "https://example.com/northline"
+        "title": "TVTO Ranking Platform",
+        "subtitle": "職業訓練機関の評価・ランキングダッシュボード",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "KPIとチャートを含むTVTOランキングプラットフォームのダッシュボード",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "職業訓練機関向けの全国360°評価・ランキング基盤。KPIボード、都道府県/全国比較、指標成長レポート。"
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "営業パイプライン空間",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "CRM セールスパイプラインボード",
-        "url": "https://example.com/harbor"
+        "title": "IranYari",
+        "subtitle": "困窮患者向け資金支援プラットフォーム",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "IranYariの財務ダッシュボード（取引レポートとチャート）",
+        "url": "https://iranyari.com/",
+        "description": "困窮患者を金銭的に支援するプラットフォーム。全国のソーシャルワーカーを代表して、資金がイラン医科大学の口座に入金され、治療に充てられます。"
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "財務・請求コンソール",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "財務レポートと請求のインターフェース",
-        "url": "https://example.com/ledger"
+        "title": "Tamin Sanat Asia",
+        "subtitle": "ワイヤーハーネス産業機器EC",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "カテゴリフィルタ付きのTSA製品グリッドページ",
+        "url": "https://tsasia.ir/",
+        "description": "ワイヤーハーネスの原材料および製造・試験装置向けB2B EC。産業カタログ、カテゴリ絞り込み、オンライン注文。"
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "プラットフォーム健全性モニター",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "プラットフォーム運用ステータスグリッド",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "課題・デリバリー空間",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "プロジェクト課題リスト",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "リテンション・成功スイート",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "カスタマーサクセスとリテンションのダッシュボード",
-        "url": "https://example.com/keep"
+        "title": "iRakhsh",
+        "subtitle": "ソーシャル・シンクタンク基盤",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "トピックカードと設計フローナビを備えたiRakhshの提案トピックページ",
+        "url": "https://irakhsh.ir/",
+        "description": "テーマ提案、課題設計、解決策設計、そしてシンクタンク会議室の議論に基づく組織設計を行うソーシャルプラットフォーム。"
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "06 · お問い合わせ",
     "title": "何か一緒に作りましょう",
     "body": "プロダクト開発、プラットフォーム、長期のパートナーシップに対応しています。出荷したい内容を教えてください——1日以内に返信します。",
-    "email": "hello@mahvan.dev",
-    "phone": "+98 912 000 0000",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "+98 939 769 9985",
+    "phoneHref": "+989397699985",
     "location": "テヘラン · 世界中リモート",
     "socialLabel": "SNS",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "GitHub",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "Telegram",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "WhatsApp",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

@@ -4,6 +4,8 @@ import React, { useCallback, useEffect, useId, useLayoutEffect, useMemo, useRef 
 import type { CSSProperties, ElementType } from 'react';
 import { gsap } from 'gsap';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 const clamp = (v: number, a: number, b: number): number => (v < a ? a : v > b ? b : v);
@@ -303,7 +305,6 @@ const MaskedHeading: React.FC<MaskedHeadingProps> = ({
     ro.observe(root);
     if (document.fonts?.ready) document.fonts.ready.then(() => alive && sync()).catch(() => {});
 
-    const motionQuery = window.matchMedia?.('(prefers-reduced-motion: reduce)');
     const off = offsetRef.current;
     let raf = 0;
     let last = 0;
@@ -316,7 +317,7 @@ const MaskedHeading: React.FC<MaskedHeadingProps> = ({
       const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
       last = now;
       const s = settingsRef.current;
-      const still = !!motionQuery?.matches;
+      const still = getPrefersReducedMotion();
 
       if (still) {
         off.x = 0;
@@ -473,7 +474,7 @@ const MaskedHeading: React.FC<MaskedHeadingProps> = ({
       };
     }
 
-    if (window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches) {
+    if (getPrefersReducedMotion()) {
       video.pause();
     }
   }, [mediaType, src, mediaTime, timelineDuration]);
@@ -535,7 +536,7 @@ const MaskedHeading: React.FC<MaskedHeadingProps> = ({
       renderGlyphs();
     };
 
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    const reduce = getPrefersReducedMotion();
     if (reveal === 'none' || reduce) {
       settle();
       return undefined;

@@ -2,6 +2,9 @@
 
 import { createElement, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 import './TextType.css';
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
@@ -115,7 +118,7 @@ const TextType = ({
   const [typo, setTypo] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isVisible, setIsVisible] = useState(!startOnVisible);
-  const [reduceMotion, setReduceMotion] = useState(false);
+  const reduceMotion = getPrefersReducedMotion();
   const containerRef = useRef(null);
   const caretRef = useRef(null);
   const cursorRef = useRef(null);
@@ -141,14 +144,6 @@ const TextType = ({
   useEffect(() => {
     onSentenceCompleteRef.current = onSentenceComplete;
   }, [onSentenceComplete]);
-
-  useEffect(() => {
-    const query = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduceMotion(query.matches);
-    update();
-    query.addEventListener('change', update);
-    return () => query.removeEventListener('change', update);
-  }, []);
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;

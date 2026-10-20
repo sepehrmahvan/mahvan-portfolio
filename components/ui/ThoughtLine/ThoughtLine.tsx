@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useEffect, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react';
-import { animate, useReducedMotion, type AnimationPlaybackControls } from 'motion/react';
+import { animate, type AnimationPlaybackControls } from 'motion/react';
 import { HugeiconsIcon } from '@hugeicons/react';
 import { ArrowDown01Icon, SparklesIcon, Tick02Icon } from '@hugeicons/core-free-icons';
+
+import { usePrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
 export type ThoughtLineGlyph = 'sparkle' | 'dot' | 'none' | ReactNode;
 
 export interface ThoughtLineProps {
@@ -74,7 +76,7 @@ const ThoughtLine: React.FC<ThoughtLineProps> = ({
   className = '',
   style
 }) => {
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
   const [autoSettled, setAutoSettled] = useState(false);
   const [open, setOpen] = useState(true);
   const isWorking = working && !autoSettled;

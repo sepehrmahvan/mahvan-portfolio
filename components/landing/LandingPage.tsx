@@ -1,6 +1,6 @@
 'use client';
 
-import { useReducedMotion } from 'motion/react';
+import { MotionConfig } from 'motion/react';
 import { useCallback, useMemo, useRef, useState } from 'react';
 
 import { useLandingSnap } from '@/hooks/useLandingSnap';
@@ -33,8 +33,8 @@ export function LandingPage({ content, locale }: LandingPageProps) {
   const projectsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HeroVideoHandle>(null);
-  const reduceMotion = useReducedMotion() ?? false;
-  const [heroRevealReady, setHeroRevealReady] = useState(reduceMotion);
+  const reduceMotion = false;
+  const [heroRevealReady, setHeroRevealReady] = useState(false);
   const [skillsRevealReady, setSkillsRevealReady] = useState(false);
 
   const onIntroHold = useCallback(() => {
@@ -99,68 +99,74 @@ export function LandingPage({ content, locale }: LandingPageProps) {
   );
 
   return (
-    <LandingScrollContext.Provider value={value}>
-      <LandingNav content={content.nav} locale={locale} />
+    <MotionConfig reducedMotion="never">
+      <LandingScrollContext.Provider value={value}>
+        <LandingNav content={content.nav} locale={locale} />
 
-      <main className="relative overscroll-none bg-white">
-        {/*
-          Sticky pin: video holds in the viewport while skills slides up over it.
-          Parent only wraps hero + skills so later chapters unpin cleanly.
-        */}
-        <div className="relative">
-          <div
-            aria-hidden
-            className="pointer-events-none sticky top-0 z-0 h-[100dvh] overflow-hidden"
-          >
-            <HeroVideoBackground
-              ref={videoRef}
-              reduceMotion={reduceMotion}
-              onIntroHold={onIntroHold}
-              onScrollDone={onScrollDone}
-            />
+        <main className="relative overscroll-none bg-white">
+          {/*
+            Sticky pin: video holds in the viewport while skills slides up over it.
+            Parent only wraps hero + skills so later chapters unpin cleanly.
+          */}
+          <div className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none sticky top-0 z-0 h-[100dvh] overflow-hidden"
+            >
+              <HeroVideoBackground
+                ref={videoRef}
+                reduceMotion={reduceMotion}
+                onIntroHold={onIntroHold}
+                onScrollDone={onScrollDone}
+              />
+            </div>
+
+            <section
+              id="hero"
+              ref={heroRef}
+              className="relative z-10 -mt-[100dvh] min-h-[100dvh] overflow-hidden bg-transparent"
+            >
+              <HeroChapter content={content.hero} locale={locale} />
+            </section>
+
+            <section
+              id="skills"
+              ref={skillsRef}
+              className="relative z-20 min-h-[100dvh] overflow-hidden bg-transparent"
+            >
+              <SkillsChapter content={content.skills} locale={locale} />
+            </section>
           </div>
 
           <section
-            ref={heroRef}
-            className="relative z-10 -mt-[100dvh] min-h-[100dvh] overflow-hidden bg-transparent"
+            id="soft-skills"
+            ref={softSkillsRef}
+            className="relative min-h-[100dvh] overflow-hidden bg-white"
           >
-            <HeroChapter content={content.hero} locale={locale} />
+            <SoftSkillsChapter content={content.softSkills} locale={locale} />
           </section>
 
           <section
-            ref={skillsRef}
-            className="relative z-20 min-h-[100dvh] overflow-hidden bg-transparent"
+            id="experience"
+            ref={experienceRef}
+            className="relative min-h-[100dvh] overflow-hidden bg-zinc-100"
           >
-            <SkillsChapter content={content.skills} locale={locale} />
+            <ExperienceChapter content={content.experience} locale={locale} />
           </section>
-        </div>
 
-        <section
-          ref={softSkillsRef}
-          className="relative min-h-[100dvh] overflow-hidden bg-white"
-        >
-          <SoftSkillsChapter content={content.softSkills} locale={locale} />
-        </section>
+          <ProjectsChapter
+            ref={projectsRef}
+            content={content.projects}
+            locale={locale}
+          />
 
-        <section
-          ref={experienceRef}
-          className="relative min-h-[100dvh] overflow-hidden bg-zinc-100"
-        >
-          <ExperienceChapter content={content.experience} locale={locale} />
-        </section>
-
-        <ProjectsChapter
-          ref={projectsRef}
-          content={content.projects}
-          locale={locale}
-        />
-
-        <ContactChapter
-          ref={contactRef}
-          content={content.contact}
-          locale={locale}
-        />
-      </main>
-    </LandingScrollContext.Provider>
+          <ContactChapter
+            ref={contactRef}
+            content={content.contact}
+            locale={locale}
+          />
+        </main>
+      </LandingScrollContext.Provider>
+    </MotionConfig>
   );
 }

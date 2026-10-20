@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Sepehr Mahvan | 全栈产品工程师",
-    "description": "全栈 TypeScript 工程师。与产品团队合作，把新想法做成真正能上线的软件——架构、界面，以及中间的一切。"
+    "title": "Sepehr Mahvan｜全栈产品工程师 — TypeScript、Next.js、React",
+    "description": "Sepehr Mahvan，全栈产品工程师。使用 TypeScript、Next.js、React 与 Node.js 设计并构建 Web 平台——从产品发现到仪表盘、CRM 与管理后台的生产交付。",
+    "keywords": "Sepehr Mahvan, 全栈工程师, Next.js, React, TypeScript, 产品工程师, Web平台, 仪表盘, CRM"
   },
   "nav": {
     "name": "Sepehr Mahvan",
@@ -39,111 +40,112 @@
   "hero": {
     "greeting": "你好",
     "name": "我是 Mahvan",
-    "role": "全栈产品工程师",
-    "body": "我与产品团队合作，把新想法做成真正能上线的软件——架构、界面，以及中间那些安静的部分，从始至终都有类型约束。"
+    "role": "全栈产品工程师 · TypeScript",
+    "body": "用 TypeScript、Next.js 与 React 设计并构建产品软件。从想法到可交付平台——架构、API、界面与生产部署，与产品团队端到端合作。"
   },
   "skills": {
-    "eyebrow": "02 · 发现",
-    "title": "先问对的问题",
-    "body": "在写第一个组件之前，我会和想法待在一起，直到简报足够锋利、可以交付——不是愿望清单，是计划。",
-    "listenLabel": "我在问",
+    "eyebrow": "02 · Discover",
+    "title": "编码前的产品发现",
+    "body": "在第一个 React 组件之前，用正确的问题打磨产品简报，明确领域、用户与最小可交付切片——是构建计划，不是愿望清单。",
+    "listenLabel": "I'm asking about",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "全栈产品工程师。架构、界面，以及其间安静的部分——端到端类型安全。"
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
-        "title": "先发现",
-        "description": "和你一起压测想法，直到简报足够锋利、可以交付。"
+        "title": "Discover first",
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
-        "title": "TypeScript 技术栈",
-        "description": "React、Next.js、Node、PostgreSQL——从数据库到最后一个按钮。"
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
-        "title": "平台作品",
+        "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Sepehr Mahvan 平台作品中的分析仪表盘"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
-        "title": "可交付",
-        "description": "仪表盘、CRM 与管理工具——已上线、可观测、可扩展。"
+        "title": "Ship ready",
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
-        "title": "可接洽",
-        "description": "与产品团队合作，把新想法变成真正能交付的软件。"
+        "title": "Open for work",
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
-        "label": "业务问题",
-        "detail": "产品要赢必须改什么——如果不改，又会怎样。"
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "相关的人",
-        "detail": "谁用、谁付钱、谁能叫停，以及谁必须喜欢它。"
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "今天的约束",
-        "detail": "时间、技术栈、团队产能，以及已经在生产环境里的系统。"
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "可交付切片",
-        "detail": "能证明想法的最小切口——动手前先写下来。"
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "技术能力",
-    "eyebrow": "03 · 构建",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
+    "eyebrow": "03 · Build",
+    "title": "用 TypeScript 与 Next.js 构建平台",
     "typeLines": [
-      "把你的想法做成可交付的平台。",
-      "从数据库到最后一个按钮都有类型。",
-      "够快可用，也够干净以便扩展。"
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
+      "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "正在翻译简报",
-    "doneLabel": "交付计划已就绪",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
-      "建模领域与用户角色",
-      "设计 API 与数据契约",
-      "选择最小可用交付切片",
-      "埋点观测，确认它真的在工作"
+      "Model the domain and user roles",
+      "Design type-safe APIs and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
-      "产品架构",
-      "类型安全 API",
-      "设计系统熟练度",
-      "每周交付"
+      "Product architecture",
+      "Type-safe APIs",
+      "Design systems",
+      "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "产品技术构建阶段",
-      "eyebrow": "构建流水线",
+      "ariaLabel": "Technical stages of building a full-stack product",
+      "eyebrow": "Build pipeline",
       "stages": [
         {
           "index": "01",
           "title": "Schema",
-          "detail": "表结构、关系、索引与迁移。"
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "类型化路由、鉴权与校验。"
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
           "index": "03",
           "title": "Contracts",
-          "detail": "从数据库到客户端的共享类型。"
+          "detail": "Shared TypeScript types from database to client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "页面、表单与设计系统组件。"
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
           "index": "05",
           "title": "Deploy",
-          "detail": "Docker、CI、监控与安全发布。"
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,49 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "精选平台作品",
-    "eyebrow": "04 · 交付",
+    "galleryLabel": "Selected full-stack platform work",
+    "eyebrow": "04 · Ship",
+    "title": "将平台交付到生产环境",
     "typeLines": [
-      "你的平台已在用户手中。",
-      "仪表盘、CRM、管理工具——已上线可用。",
-      "可度量、有文档、能继续增长。"
+      "Your web platform is in real users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to scale."
     ],
     "focus": [
-      "生产就绪",
-      "可观测",
-      "文档化交接"
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
     ],
-    "status": "已部署到生产环境",
+    "status": "Deployed to production",
     "gallery": [
       {
-        "title": "分析仪表盘",
+        "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "带 KPI 卡片、迷你图与收入面积图的分析仪表盘"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
-        "title": "销售 CRM 管道",
+        "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "五阶段销售管道看板及交易卡片与金额"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
-        "title": "财务与账单",
+        "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "含已付、待付、逾期状态与收入卡片的发票表"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
-        "title": "平台运维",
+        "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "含正常运行时间、延迟与事故时间线的服务状态网格"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
-        "title": "项目工作区",
+        "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "含状态、优先级、负责人和截止日期的问题列表"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
-        "title": "客户成功",
+        "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "客户成功仪表盘上的留存热力图与入职漏斗"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "点击预览打开 · 双击名称",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "收入与增长仪表盘",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "带 KPI 与面积图的分析仪表盘",
-        "url": "https://example.com/northline"
+        "title": "TVTO Ranking Platform",
+        "subtitle": "国家职业技术培训评价与排名仪表盘",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "TVTO排名平台仪表盘，含KPI与图表",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "面向职业技术培训中心的全国360°评估与排名平台——KPI看板、省/全国对比与指标增长报告。"
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "销售管道工作区",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "CRM 销售管道看板",
-        "url": "https://example.com/harbor"
+        "title": "IranYari",
+        "subtitle": "面向贫困患者的资助平台",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "IranYari财务仪表盘，含交易报表与图表",
+        "url": "https://iranyari.com/",
+        "description": "为贫困患者提供资金支持的平台。款项以全国社工名义汇入伊朗医科大学账户，用于患者治疗。"
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "财务与账单控制台",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "财务报告与账单界面",
-        "url": "https://example.com/ledger"
+        "title": "Tamin Sanat Asia",
+        "subtitle": "线束工业设备电商",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "TSA产品页：线束设备网格与分类筛选",
+        "url": "https://tsasia.ir/",
+        "description": "面向线束原材料及生产/测试设备的B2B电商——工业目录、分类筛选与在线下单。"
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "平台健康监控",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "平台运维状态网格",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "事务与交付工作区",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "项目问题列表工作区",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "留存与客户成功套件",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "客户成功与留存仪表盘",
-        "url": "https://example.com/keep"
+        "title": "iRakhsh",
+        "subtitle": "社会化智库平台",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "iRakhsh已提主题页：主题卡片与设计流程导航",
+        "url": "https://irakhsh.ir/",
+        "description": "用于提出主题、基于主题设计问题、为问题设计方案，并根据智库讨论室对话设计组织的社交平台。"
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "06 · 联系",
     "title": "一起做点什么",
     "body": "欢迎产品合作、平台项目与长期伙伴关系。告诉我你要交付什么——一天内回复。",
-    "email": "hello@mahvan.dev",
-    "phone": "+98 912 000 0000",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "+98 939 769 9985",
+    "phoneHref": "+989397699985",
     "location": "德黑兰 · 全球远程",
     "socialLabel": "社交网络",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "GitHub",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "Telegram",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "WhatsApp",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

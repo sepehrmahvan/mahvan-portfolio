@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 import './Prism.css';
 
 const INTRO_SECONDS = 1.4;
@@ -272,7 +275,7 @@ const Prism = ({
       gl.texSubImage2D(gl.TEXTURE_2D, 0, 0, 0, PALETTE_SIZE, 1, gl.RGBA, gl.UNSIGNED_BYTE, data);
     };
 
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const reduce = getPrefersReducedMotion();
     const view = { width: 1, height: 1, scale: 1 };
     const pose = { yaw: 0, pitch: 0, roll: 0 };
     const pointer = { x: 0, y: 0, inside: false };

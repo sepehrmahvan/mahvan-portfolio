@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 import './Plasma.css';
 
 const QUAD_VERTEX = `#version 300 es
@@ -258,7 +260,7 @@ export const Plasma = ({
     };
 
     const probe = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const reduce = getPrefersReducedMotion();
     const colorCache = new Map();
     const toLinear = value => {
       if (colorCache.has(value)) return colorCache.get(value);

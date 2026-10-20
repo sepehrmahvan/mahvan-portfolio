@@ -1,6 +1,9 @@
 'use client';
 
 import { Children, isValidElement, useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 import './Folder.css';
 
 const TAU = Math.PI * 2;
@@ -889,7 +892,7 @@ const Folder = ({
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
-    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+    const reduce = getPrefersReducedMotion();
 
     const spring = value => ({ value, velocity: 0 });
     const state = {

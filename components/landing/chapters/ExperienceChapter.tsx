@@ -5,7 +5,6 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
 } from 'motion/react';
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -41,11 +40,10 @@ const PHONE_VARS = {
 
 /** Section 4: typed ship copy above CardSwap; Phone + status densify the right. */
 export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
-  const { time } = useLandingScroll();
-  const reduceMotion = useReducedMotion() ?? false;
+  const { time, reduceMotion } = useLandingScroll();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [active, setActive] = useState(
-    () => reduceMotion || isChapterStep(time.get(), 'experience'),
+  const [active, setActive] = useState(() =>
+    isChapterStep(time.get(), 'experience'),
   );
   const isRtl = isRtlLocale(locale);
   const galleryItems = useMemo(
@@ -139,7 +137,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              'pointer-events-auto absolute inset-x-3 top-[12%] bottom-[4%] z-10 flex max-w-none flex-col items-stretch justify-start gap-3 overflow-y-auto sm:justify-center sm:gap-4 md:inset-y-[9%] md:left-0 md:right-auto md:inset-x-auto md:bottom-[5%] md:w-[min(54vw,40rem)] md:gap-5 md:overflow-visible md:px-4 lg:w-[min(50vw,44rem)]',
+              'pointer-events-auto absolute inset-x-3 top-[11%] bottom-[3%] z-10 flex max-w-none flex-col items-stretch justify-start gap-3 overflow-y-auto sm:top-[12%] sm:justify-center sm:gap-4 md:inset-y-[8%] md:left-0 md:right-auto md:inset-x-auto md:bottom-[5%] md:w-[min(52vw,28rem)] md:gap-4 md:overflow-visible md:px-3 lg:w-[min(50vw,40rem)] lg:gap-5 lg:px-4 xl:w-[min(50vw,44rem)]',
               isRtl
                 ? 'font-(family-name:--font-fa)'
                 : 'font-(family-name:--font-en)',
@@ -153,6 +151,15 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
             >
               {content.eyebrow}
             </motion.p>
+
+            <motion.h2
+              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.1, ease }}
+              className="sr-only"
+            >
+              {content.title}
+            </motion.h2>
 
             <TextType
               as="p"
@@ -194,7 +201,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
               ))}
             </motion.ul>
 
-            <div className="mx-auto h-[min(48dvh,420px)] w-full max-w-[22rem] sm:h-[min(54dvh,480px)] sm:max-w-130 md:h-[min(58dvh,520px)]">
+            <div className="mx-auto h-[min(42dvh,320px)] w-full max-w-[18rem] sm:h-[min(48dvh,400px)] sm:max-w-[22rem] md:h-[min(52dvh,440px)] md:max-w-full lg:h-[min(58dvh,520px)]">
               <CardSwap
                 items={galleryItems}
                 width={480}
@@ -233,7 +240,8 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              'pointer-events-auto absolute top-1/2 z-10 hidden w-[min(28vw,16rem)] -translate-y-1/2 flex-col items-center gap-4 lg:flex lg:w-[min(40vw,18rem)]',
+              // iPad portrait+: phone rail. Phones keep CardSwap-only stage.
+              'pointer-events-auto absolute top-[58%] z-10 hidden w-[min(26vw,11rem)] -translate-y-1/2 flex-col items-center gap-3 md:flex lg:top-1/2 lg:w-[min(32vw,16rem)] lg:gap-4 xl:w-[min(40vw,18rem)]',
               LANDING_INSET_END,
               isRtl
                 ? 'font-(family-name:--font-fa)'
@@ -250,7 +258,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                 className="w-full"
               />
             </div>
-            <p className="text-center text-[0.68rem] font-black tracking-[0.18em] text-zinc-600 uppercase md:text-[0.72rem]">
+            <p className="text-center text-[0.62rem] font-black tracking-[0.18em] text-zinc-600 uppercase lg:text-[0.72rem]">
               <span
                 aria-hidden
                 className="me-2 inline-block h-1.5 w-1.5 -translate-y-px rounded-full bg-emerald-500"

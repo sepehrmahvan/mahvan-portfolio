@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Сепехр Махван | Full-stack продуктовый инженер",
-    "description": "Full-stack инженер на TypeScript. Помогаю продуктовым командам превратить новую идею в ПО, которое реально можно выпустить — архитектура, интерфейс и всё между ними."
+    "title": "Sepehr Mahvan | Full-Stack Product Engineer — TypeScript, Next.js, React",
+    "description": "Sepehr Mahvan — full-stack product engineer. Проектирую и создаю веб-платформы на TypeScript, Next.js, React и Node.js — от discovery до дашбордов, CRM и админ-инструментов в production.",
+    "keywords": "Sepehr Mahvan, full-stack инженер, Next.js, React, TypeScript, product engineer, веб-платформа, дашборд, CRM"
   },
   "nav": {
     "name": "Сепехр Махван",
@@ -38,112 +39,113 @@
   },
   "hero": {
     "greeting": "Привет",
-    "name": "Я Махван",
-    "role": "Full-stack продуктовый инженер",
-    "body": "Работаю с продуктовыми командами, чтобы превратить новую идею в ПО, которое реально можно выпустить — архитектура, интерфейс и тихие куски между ними, с типами от начала до конца."
+    "name": "Я Mahvan",
+    "role": "Full-stack Product Engineer · TypeScript",
+    "body": "Проектирую и разрабатываю продуктовый софт на TypeScript, Next.js и React. От идеи до поставляемой платформы — архитектура, API, UI и production-деплой вместе с product-командами."
   },
   "skills": {
-    "eyebrow": "02 · Открытие",
-    "title": "Сначала — правильные вопросы",
-    "body": "До первого компонента я сижу с идеей, пока бриф не станет достаточно острым для релиза — не список желаний, а план.",
-    "listenLabel": "Я спрашиваю про",
+    "eyebrow": "02 · Discover",
+    "title": "Product discovery до кода",
+    "body": "До первого React-компонента уточняю бриф правильными вопросами — домен, пользователи и минимальный shippable slice. План сборки, не wish list.",
+    "listenLabel": "I'm asking about",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer. Архитектура, интерфейс и тихие детали между ними — типизировано от края до края."
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
-        "title": "Сначала открытие",
-        "description": "Проверяю идею вместе с вами, пока бриф не станет достаточно острым для релиза."
+        "title": "Discover first",
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
-        "title": "Стек TypeScript",
-        "description": "React, Next.js, Node, PostgreSQL — от базы данных до последней кнопки."
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
-        "title": "Платформенная работа",
+        "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Аналитический дашборд из платформенных работ Sepehr Mahvan"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
-        "title": "Готово к ship",
-        "description": "Дашборды, CRM и админ-инструменты — в проде, измеримы и готовы расти."
+        "title": "Ship ready",
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
-        "title": "Открыт к работе",
-        "description": "Работаю с продуктовыми командами: превращаю идею в софт, который реально можно отгрузить."
+        "title": "Open for work",
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
-        "label": "Бизнес-проблема",
-        "detail": "Что должно измениться, чтобы продукт победил — и что будет, если нет."
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "Люди вокруг",
-        "detail": "Кто пользуется, кто платит, кто может остановить и кому это должно нравиться."
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "Ограничения сегодня",
-        "detail": "Срок, стек, ёмкость команды и системы, уже живущие в проде."
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "Поставляемый срез",
-        "detail": "Самый маленький кусок, который доказывает идею — записанный до сборки."
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Технические навыки",
-    "eyebrow": "03 · Сборка",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
+    "eyebrow": "03 · Build",
+    "title": "Сборка платформ на TypeScript и Next.js",
     "typeLines": [
-      "Превращаю идею в платформу к релизу.",
-      "Типы от базы данных до последней кнопки.",
-      "Достаточно быстро. Достаточно чисто, чтобы расти."
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
+      "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "Перевод брифа",
-    "doneLabel": "План поставки готов",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
-      "Модель предметной области и роли",
-      "API и контракты данных",
-      "Самый маленький полезный срез к релизу",
-      "Инструментирование, чтобы знать, что работает"
+      "Model the domain and user roles",
+      "Design type-safe APIs and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
-      "Продуктовая архитектура",
-      "Type-safe API",
-      "Дизайн-система",
-      "Еженедельные поставки"
+      "Product architecture",
+      "Type-safe APIs",
+      "Design systems",
+      "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "Технические этапы сборки продукта",
-      "eyebrow": "Build-пайплайн",
+      "ariaLabel": "Technical stages of building a full-stack product",
+      "eyebrow": "Build pipeline",
       "stages": [
         {
           "index": "01",
-          "title": "Схема",
-          "detail": "Таблицы, связи, индексы и миграции."
+          "title": "Schema",
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Типизированные роуты, auth, валидация."
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
           "index": "03",
-          "title": "Контракты",
-          "detail": "Общие типы от базы до клиента."
+          "title": "Contracts",
+          "detail": "Shared TypeScript types from database to client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Экраны, формы и компоненты дизайн-системы."
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
           "index": "05",
-          "title": "Деплой",
-          "detail": "Docker, CI, мониторинг и безопасный rollout."
+          "title": "Deploy",
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,49 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Выбранные платформы",
-    "eyebrow": "04 · Релиз",
+    "galleryLabel": "Selected full-stack platform work",
+    "eyebrow": "04 · Ship",
+    "title": "Поставка платформ в production",
     "typeLines": [
-      "Платформа уже у пользователей.",
-      "Дашборды, CRM, админка — живые и удобные.",
-      "Измеримо, задокументировано, готово расти."
+      "Your web platform is in real users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to scale."
     ],
     "focus": [
-      "Готово к продакшену",
-      "Наблюдаемость",
-      "Документированная передача"
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
     ],
-    "status": "Развёрнуто в продакшене",
+    "status": "Deployed to production",
     "gallery": [
       {
-        "title": "Аналитический дашборд",
+        "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI-плитки со спарклайнами и графиком выручки на аналитическом дашборде"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
-        "title": "CRM-воронка продаж",
+        "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Пятиэтапная доска воронки с карточками сделок и суммами"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
-        "title": "Финансы и биллинг",
+        "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Таблица счетов со статусами оплаты и плитками выручки"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
-        "title": "Операции платформы",
+        "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Сетка статуса сервисов с аптаймом, задержкой и лентой инцидентов"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
-        "title": "Рабочее пространство проекта",
+        "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Список задач со статусом, приоритетом, исполнителями и сроками"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
         "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Тепловая карта удержания и воронка онбординга"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "Нажмите превью, чтобы открыть · двойной клик по названию",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "Дашборд выручки и роста",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Аналитический дашборд с KPI и площадным графиком",
-        "url": "https://example.com/northline"
+        "title": "TVTO Ranking Platform",
+        "subtitle": "Панель оценки и рейтинга центров TVTO",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "Дашборд платформы рейтинга TVTO с KPI и графиками",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "Национальная 360° платформа оценки и рейтинга центров TVTO — KPI, сравнение регионов и страны, отчёты роста."
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "Рабочее пространство воронки",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Доска CRM-воронки продаж",
-        "url": "https://example.com/harbor"
+        "title": "IranYari",
+        "subtitle": "Платформа финансовой помощи нуждающимся пациентам",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "Финансовый дашборд IranYari с отчётами и графиками",
+        "url": "https://iranyari.com/",
+        "description": "Платформа финансовой поддержки нуждающихся пациентов. Средства от имени социальных работников по всей стране поступают на счёт Иранского университета медицинских наук и идут на лечение."
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "Финансы и биллинг",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Интерфейс финансовых отчётов и счетов",
-        "url": "https://example.com/ledger"
+        "title": "Tamin Sanat Asia",
+        "subtitle": "E-commerce промышленного оборудования жгутов",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "Страница товаров TSA с сеткой оборудования и фильтрами категорий",
+        "url": "https://tsasia.ir/",
+        "description": "B2B-магазин сырья и оборудования для производства/теста жгутов проводов — промышленный каталог, фильтры и онлайн-заказ."
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "Монитор здоровья платформы",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Сетка операционного статуса платформы",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "Задачи и поставка",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "Список задач проекта",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "Удержание и customer success",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Дашборд удержания и успеха клиентов",
-        "url": "https://example.com/keep"
+        "title": "iRakhsh",
+        "subtitle": "Социальная платформа think-tank",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "Страница предложенных тем iRakhsh с карточками и навигацией дизайн-потока",
+        "url": "https://irakhsh.ir/",
+        "description": "Социальная платформа для предложения тем, проектирования проблем и решений, а также организаций на основе обсуждений в think-tank комнатах."
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "06 · Контакты",
     "title": "Давайте что-нибудь соберём",
     "body": "Открыт к продуктовой работе, платформам и долгосрочному партнёрству. Напишите, что выпускаете — отвечу в течение дня.",
-    "email": "hello@mahvan.dev",
-    "phone": "+98 912 000 0000",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "+98 939 769 9985",
+    "phoneHref": "+989397699985",
     "location": "Тегеран · удалённо по миру",
     "socialLabel": "Сети",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "GitHub",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "Telegram",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "WhatsApp",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

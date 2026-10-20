@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "Sepehr Mahvan | Full-Stack Product Engineer",
-    "description": "Full-Stack-TypeScript-Engineer. Ich arbeite mit Produktteams zusammen und mache aus einer neuen Idee Software, die wirklich ausgeliefert werden kann — Architektur, Oberfläche und alles dazwischen."
+    "title": "Sepehr Mahvan | Full-Stack Product Engineer — TypeScript, Next.js, React",
+    "description": "Sepehr Mahvan ist Full-Stack Product Engineer. Ich entwerfe und baue Webplattformen mit TypeScript, Next.js, React und Node.js — von der Product Discovery bis zu Dashboards, CRMs und Admin-Tools in Production.",
+    "keywords": "Sepehr Mahvan, Full-Stack Engineer, Next.js Entwickler, React, TypeScript, Product Engineer, Webplattform, Dashboard, CRM"
   },
   "nav": {
     "name": "Sepehr Mahvan",
@@ -39,111 +40,112 @@
   "hero": {
     "greeting": "Hallo",
     "name": "Ich bin Mahvan",
-    "role": "Full-Stack Product Engineer",
-    "body": "Ich arbeite mit Produktteams zusammen und mache aus einer neuen Idee Software, die wirklich ausgeliefert werden kann — Architektur, Oberfläche und die stillen Teile dazwischen, durchgängig typisiert."
+    "role": "Full-Stack Product Engineer · TypeScript",
+    "body": "Ich entwerfe und baue Produktsoftware mit TypeScript, Next.js und React. Von der Idee zur lieferbaren Plattform — Architektur, APIs, UI und Production-Deploy mit Product-Teams."
   },
   "skills": {
-    "eyebrow": "02 · Entdecken",
-    "title": "Zuerst die richtigen Fragen",
-    "body": "Bevor eine Komponente entsteht, bleibe ich bei der Idee, bis das Briefing scharf genug zum Shippen ist — keine Wunschliste, ein Plan.",
-    "listenLabel": "Ich frage nach",
+    "eyebrow": "02 · Discover",
+    "title": "Product Discovery vor dem Code",
+    "body": "Vor der ersten React-Komponente schärfe ich das Product Brief mit den richtigen Fragen — Domain, Nutzer und kleinster lieferbarer Slice klar. Ein Build-Plan, keine Wunschliste.",
+    "listenLabel": "I'm asking about",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack Product Engineer. Architektur, Interface und die stillen Teile dazwischen — durchgängig typisiert."
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
-        "title": "Zuerst entdecken",
-        "description": "Ich prüfe die Idee mit Ihnen, bis das Briefing scharf genug zum Shippen ist."
+        "title": "Discover first",
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
-        "title": "TypeScript-Stack",
-        "description": "React, Next.js, Node, PostgreSQL — von der Datenbank bis zum letzten Button."
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
-        "title": "Plattformarbeit",
+        "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics-Dashboard aus Sepehr Mahvans Plattformarbeit"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
-        "title": "Ship-ready",
-        "description": "Dashboards, CRMs und Admin-Tools — live, messbar und bereit zum Wachsen."
+        "title": "Ship ready",
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
         "title": "Open for work",
-        "description": "Ich arbeite mit Product-Teams, damit aus einer Idee Software wird, die wirklich shippt."
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
-        "label": "Das Geschäftsproblem",
-        "detail": "Was sich ändern muss, damit das Produkt gewinnt — und was passiert, wenn nicht."
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "Die Menschen drumherum",
-        "detail": "Wer nutzt es, wer zahlt, wer es stoppen kann, und wer es lieben muss."
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "Heutige Rahmen",
-        "detail": "Zeit, Stack, Teamkapazität und die Systeme, die schon in Produktion laufen."
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "Der lieferbare Slice",
-        "detail": "Der kleinste Schnitt, der die Idee beweist — aufgeschrieben, bevor wir bauen."
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Technische Skills",
-    "eyebrow": "03 · Bauen",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
+    "eyebrow": "03 · Build",
+    "title": "Plattformen mit TypeScript & Next.js bauen",
     "typeLines": [
-      "Ich mache aus Ihrer Idee eine auslieferbare Plattform.",
-      "Typisiert von der Datenbank bis zum letzten Button.",
-      "Schnell genug zum Nutzen. Sauber genug zum Erweitern."
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
+      "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "Briefing übersetzen",
-    "doneLabel": "Lieferplan bereit",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
-      "Domäne und Nutzerrollen modellieren",
-      "API und Datenverträge entwerfen",
-      "Den kleinsten sinnvollen Slice zum Ausliefern wählen",
-      "Instrumentieren, damit wir wissen, dass es funktioniert"
+      "Model the domain and user roles",
+      "Design type-safe APIs and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
-      "Produktarchitektur",
-      "Typsichere APIs",
-      "Design-System-Flüssigkeit",
-      "Wöchentliche Lieferung"
+      "Product architecture",
+      "Type-safe APIs",
+      "Design systems",
+      "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "Technische Stufen beim Produktbau",
-      "eyebrow": "Build-Pipeline",
+      "ariaLabel": "Technical stages of building a full-stack product",
+      "eyebrow": "Build pipeline",
       "stages": [
         {
           "index": "01",
           "title": "Schema",
-          "detail": "Tabellen, Relationen, Indizes und Migrationen."
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typisierte Routes, Auth, Validierung, Fehler."
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
           "index": "03",
           "title": "Contracts",
-          "detail": "Geteilte Typen von der DB bis zum Client."
+          "detail": "Shared TypeScript types from database to client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Screens, Formulare und Design-System-Bausteine."
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
           "index": "05",
           "title": "Deploy",
-          "detail": "Docker, CI, Monitoring und sicherer Rollout."
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,49 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Ausgewählte Plattformarbeit",
-    "eyebrow": "04 · Ausliefern",
+    "galleryLabel": "Selected full-stack platform work",
+    "eyebrow": "04 · Ship",
+    "title": "Plattformen in Production shippen",
     "typeLines": [
-      "Ihre Plattform ist in den Händen Ihrer Nutzer.",
-      "Dashboards, CRMs, Admin-Tools — live und nutzbar.",
-      "Gemessen, dokumentiert, bereit zum Wachsen."
+      "Your web platform is in real users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to scale."
     ],
     "focus": [
-      "Produktionsreif",
-      "Beobachtbar",
-      "Dokumentierte Übergabe"
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
     ],
-    "status": "In Produktion deployed",
+    "status": "Deployed to production",
     "gallery": [
       {
-        "title": "Analytics-Dashboard",
+        "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI-Kacheln mit Sparklines und einem Umsatz-Flächendiagramm auf einem Analytics-Dashboard"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
-        "title": "Sales-CRM-Pipeline",
+        "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Fünfstufiges Sales-Pipeline-Board mit Deal-Karten und Beträgen"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
-        "title": "Finanzen & Abrechnung",
+        "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Rechnungstabelle mit bezahlt, ausstehend und überfällig sowie Umsatzkacheln"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
-        "title": "Plattformbetrieb",
+        "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service-Statusraster mit Uptime, Latenz und Incident-Zeitlinie"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
-        "title": "Projekt-Workspace",
+        "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issueliste mit Status, Priorität, Zuweisungen und Fälligkeiten"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
-        "title": "Customer Success",
+        "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention-Heatmap und Onboarding-Funnel auf einem Customer-Success-Dashboard"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "Vorschau klicken zum Öffnen · Namen doppelklicken",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "Umsatz- & Wachstums-Dashboard",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics-Dashboard mit KPI-Kacheln und Flächendiagramm",
-        "url": "https://example.com/northline"
+        "title": "TVTO Ranking Platform",
+        "subtitle": "Nationales TVTO-Bewertungs- und Ranking-Dashboard",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "TVTO Ranking Platform Dashboard mit KPIs und Diagrammen",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "Nationale 360°-Bewertungs- und Ranking-Plattform für TVTO-Zentren — KPI-Boards, Landes- vs. Bundesvergleiche und Wachstumsberichte."
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "Sales-Pipeline-Workspace",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "CRM-Sales-Pipeline-Board",
-        "url": "https://example.com/harbor"
+        "title": "IranYari",
+        "subtitle": "Finanzhilfe-Plattform für bedürftige Patient:innen",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "IranYari-Finanzdashboard mit Transaktionsberichten und Diagrammen",
+        "url": "https://iranyari.com/",
+        "description": "Plattform zur finanziellen Unterstützung bedürftiger Patient:innen. Spenden werden stellvertretend für Sozialarbeiter:innen landesweit auf das Konto der Iran University of Medical Sciences eingezahlt und für Behandlungen verwendet."
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "Finanz- & Abrechnungskonsole",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Finanz- und Abrechnungsberichte-Oberfläche",
-        "url": "https://example.com/ledger"
+        "title": "Tamin Sanat Asia",
+        "subtitle": "E-Commerce für Industrie-Kabelbaum-Ausrüstung",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "TSA-Produktseite mit Kabelbaum-Equipment-Raster und Kategoriefiltern",
+        "url": "https://tsasia.ir/",
+        "description": "B2B-Shop für Rohstoffe sowie Produktions- und Prüfgeräte für Kabelbäume — Industriekatalog, Filter und Online-Bestellung."
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "Plattform-Gesundheitsmonitor",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Plattformbetriebs-Statusraster",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "Issue- & Delivery-Workspace",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "Projekt-Issueliste",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "Retention- & Success-Suite",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Customer-Success-Retention-Dashboard",
-        "url": "https://example.com/keep"
+        "title": "iRakhsh",
+        "subtitle": "Soziale Think-Tank-Plattform",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "iRakhsh-Seite mit Themenkarten und Design-Flow-Navigation",
+        "url": "https://irakhsh.ir/",
+        "description": "Soziale Plattform zum Einbringen von Themen, Entwerfen von Problemen und Lösungen sowie Organisationsdesign auf Basis von Think-Tank-Diskussionen."
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "06 · Kontakt",
     "title": "Lassen Sie uns etwas bauen",
     "body": "Offen für Produktarbeit, Plattformen und langfristige Partnerschaften. Erzählen Sie mir, was Sie ausliefern — ich antworte innerhalb eines Tages.",
-    "email": "hello@mahvan.dev",
-    "phone": "+98 912 000 0000",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "+98 939 769 9985",
+    "phoneHref": "+989397699985",
     "location": "Teheran · Remote weltweit",
     "socialLabel": "Anderswo",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "LinkedIn",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "GitHub",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "Telegram",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "WhatsApp",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

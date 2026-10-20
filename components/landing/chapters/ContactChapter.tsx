@@ -9,7 +9,7 @@ import {
   TelegramLogoIcon,
   WhatsappLogoIcon,
 } from '@phosphor-icons/react';
-import { motion, useReducedMotion, type Variants } from 'motion/react';
+import { motion, type Variants } from 'motion/react';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 
 import DitherVeil from '@/components/ui/DitherVeil/DitherVeil';
@@ -18,6 +18,7 @@ import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
 
+import { useLandingScroll } from '../LandingScrollContext';
 import { LANDING_COURT_GREEN, LANDING_INSET_END } from '../shell';
 
 /** Court-green Velaris palette for the contact stage. */
@@ -99,7 +100,7 @@ const socialPop: Variants = {
 /** Section 6: Velaris stage; contact copy pinned left, portrait right. */
 export const ContactChapter = forwardRef<HTMLElement, ContactChapterProps>(
   function ContactChapter({ content, locale }, ref) {
-    const reduceMotion = useReducedMotion() ?? false;
+    const { reduceMotion } = useLandingScroll();
     const isRtl = isRtlLocale(locale);
     const localRef = useRef<HTMLElement | null>(null);
     // Defer WebGL (Velaris + DitherVeil) until near the section.
@@ -158,13 +159,6 @@ export const ContactChapter = forwardRef<HTMLElement, ContactChapterProps>(
               variants={reduceMotion ? undefined : columnVariants}
             >
               <header>
-                <motion.p
-                  variants={reduceMotion ? undefined : fadeUp}
-                  className="text-[0.7rem] font-black tracking-[0.22em] text-white uppercase md:text-xs"
-                  style={{ color: '#ffffff' }}
-                >
-                  {content.eyebrow}
-                </motion.p>
                 <motion.h2
                   variants={reduceMotion ? undefined : titleReveal}
                   className="mt-3 max-w-[14ch] text-2xl font-black uppercase leading-tight tracking-tight text-white whitespace-normal sm:max-w-none sm:text-3xl sm:whitespace-nowrap md:text-4xl lg:text-[2.75rem]"

@@ -1,7 +1,8 @@
 {
   "meta": {
-    "title": "سهير مهوان | مهندس منتجات متكامل",
-    "description": "مهندس منتجات متكامل بـ TypeScript. أتعاون مع فرق المنتج لتحويل فكرة جديدة إلى برمجيات قابلة للتسليم فعلًا — العمارة والواجهة وكل ما بينهما."
+    "title": "سبهر مهوان | مهندس منتجات فول ستاك — TypeScript و Next.js و React",
+    "description": "سبهر مهوان مهندس منتجات فول ستاك. أصمم وأبني منصات ويب بـ TypeScript و Next.js و React و Node.js — من اكتشاف المنتج حتى تسليم لوحات التحكم وCRM وأدوات الإدارة في الإنتاج.",
+    "keywords": "سبهر مهوان، مهندس فول ستاك، مطور Next.js، React، TypeScript، مهندس منتج، منصة ويب، لوحة تحكم، CRM"
   },
   "nav": {
     "name": "سهير مهوان",
@@ -37,113 +38,114 @@
     "progress": "تقدّم السرد"
   },
   "hero": {
-    "greeting": "مرحبًا",
+    "greeting": "مرحباً",
     "name": "أنا مهوان",
-    "role": "مهندس منتجات متكامل",
-    "body": "أتعاون مع فرق المنتج لتحويل فكرة جديدة إلى برمجيات قابلة للتسليم فعلًا — العمارة والواجهة والقطع الهادئة بينهما، مكتوبة بأنواع صارمة من البداية حتى النهاية."
+    "role": "مهندس منتجات فول ستاك · TypeScript",
+    "body": "أصمم وأبني برمجيات المنتجات بـ TypeScript و Next.js و React. من الفكرة إلى منصة قابلة للتسليم — البنية، واجهات API، الواجهة، والنشر للإنتاج مع فرق المنتج."
   },
   "skills": {
-    "eyebrow": "٠٢ · اكتشاف",
-    "title": "أولاً، الأسئلة الصحيحة",
-    "body": "قبل أي مكوّن، أجلس مع الفكرة حتى يصبح الموجز حاداً بما يكفي للشحن — ليست قائمة أمنيات، بل خطة.",
-    "listenLabel": "أسأل عن",
-    "folderLabel": "ماهوان",
+    "eyebrow": "02 · Discover",
+    "title": "اكتشاف المنتج قبل البرمجة",
+    "body": "قبل أول مكوّن React أصقل موجز المنتج بالأسئلة الصحيحة حتى يتضح النطاق والمستخدم وأصغر شريحة قابلة للتسليم — خطة بناء لا قائمة أمنيات.",
+    "listenLabel": "I'm asking about",
+    "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "مهندس منتج Full-stack. المعمارية والواجهة والتفاصيل الهادئة — بأنواع صارمة من الطرف إلى الطرف."
+        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
       },
       {
-        "title": "الاكتشاف أولاً",
-        "description": "أختبر الفكرة معك حتى يصبح الموجز حاداً بما يكفي للشحن."
+        "title": "Discover first",
+        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
       },
       {
-        "title": "مكدس TypeScript",
-        "description": "React و Next.js و Node و PostgreSQL — من قاعدة البيانات حتى آخر زر."
+        "title": "TypeScript stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
       },
       {
-        "title": "عمل المنصات",
+        "title": "Platform work",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "لوحة تحليلات من أعمال منصات Sepehr Mahvan"
+        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
       },
       {
-        "title": "جاهز للشحن",
-        "description": "لوحات وCRM وأدوات إدارة — حية ومقاسة وجاهزة للنمو."
+        "title": "Ship ready",
+        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
       },
       {
-        "title": "متاح للعمل",
-        "description": "أشارك فرق المنتج لتحويل فكرة جديدة إلى برمجيات يمكنهم شحنها فعلاً."
+        "title": "Open for work",
+        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
       }
     ],
     "facets": [
       {
-        "label": "مشكلة العمل",
-        "detail": "ما الذي يجب أن يتغير ليفوز المنتج — وماذا لو لم يتغير."
+        "label": "The business problem",
+        "detail": "What has to change for the product to win — and the cost if it does not."
       },
       {
-        "label": "الأشخاص حولها",
-        "detail": "من يستخدمه، من يدفع، من يمكنه إيقافه، ومن يجب أن يحبه."
+        "label": "Users & stakeholders",
+        "detail": "Who uses it, who pays, and who can stop the project."
       },
       {
-        "label": "قيود اليوم",
-        "detail": "الوقت، التقنية، سعة الفريق، والأنظمة الحية في الإنتاج."
+        "label": "Real constraints",
+        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
       },
       {
-        "label": "الشريحة القابلة للشحن",
-        "detail": "أصغر قطع يثبت الفكرة — مكتوباً قبل أن نبني."
+        "label": "MVP slice",
+        "detail": "The smallest shippable cut that proves the idea before a full build."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "المهارات التقنية",
-    "eyebrow": "٠٣ · بناء",
+    "ariaLabel": "Building platforms with full-stack engineering skills",
+    "eyebrow": "03 · Build",
+    "title": "بناء المنصات بـ TypeScript و Next.js",
     "typeLines": [
-      "أحوّل فكرتك إلى منصة قابلة للتسليم.",
-      "أنواع صارمة من قاعدة البيانات حتى آخر زر.",
-      "سريعة بما يكفي للاستخدام. نظيفة بما يكفي للتوسعة."
+      "I turn your idea into a shippable web platform.",
+      "TypeScript from PostgreSQL to the last React button.",
+      "Fast enough to use. Clean enough to extend."
     ],
-    "processLabel": "ترجمة الموجز",
-    "doneLabel": "خطة التسليم جاهزة",
+    "processLabel": "Translating the brief into architecture",
+    "doneLabel": "Technical delivery plan ready",
     "steps": [
-      "نمذجة النطاق وأدوار المستخدم",
-      "تصميم واجهة API وعقود البيانات",
-      "اختيار أصغر شريحة مفيدة للتسليم",
-      "تجهيز القياس لنعرف أنها تعمل"
+      "Model the domain and user roles",
+      "Design type-safe APIs and data contracts",
+      "Pick the smallest useful slice to ship",
+      "Instrument monitoring and quality checks"
     ],
     "focus": [
-      "هندسة المنتج",
-      "واجهات API آمنة الأنواع",
-      "إتقان نظام التصميم",
-      "تسليم أسبوعي"
+      "Product architecture",
+      "Type-safe APIs",
+      "Design systems",
+      "Weekly delivery"
     ],
     "stepper": {
-      "ariaLabel": "المراحل التقنية لبناء المنتج",
-      "eyebrow": "خط البناء",
+      "ariaLabel": "Technical stages of building a full-stack product",
+      "eyebrow": "Build pipeline",
       "stages": [
         {
-          "index": "٠١",
-          "title": "المخطط",
-          "detail": "جداول وعلاقات وفهارس وترحيلات."
+          "index": "01",
+          "title": "Schema",
+          "detail": "PostgreSQL tables, relations, indexes, and migrations."
         },
         {
-          "index": "٠٢",
+          "index": "02",
           "title": "API",
-          "detail": "مسارات مكتوبة الأنواع وتوثيق وتحقق."
+          "detail": "Typed Node.js routes, auth, validation, and errors."
         },
         {
-          "index": "٠٣",
-          "title": "العقود",
-          "detail": "أنواع مشتركة من قاعدة البيانات إلى العميل."
+          "index": "03",
+          "title": "Contracts",
+          "detail": "Shared TypeScript types from database to client."
         },
         {
-          "index": "٠٤",
+          "index": "04",
           "title": "UI",
-          "detail": "شاشات ونماذج ومكوّنات نظام التصميم."
+          "detail": "Next.js/React screens, forms, and design-system components."
         },
         {
-          "index": "٠٥",
-          "title": "النشر",
-          "detail": "Docker وCI ومراقبة وطرح آمن."
+          "index": "05",
+          "title": "Deploy",
+          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
         }
       ]
     },
@@ -160,49 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "نماذج منصات مختارة",
-    "eyebrow": "٠٤ · تسليم",
+    "galleryLabel": "Selected full-stack platform work",
+    "eyebrow": "04 · Ship",
+    "title": "تسليم المنصات إلى الإنتاج",
     "typeLines": [
-      "منصتك بين يدي المستخدمين.",
-      "لوحات، CRM، أدوات إدارة — حيّة وقابلة للاستخدام.",
-      "مقاسة، موثّقة، جاهزة للنمو."
+      "Your web platform is in real users' hands.",
+      "Dashboards, CRMs, admin tools — live and usable.",
+      "Measured, documented, ready to scale."
     ],
     "focus": [
-      "جاهز للإنتاج",
-      "قابل للمراقبة",
-      "تسليم موثّق"
+      "Production-ready",
+      "Observable",
+      "Documented handoff"
     ],
-    "status": "منشور على الإنتاج",
+    "status": "Deployed to production",
     "gallery": [
       {
-        "title": "لوحة تحليلات",
+        "title": "Analytics dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "بطاقات مؤشرات مع مخططات صغيرة ورسم إيرادات على لوحة تحليلات"
+        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
       },
       {
-        "title": "مسار مبيعات CRM",
+        "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "لوحة مسار مبيعات من خمس مراحل مع بطاقات الصفقات والمبالغ"
+        "alt": "Sales CRM pipeline board with deal cards and amounts"
       },
       {
-        "title": "تقارير مالية",
+        "title": "Finance & billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "جدول فواتير بحالات مدفوع ومعلّق ومتأخر وبلاطات إيرادات"
+        "alt": "Invoice table and payment status on a finance web console"
       },
       {
-        "title": "تشغيل المنصة",
+        "title": "Platform operations",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "شبكة حالة الخدمات مع وقت التشغيل وزمن الاستجابة وجدول الحوادث"
+        "alt": "Service status grid with uptime and incident timeline"
       },
       {
-        "title": "مساحة عمل المشروع",
+        "title": "Project workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "قائمة مهام بالحالة والأولوية والمسؤولين وتواريخ الاستحقاق"
+        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
       },
       {
-        "title": "نجاح العملاء",
+        "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "خريطة حرارية للاحتفاظ وقمع الإعداد على لوحة نجاح العملاء"
+        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
       }
     ]
   },
@@ -214,46 +217,36 @@
     "openHint": "انقر المعاينة للفتح · انقر مزدوجًا على الاسم",
     "items": [
       {
-        "title": "Northline Analytics",
-        "subtitle": "لوحة الإيرادات والنمو",
-        "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "لوحة تحليلات ببطاقات مؤشرات ومخطط مساحي",
-        "url": "https://example.com/northline"
+        "title": "منصة تصنيف TVTO",
+        "subtitle": "لوحة تقييم وتصنيف مراكز التدريب المهني",
+        "image": "/images/portfolio/tvto.png",
+        "alt": "لوحة منصة تصنيف TVTO مع مؤشرات ومخططات",
+        "url": "https://tvto.evalchi.ir/",
+        "description": "منصة وطنية لتقييم وتصنيف مراكز التدريب المهني بزاوية ٣٦٠ — لوحات مؤشرات ومقارنات إقليمية ووطنية وتقارير نمو."
       },
       {
-        "title": "Harbor CRM",
-        "subtitle": "مساحة مسار المبيعات",
-        "image": "/images/carousel/platform-crm.jpg",
-        "alt": "لوحة مسار مبيعات CRM",
-        "url": "https://example.com/harbor"
+        "title": "إيران ياري",
+        "subtitle": "منصة دعم مالي للمرضى المحتاجين",
+        "image": "/images/portfolio/iranyari.jpg",
+        "alt": "لوحة إيران ياري المالية مع تقارير المعاملات والرسوم البيانية",
+        "url": "https://iranyari.com/",
+        "description": "منصة لدعم المرضى المحتاجين مالياً؛ تُحوَّل التبرعات باسم الأخصائيين الاجتماعيين في أنحاء البلاد إلى حساب جامعة إيران للعلوم الطبية لصرفها على العلاج."
       },
       {
-        "title": "Ledger Reports",
-        "subtitle": "وحدة المالية والفواتير",
-        "image": "/images/carousel/platform-reports.jpg",
-        "alt": "واجهة تقارير مالية وفواتير",
-        "url": "https://example.com/ledger"
+        "title": "تأمين صناعة آسيا",
+        "subtitle": "متجر معدات حزم الأسلاك الصناعية",
+        "image": "/images/portfolio/tsasia.jpg",
+        "alt": "صفحة منتجات TSA مع شبكة معدات حزم الأسلاك وفلاتر الفئات",
+        "url": "https://tsasia.ir/",
+        "description": "متجر إلكتروني B2B لمواد ومعدات إنتاج واختبار حزم الأسلاك — كتالوج صناعي وفلاتر فئات وطلب عبر الإنترنت."
       },
       {
-        "title": "Pulse Ops",
-        "subtitle": "مراقب صحة المنصة",
-        "image": "/images/carousel/platform-ops.jpg",
-        "alt": "شبكة حالة تشغيل المنصة",
-        "url": "https://example.com/pulse"
-      },
-      {
-        "title": "Forge Board",
-        "subtitle": "مساحة التسليم والمهام",
-        "image": "/images/carousel/platform-project.jpg",
-        "alt": "قائمة مهام المشروع",
-        "url": "https://example.com/forge"
-      },
-      {
-        "title": "Keep Customers",
-        "subtitle": "حزمة الاحتفاظ ونجاح العملاء",
-        "image": "/images/carousel/platform-customers.jpg",
-        "alt": "لوحة نجاح العملاء والاحتفاظ",
-        "url": "https://example.com/keep"
+        "title": "آي رخش",
+        "subtitle": "منصة اجتماعية لغرف التفكير",
+        "image": "/images/portfolio/irakhsh.jpg",
+        "alt": "صفحة موضوعات آي رخش المطروحة مع بطاقات الموضوع ومسار التصميم",
+        "url": "https://irakhsh.ir/",
+        "description": "منصة اجتماعية لطرح الموضوعات، وتصميم المسائل عليها، وتصميم الحلول، ثم تصميم المنظمات استناداً إلى نقاشات غرف التفكير."
       }
     ]
   },
@@ -262,9 +255,9 @@
     "eyebrow": "٠٦ · تواصل",
     "title": "لنبنِ شيئًا معًا",
     "body": "متاح لعمل المنتج والمنصات والشراكات طويلة الأمد. أخبرني بما تريد تسليمه — أرد خلال يوم.",
-    "email": "hello@mahvan.dev",
-    "phone": "٠٩١٢ ٠٠٠ ٠٠٠٠",
-    "phoneHref": "+989120000000",
+    "email": "mirsepehr.mahvan@proton.me",
+    "phone": "٠٩٣٩ ٧٦٩ ٩٩٨٥",
+    "phoneHref": "+989397699985",
     "location": "طهران · عن بُعد حول العالم",
     "socialLabel": "الشبكات",
     "portrait": "/images/carousel/contact-bust.png",
@@ -272,22 +265,22 @@
       {
         "id": "linkedin",
         "label": "لينكدإن",
-        "url": "https://linkedin.com/in/mahvan"
+        "url": "https://www.linkedin.com/in/mir-sepehr-mahvan/"
       },
       {
         "id": "github",
         "label": "غيتهاب",
-        "url": "https://github.com/mahvan"
+        "url": "https://github.com/sepehrmahvan"
       },
       {
         "id": "telegram",
         "label": "تيليجرام",
-        "url": "https://t.me/mahvan"
+        "url": "https://t.me/mirsepehr"
       },
       {
         "id": "whatsapp",
         "label": "واتساب",
-        "url": "https://wa.me/989120000000"
+        "url": "https://wa.me/989397699985"
       }
     ]
   }

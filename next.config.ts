@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone',
+  // Static export → `npm run build` writes to `out/`
+  output: 'export',
+  images: {
+    unoptimized: true,
+  },
   experimental: {
     agentFeedback: true,
   },

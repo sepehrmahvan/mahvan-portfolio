@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react';
 import type { CSSProperties } from 'react';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 type Box = { x1: number; y1: number; x2: number; y2: number };
 type Art = { image: HTMLCanvasElement; left: number; top: number };
 type Shape = { char: string; x: number; box: Box };
@@ -170,7 +172,7 @@ const TechText = ({
     const scratchCtx = scratch.getContext('2d');
     if (!container || !canvas || !ctx || !scratchCtx) return undefined;
 
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    const reducedMotion = getPrefersReducedMotion();
     let width = 1;
     let height = 1;
     let dpr = 1;

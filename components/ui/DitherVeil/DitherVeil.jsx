@@ -3,6 +3,8 @@
 import { useEffect, useRef } from 'react';
 import { Renderer, Program, Mesh, Triangle, Texture, RenderTarget } from 'ogl';
 
+import { getPrefersReducedMotion } from '@/hooks/usePrefersReducedMotion';
+
 import './DitherVeil.css';
 
 const DEFAULT_SRC = 'https://images.unsplash.com/photo-1737071371043-761e02b1ef95?q=80&w=1400&auto=format&fit=crop';
@@ -434,7 +436,7 @@ const DitherVeil = ({
     const container = containerRef.current;
     if (!container) return undefined;
 
-    const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const reducedMotion = getPrefersReducedMotion();
     const renderer = new Renderer({
       dpr: Math.min(window.devicePixelRatio || 1, 2),
       alpha: transparentBackdrop,

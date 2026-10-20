@@ -5,7 +5,6 @@ import {
   AnimatePresence,
   motion,
   useInView,
-  useReducedMotion,
   type Variants,
 } from 'motion/react';
 import Image from 'next/image';
@@ -15,6 +14,7 @@ import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
 
+import { useLandingScroll } from '../LandingScrollContext';
 import { LANDING_SHELL } from '../shell';
 
 interface ProjectsChapterProps {
@@ -42,7 +42,7 @@ const fadeUp: Variants = {
 /** Post-video work: editorial feature stage + selectable project rail. */
 export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
   function ProjectsChapter({ content, locale }, ref) {
-    const reduceMotion = useReducedMotion() ?? false;
+    const { reduceMotion } = useLandingScroll();
     const isRtl = isRtlLocale(locale);
     const stageRef = useRef<HTMLDivElement>(null);
     const inView = useInView(stageRef, { amount: 0.35 });
@@ -71,7 +71,7 @@ export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
         ref={ref}
         id="projects"
         aria-label={content.ariaLabel}
-        className="relative isolate min-h-[100dvh] w-full overflow-hidden bg-black"
+        className="relative isolate min-h-[100dvh] w-full bg-black"
       >
         <div
           ref={stageRef}
@@ -79,7 +79,8 @@ export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
           lang={locale}
           className={cn(
             LANDING_SHELL,
-            'relative z-10 grid min-h-[100dvh] grid-cols-1 items-stretch gap-6 py-16 sm:gap-8 sm:py-20 md:grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] md:gap-10 md:py-24 lg:gap-14',
+            // min-h fills short viewports; grows with content so the section can scroll.
+            'relative z-10 grid min-h-[100dvh] grid-cols-1 items-stretch gap-5 py-16 sm:gap-6 sm:py-16 md:grid-cols-1 md:gap-8 md:py-20 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.35fr)] lg:gap-12 lg:py-24 xl:gap-14',
             isRtl
               ? 'font-(family-name:--font-fa)'
               : 'font-(family-name:--font-en)',
@@ -106,14 +107,14 @@ export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
 
               <motion.h2
                 variants={reduceMotion ? undefined : fadeUp}
-                className="max-w-[14ch] text-3xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-4xl md:max-w-[12ch] md:text-5xl lg:text-[3.25rem]"
+                className="max-w-[14ch] text-2xl font-black uppercase leading-[0.95] tracking-tight text-white sm:text-3xl md:max-w-[16ch] md:text-4xl lg:max-w-[12ch] lg:text-5xl xl:text-[3.25rem]"
               >
                 {content.title}
               </motion.h2>
 
               <motion.p
                 variants={reduceMotion ? undefined : fadeUp}
-                className="max-w-[36ch] text-base font-medium leading-relaxed text-white/80 md:text-lg"
+                className="max-w-[40ch] text-sm font-medium leading-relaxed text-white/80 sm:text-base md:max-w-[48ch] md:text-lg"
               >
                 {content.body}
               </motion.p>
@@ -175,12 +176,13 @@ export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
             variants={reduceMotion ? undefined : fadeUp}
             initial={false}
             animate={activeMotion ? 'show' : 'hidden'}
-            className="relative order-first flex min-h-[min(42dvh,320px)] items-center sm:min-h-[min(48dvh,380px)] md:order-none md:min-h-0"
+            className="relative order-first flex flex-col justify-center gap-4 sm:gap-5 md:gap-6 lg:order-none"
           >
+            {/* 16:9 preview — description lives in the band below */}
             <button
               type="button"
               onClick={() => openProject(active)}
-              className="group relative aspect-[4/3] w-full overflow-hidden border border-white/15 bg-zinc-950 text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              className="group relative aspect-video w-full overflow-hidden border border-white/15 bg-zinc-950 text-start focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
               aria-label={`${project.title}. ${content.openHint}`}
             >
               <AnimatePresence mode="wait">
@@ -205,31 +207,39 @@ export const ProjectsChapter = forwardRef<HTMLElement, ProjectsChapterProps>(
                     alt={project.alt}
                     fill
                     sizes="(max-width: 768px) 100vw, 55vw"
-                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
+                    className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
                     priority={active === 0}
                   />
                 </motion.div>
               </AnimatePresence>
 
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgb(0_0_0/0.78)_0%,rgb(0_0_0/0.15)_45%,transparent_70%)]"
-              />
-
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 md:p-7">
-                <div className="min-w-0">
-                  <p className="text-[0.65rem] font-black tracking-[0.2em] text-white/60 uppercase">
-                    {project.subtitle}
-                  </p>
-                  <p className="mt-1 truncate text-xl font-black tracking-tight text-white md:text-2xl">
-                    {project.title}
-                  </p>
-                </div>
-                <span className="grid size-11 shrink-0 place-items-center border border-white/40 text-white transition-colors group-hover:border-white group-hover:bg-white group-hover:text-black">
-                  <ArrowUpRightIcon size={20} weight="bold" />
-                </span>
-              </div>
+              <span className="absolute end-3 top-3 grid size-10 place-items-center border border-white/40 bg-black/35 text-white backdrop-blur-sm transition-colors group-hover:border-white group-hover:bg-white group-hover:text-black md:end-4 md:top-4 md:size-11">
+                <ArrowUpRightIcon size={20} weight="bold" />
+              </span>
             </button>
+
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${project.title}-copy`}
+                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -8 }}
+                transition={{ duration: 0.4, ease }}
+                className="flex min-h-[7.5rem] flex-col gap-2 border-t border-white/15 pt-4 sm:min-h-[8.5rem] md:min-h-[9rem] md:pt-5"
+              >
+                <p className="text-[0.65rem] font-black tracking-[0.2em] text-white/55 uppercase">
+                  {project.subtitle}
+                </p>
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-xl font-black tracking-tight text-white md:text-2xl">
+                    {project.title}
+                  </h3>
+                </div>
+                <p className="max-w-[48ch] text-sm font-medium leading-relaxed text-white/70 md:text-[0.95rem]">
+                  {project.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         </div>
       </section>
