@@ -1,0 +1,5 @@
+# Cloudflare Pages — static export (NOT OpenNext).
+# Dashboard: Framework preset = None | Build = npm run build | Output = out
+name = "mahvan"
+compatibility_date = "2026-03-01"
+pages_build_output_dir = "out"
