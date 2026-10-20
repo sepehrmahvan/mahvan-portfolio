@@ -129,7 +129,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             lang={locale}
             className={cn(
               // Phone + iPad Pro: stacked panel (same as iPhone SE). Desktop xl+: side rail.
-              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-[4.5rem] sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-x-6 md:top-20 md:px-6 md:py-7 xl:inset-y-0 xl:left-auto xl:right-5 xl:inset-x-auto xl:w-[min(44vw,32rem)] xl:justify-center xl:gap-5 xl:overflow-visible xl:bg-transparent xl:px-0 xl:py-16 xl:backdrop-blur-none 2xl:right-10 2xl:w-[min(38vw,36rem)]',
+              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-18 sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-x-6 md:top-20 md:px-6 md:py-7 xl:inset-y-0 xl:left-auto xl:right-5 xl:inset-x-auto xl:w-[min(44vw,32rem)] xl:justify-center xl:gap-5 xl:overflow-visible xl:bg-transparent xl:px-0 xl:py-16 xl:backdrop-blur-none 2xl:right-10 2xl:w-[min(38vw,36rem)]',
               isRtl
                 ? 'font-(family-name:--font-fa)'
                 : 'font-(family-name:--font-en)',
