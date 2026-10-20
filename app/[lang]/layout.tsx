@@ -1,20 +1,9 @@
-import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import { kalameh, satoshi } from '@/lib/fonts';
+import { DocumentLocale } from '@/components/shared/document-locale';
 import { AppProviders } from '@/providers/AppProviders';
 import { isLocale, isRtlLocale, locales, type Locale } from '@/types/locale';
-
-import '../globals.css';
-
-export const metadata: Metadata = {
-  title: {
-    default: 'Sepehr Mahvan | Full-Stack Product Engineer',
-    template: '%s',
-  },
-  description:
-    'Full-stack product engineer building web platforms with TypeScript, Next.js, and React.',
-};
+import { cn } from '@/utils/cn';
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
@@ -31,20 +20,20 @@ export default async function LangLayout({
   }
 
   const locale: Locale = lang;
-  const direction = isRtlLocale(locale) ? 'rtl' : 'ltr';
-  const fontFamily = isRtlLocale(locale)
-    ? 'font-[family-name:var(--font-fa)]'
-    : 'font-[family-name:var(--font-en)]';
 
   return (
-    <html
-      lang={locale}
-      dir={direction}
-      className={`${kalameh.variable} ${satoshi.variable} ${fontFamily} h-full antialiased`}
+    <div
+      className={cn(
+        'min-h-full',
+        isRtlLocale(locale)
+          ? 'font-[family-name:var(--font-fa)]'
+          : 'font-[family-name:var(--font-en)]',
+      )}
     >
-      <body className="min-h-full bg-zinc-50 text-zinc-950">
-        <AppProviders locale={locale}>{children}</AppProviders>
-      </body>
-    </html>
+      <AppProviders locale={locale}>
+        <DocumentLocale locale={locale} />
+        {children}
+      </AppProviders>
+    </div>
   );
 }
