@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "check:translations": "npx tsx scripts/check-translations.ts",
-    "pages:build": "next build"
+    "pages:build": "next build",
+    "pages:deploy": "npm run build && npx wrangler deploy"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
