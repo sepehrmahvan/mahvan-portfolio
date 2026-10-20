@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://mahvan.pages.dev/fa</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/en</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/ar</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/ru</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/zh</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/ja</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+  <url>
+    <loc>https://mahvan.pages.dev/de</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fa" href="https://mahvan.pages.dev/fa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mahvan.pages.dev/en"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://mahvan.pages.dev/ar"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://mahvan.pages.dev/ru"/>
+    <xhtml:link rel="alternate" hreflang="zh" href="https://mahvan.pages.dev/zh"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://mahvan.pages.dev/ja"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://mahvan.pages.dev/de"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mahvan.pages.dev/fa"/>
+  </url>
+</urlset>

@@ -85,8 +85,8 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ duration: 0.65, ease, delay: reduceMotion ? 0 : 0.06 }}
-            // Hidden on phones; iPad + desktop keep the folder.
-            className="pointer-events-auto absolute top-[46%] left-[36%] hidden -translate-x-1/2 -translate-y-1/2 md:block lg:top-1/2 lg:left-[42%] xl:left-[44%]"
+            // Desktop only (xl+). Phone + iPad use the in-panel folder below.
+            className="pointer-events-auto absolute top-1/2 left-[42%] hidden -translate-x-1/2 -translate-y-1/2 xl:block 2xl:left-[44%]"
           >
             <Folder
               label={folderLabel}
@@ -110,7 +110,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               draggable
               zoomOnClick
               theme="light"
-              className="origin-center scale-100 lg:scale-[1.15] xl:scale-[1.28]"
+              className="origin-center scale-[1.15] 2xl:scale-[1.28]"
             />
           </motion.div>
         ) : null}
@@ -128,8 +128,8 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              // Phone / iPad: start under header, padded panel. Desktop: side rail.
-              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-[4.5rem] sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-y-0 md:left-auto md:right-3 md:inset-x-auto md:w-[min(42vw,22rem)] md:justify-center md:gap-4 md:overflow-visible md:bg-transparent md:px-0 md:py-14 md:backdrop-blur-none lg:right-5 lg:w-[min(44vw,32rem)] lg:gap-5 lg:py-16 xl:right-10 xl:w-[min(38vw,36rem)]',
+              // Phone + iPad Pro: stacked panel (same as iPhone SE). Desktop xl+: side rail.
+              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-[4.5rem] sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-x-6 md:top-20 md:px-6 md:py-7 xl:inset-y-0 xl:left-auto xl:right-5 xl:inset-x-auto xl:w-[min(44vw,32rem)] xl:justify-center xl:gap-5 xl:overflow-visible xl:bg-transparent xl:px-0 xl:py-16 xl:backdrop-blur-none 2xl:right-10 2xl:w-[min(38vw,36rem)]',
               isRtl
                 ? 'font-(family-name:--font-fa)'
                 : 'font-(family-name:--font-en)',
@@ -142,7 +142,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               initial={reduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.16, ease }}
-              className="max-w-[20ch] text-xl font-black uppercase leading-[0.96] tracking-tight text-zinc-950 sm:text-2xl md:max-w-[16ch] md:text-3xl lg:max-w-[22ch] lg:text-4xl xl:max-w-[24ch] xl:text-[2.65rem]"
+              className="max-w-[20ch] text-xl font-black uppercase leading-[0.96] tracking-tight text-zinc-950 sm:max-w-[22ch] sm:text-2xl md:text-3xl xl:max-w-[22ch] xl:text-4xl 2xl:max-w-[24ch] 2xl:text-[2.65rem]"
             >
               {content.title}
             </motion.h2>
@@ -151,7 +151,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               initial={reduceMotion ? false : { opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.2, ease }}
-              className="max-w-[42ch] text-sm font-medium leading-relaxed text-zinc-600 md:max-w-[36ch] md:text-[0.95rem] lg:max-w-[48ch] lg:text-base"
+              className="max-w-[42ch] text-sm font-medium leading-relaxed text-zinc-600 sm:text-[0.95rem] md:text-base xl:max-w-[48ch]"
             >
               {content.body}
             </motion.p>
@@ -167,7 +167,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               </p>
 
               {/* One prompt at a time — wider copy keeps this block shorter. */}
-              <div className="relative min-h-24 sm:min-h-28 md:min-h-30 lg:min-h-32">
+              <div className="relative min-h-24 sm:min-h-28 md:min-h-30 xl:min-h-32">
                 <AnimatePresence mode="wait">
                   {current ? (
                     <motion.div
@@ -192,10 +192,10 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                       >
                         {String(activePrompt + 1).padStart(2, '0')}
                       </p>
-                      <p className="mt-1.5 text-xl font-black uppercase leading-[1.05] tracking-tight text-zinc-950 sm:mt-2 sm:text-2xl md:text-[1.45rem] lg:text-[1.85rem]">
+                      <p className="mt-1.5 text-xl font-black uppercase leading-[1.05] tracking-tight text-zinc-950 sm:mt-2 sm:text-2xl md:text-[1.65rem] xl:text-[1.85rem]">
                         {current.label}
                       </p>
-                      <p className="mt-2 max-w-[40ch] text-sm font-medium leading-relaxed text-zinc-500 sm:mt-3 md:max-w-[36ch] md:text-[0.9rem] lg:max-w-[48ch] lg:text-[0.95rem]">
+                      <p className="mt-2 max-w-[40ch] text-sm font-medium leading-relaxed text-zinc-500 sm:mt-3 sm:text-[0.95rem] xl:max-w-[48ch]">
                         {current.detail}
                       </p>
                     </motion.div>
@@ -245,12 +245,12 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
               </div>
             </motion.div>
 
-            {/* Phone only — folder fills the empty band under the copy. */}
+            {/* Phone + iPad — folder under copy; desktop uses mid-stage folder. */}
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.92 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.28, ease }}
-              className="mt-auto flex shrink-0 justify-center pt-6 pb-1 md:hidden"
+              className="mt-auto flex shrink-0 justify-center pt-6 pb-1 xl:hidden"
             >
               <Folder
                 label={folderLabel}

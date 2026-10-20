@@ -116,7 +116,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
         >
           <motion.div
             style={{ scaleX: progress }}
-            className="absolute inset-y-0 start-0 origin-left w-full bg-white rtl:origin-right"
+            className="absolute inset-y-0 inset-s-0 origin-left w-full bg-white rtl:origin-right"
           />
         </div>
       </div>
@@ -134,7 +134,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
             'pointer-events-none absolute inset-x-0 top-0 transition-colors duration-300',
             showDarkVeil
               ? 'h-28 bg-linear-to-b from-zinc-950/55 via-zinc-950/20 to-transparent'
-              : 'h-16 bg-transparent lg:h-[4.25rem]',
+              : 'h-16 bg-transparent lg:h-17',
           )}
         />
         <div className="pointer-events-auto relative border-b border-transparent bg-transparent">
@@ -142,7 +142,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
             aria-label={content.name}
             className={cn(
               LANDING_SHELL,
-              'grid h-16 grid-cols-[1fr_auto] items-center gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-6 lg:h-[4.25rem]',
+              'grid h-16 grid-cols-[1fr_auto] items-center gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:gap-6 lg:h-17',
             )}
           >
             {/* Brand */}
@@ -159,7 +159,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
               >
                 <span
                   className={cn(
-                    'relative h-9 w-[3.8rem] shrink-0 transition-opacity group-hover:opacity-90 md:h-10 md:w-[4.25rem]',
+                    'relative h-9 w-[3.8rem] shrink-0 transition-opacity group-hover:opacity-90 md:h-10 md:w-17',
                     onLight && 'brightness-0',
                   )}
                 >
@@ -216,8 +216,8 @@ export function LandingNav({ content, locale }: LandingNavProps) {
                       className={cn(
                         'group relative flex items-baseline gap-2 px-3 py-2 text-[13px] font-medium tracking-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-4',
                         onLight
-                          ? 'text-zinc-600 hover:text-zinc-950 focus-visible:outline-zinc-950 aria-[current=true]:text-zinc-950'
-                          : 'text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] hover:text-white focus-visible:outline-white aria-[current=true]:text-white',
+                          ? 'text-zinc-600 hover:text-zinc-950 focus-visible:outline-zinc-950 aria-current:text-zinc-950'
+                          : 'text-white/90 [text-shadow:0_1px_12px_rgb(0_0_0/0.5)] hover:text-white focus-visible:outline-white aria-current:text-white',
                       )}
                     >
                       <span
@@ -225,8 +225,8 @@ export function LandingNav({ content, locale }: LandingNavProps) {
                         className={cn(
                           'font-mono text-[10px] tracking-[0.16em]',
                           onLight
-                            ? 'text-zinc-400 group-hover:text-zinc-700 group-aria-[current=true]:text-zinc-700'
-                            : 'text-white/75 group-hover:text-white group-aria-[current=true]:text-white',
+                            ? 'text-zinc-400 group-hover:text-zinc-700 group-aria-current:text-zinc-700'
+                            : 'text-white/75 group-hover:text-white group-aria-current:text-white',
                         )}
                       >
                         {section.index}
@@ -336,7 +336,7 @@ export function LandingNav({ content, locale }: LandingNavProps) {
                         type="button"
                         onClick={() => go(id)}
                         aria-current={isActive ? 'true' : undefined}
-                        className="flex w-full items-baseline justify-between gap-4 px-2 py-3 text-start text-white/90 aria-[current=true]:text-white"
+                        className="flex w-full items-baseline justify-between gap-4 px-2 py-3 text-start text-white/90 aria-current:text-white"
                       >
                         <span className="text-base font-medium">{section.label}</span>
                         <span

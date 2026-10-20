@@ -20,9 +20,6 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-/** Allow blocking while locale-aware providers settle under Cache Components. */
-export const instant = false;
-
 export default async function LangLayout({
   children,
   params,

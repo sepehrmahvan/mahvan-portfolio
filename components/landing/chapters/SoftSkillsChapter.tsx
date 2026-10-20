@@ -84,7 +84,7 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
         eyebrow={content.stepper.eyebrow}
         stages={content.stepper.stages}
         active={active}
-        className="h-full min-h-0 max-w-[min(100%,13.5rem)] flex-1 self-stretch sm:max-w-[14.5rem] lg:max-w-[17rem] xl:max-w-[18.5rem]"
+        className="h-full min-h-0 max-w-[min(100%,13.5rem)] flex-1 self-stretch sm:max-w-[14.5rem] md:max-w-[17.5rem] lg:max-w-[19rem] xl:max-w-[18.5rem]"
       />
     </div>
   );
