@@ -1,2 +1,2 @@
 # Static hosting: proxy.ts does not run. Send bare `/` to default locale.
-/ /fa 302
+/ /en 302

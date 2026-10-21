@@ -5,7 +5,7 @@ import { useEffect, type ReactNode } from 'react';
 
 import { hasSession } from '@/auth/session';
 import { routes } from '@/constants/routes';
-import { isLocale, type Locale } from '@/types/locale';
+import { defaultLocale, isLocale, type Locale } from '@/types/locale';
 
 interface GuardProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ function useLang(): Locale {
   const params = useParams<{ lang?: string }>();
   const lang = params.lang;
   if (lang && isLocale(lang)) return lang;
-  return 'fa';
+  return defaultLocale;
 }
 
 export function AuthGuard({ children }: GuardProps) {

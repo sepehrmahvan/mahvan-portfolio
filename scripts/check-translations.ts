@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 /** Keep in sync with `types/locale.ts` → `locales`. */
-const locales = ['fa', 'en', 'ar', 'ru', 'zh', 'ja', 'de'] as const;
+const locales = ['en', 'fa', 'ar', 'ru', 'zh', 'ja', 'de'] as const;
 const localesDir = join(process.cwd(), 'locales');
 const referenceLocale = 'fa' as const;
 

@@ -21,14 +21,14 @@
 
 ## Languages
 
-- **Primary: Persian (`fa`), RTL.** Default language and default direction.
-- **Secondary: English (`en`), LTR.**
+- **Primary: English (`en`), LTR.** Default language and default direction.
+- **Persian (`fa`), RTL.** Also supported.
 - **Arabic (`ar`), RTL.** Same direction helpers as Persian (`isRtlLocale`).
 - **Russian (`ru`), LTR.**
 - **Chinese Simplified (`zh`), LTR.**
 - **Japanese (`ja`), LTR.**
 - **German (`de`), LTR.**
-- Locale lives in the URL: `/fa/...`, `/en/...`, `/ar/...`, `/ru/...`, `/zh/...`, `/ja/...`, `/de/...`. Visiting `/` redirects to `/fa`.
+- Locale lives in the URL: `/en/...`, `/fa/...`, `/ar/...`, `/ru/...`, `/zh/...`, `/ja/...`, `/de/...`. Visiting `/` redirects to `/en`.
 
 ---
 
@@ -229,7 +229,7 @@ For rare cases that must differ, use `rtl:` and `ltr:` variants (e.g. `rtl:rotat
 
 ## i18n Rules (i18next)
 
-- Config in `lib/i18n/settings.ts`: `locales = ['fa', 'en']`, `defaultLocale = 'fa'`, list of namespaces.
+- Config in `lib/i18n/settings.ts` / `types/locale.ts`: `defaultLocale = 'en'`, list of namespaces.
 - Translation files: `locales/<lang>/<namespace>.json`. Both languages must have the **same keys** (`scripts/` can include a check for this).
 - Namespaces: `common` plus one per feature (e.g. `users`).
 - No hardcoded user-facing text. Always `t('namespace:key')`.

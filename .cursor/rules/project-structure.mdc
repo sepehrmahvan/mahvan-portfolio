@@ -11,5 +11,5 @@ Read and follow `PROJECT_STRUCTURE.md` at the repo root.
 - Flat root layout (no `src/`). Alias `@/*` -> `./*`.
 - Data flow: `components` -> `hooks/queries` -> `services` -> `lib/axios`. Never reverse.
 - Pages in `app/[lang]/...` stay thin; logic lives outside `app/`.
-- Primary locale is Persian (`fa`, RTL). English (`en`, LTR) is secondary. Also supported: Arabic (`ar`, RTL), Russian (`ru`, LTR), Chinese Simplified (`zh`, LTR), Japanese (`ja`, LTR), German (`de`, LTR).
+- Primary locale is English (`en`, LTR). Also supported: Persian (`fa`, RTL), Arabic (`ar`, RTL), Russian (`ru`, LTR), Chinese Simplified (`zh`, LTR), Japanese (`ja`, LTR), German (`de`, LTR). Visiting `/` redirects to `/en`.
 - Next.js 16 uses `proxy.ts` (not `middleware.ts`) for locale/auth redirects.

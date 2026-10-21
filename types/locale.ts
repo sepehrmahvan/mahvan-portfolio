@@ -1,8 +1,8 @@
-export const locales = ['fa', 'en', 'ar', 'ru', 'zh', 'ja', 'de'] as const;
+export const locales = ['en', 'fa', 'ar', 'ru', 'zh', 'ja', 'de'] as const;
 
 export type Locale = (typeof locales)[number];
 
-export const defaultLocale: Locale = 'fa';
+export const defaultLocale: Locale = 'en';
 
 /** Locales that lay out right-to-left. Add new RTL languages here. */
 export const rtlLocales = ['fa', 'ar'] as const satisfies readonly Locale[];

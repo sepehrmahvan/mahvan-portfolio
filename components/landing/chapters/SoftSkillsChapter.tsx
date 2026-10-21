@@ -69,10 +69,10 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.55, ease, delay: reduceMotion ? 0 : 0.1 }}
         // Same band height as before. Large monitors: width follows image aspect (912×1724) so no crop.
-        className="relative h-full min-h-0 w-[min(28vw,7.5rem)] shrink-0 self-stretch overflow-hidden sm:w-[min(24vw,9rem)] md:w-[min(20vw,10rem)] lg:aspect-[912/1724] lg:w-auto"
+        className="relative h-full min-h-0 w-[min(28vw,7.5rem)] shrink-0 self-stretch overflow-hidden sm:w-[min(24vw,9rem)] md:w-[min(20vw,10rem)] lg:aspect-912/1724 lg:w-auto"
       >
         <Image
-          src="/images/my-model.png"
+          src="/images/my-model.webp"
           alt="Sepehr Mahvan"
           fill
           sizes="(max-width: 1024px) 160px, 320px"
@@ -84,7 +84,7 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
         eyebrow={content.stepper.eyebrow}
         stages={content.stepper.stages}
         active={active}
-        className="h-full min-h-0 max-w-[min(100%,13.5rem)] flex-1 self-stretch sm:max-w-[14.5rem] md:max-w-[17.5rem] lg:max-w-[19rem] xl:max-w-[18.5rem]"
+        className="h-full min-h-0 max-w-[min(100%,13.5rem)] flex-1 self-stretch sm:max-w-58 md:max-w-70 lg:max-w-76 xl:max-w-74"
       />
     </div>
   );
@@ -145,7 +145,7 @@ export function SoftSkillsChapter({ content, locale }: SoftSkillsChapterProps) {
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              'pointer-events-none absolute top-16 bottom-[30px] z-10 hidden items-stretch justify-center md:flex lg:top-[4.25rem]',
+              'pointer-events-none absolute top-16 bottom-7.5 z-10 hidden items-stretch justify-center md:flex lg:top-17',
               // iPad: full mid band. Desktop: leave room for wheel + aside.
               isRtl
                 ? 'right-4 left-[min(48vw,calc(28rem+1.5rem))] font-(family-name:--font-fa) lg:right-[min(36vw,18rem)] lg:left-[min(48vw,calc(32rem+2rem))]'

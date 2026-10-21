@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="fa"
-      dir="rtl"
+      lang="en"
+      dir="ltr"
       suppressHydrationWarning
-      className={`${kalameh.variable} ${satoshi.variable} font-[family-name:var(--font-fa)] h-full antialiased`}
+      className={`${kalameh.variable} ${satoshi.variable} font-[family-name:var(--font-en)] h-full antialiased`}
     >
       <body className="min-h-full bg-zinc-50 text-zinc-950">{children}</body>
     </html>
