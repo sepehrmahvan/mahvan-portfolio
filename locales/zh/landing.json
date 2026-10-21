@@ -219,7 +219,7 @@
       {
         "title": "TVTO Ranking Platform",
         "subtitle": "国家职业技术培训评价与排名仪表盘",
-        "image": "/images/portfolio/tvto.png",
+        "image": "/images/portfolio/tvto.webp",
         "alt": "TVTO排名平台仪表盘，含KPI与图表",
         "url": "https://tvto.evalchi.ir/",
         "description": "面向职业技术培训中心的全国360°评估与排名平台——KPI看板、省/全国对比与指标增长报告。"
@@ -227,7 +227,7 @@
       {
         "title": "IranYari",
         "subtitle": "面向贫困患者的资助平台",
-        "image": "/images/portfolio/iranyari.jpg",
+        "image": "/images/portfolio/iranyari.webp",
         "alt": "IranYari财务仪表盘，含交易报表与图表",
         "url": "https://iranyari.com/",
         "description": "为贫困患者提供资金支持的平台。款项以全国社工名义汇入伊朗医科大学账户，用于患者治疗。"
@@ -235,7 +235,7 @@
       {
         "title": "Tamin Sanat Asia",
         "subtitle": "线束工业设备电商",
-        "image": "/images/portfolio/tsasia.jpg",
+        "image": "/images/portfolio/tsa.webp",
         "alt": "TSA产品页：线束设备网格与分类筛选",
         "url": "https://tsasia.ir/",
         "description": "面向线束原材料及生产/测试设备的B2B电商——工业目录、分类筛选与在线下单。"
@@ -243,7 +243,7 @@
       {
         "title": "iRakhsh",
         "subtitle": "社会化智库平台",
-        "image": "/images/portfolio/irakhsh.jpg",
+        "image": "/images/portfolio/irakhsh.webp",
         "alt": "iRakhsh已提主题页：主题卡片与设计流程导航",
         "url": "https://irakhsh.ir/",
         "description": "用于提出主题、基于主题设计问题、为问题设计方案，并根据智库讨论室对话设计组织的社交平台。"

@@ -219,7 +219,7 @@
       {
         "title": "TVTO Ranking Platform",
         "subtitle": "職業訓練機関の評価・ランキングダッシュボード",
-        "image": "/images/portfolio/tvto.png",
+        "image": "/images/portfolio/tvto.webp",
         "alt": "KPIとチャートを含むTVTOランキングプラットフォームのダッシュボード",
         "url": "https://tvto.evalchi.ir/",
         "description": "職業訓練機関向けの全国360°評価・ランキング基盤。KPIボード、都道府県/全国比較、指標成長レポート。"
@@ -227,7 +227,7 @@
       {
         "title": "IranYari",
         "subtitle": "困窮患者向け資金支援プラットフォーム",
-        "image": "/images/portfolio/iranyari.jpg",
+        "image": "/images/portfolio/iranyari.webp",
         "alt": "IranYariの財務ダッシュボード（取引レポートとチャート）",
         "url": "https://iranyari.com/",
         "description": "困窮患者を金銭的に支援するプラットフォーム。全国のソーシャルワーカーを代表して、資金がイラン医科大学の口座に入金され、治療に充てられます。"
@@ -235,7 +235,7 @@
       {
         "title": "Tamin Sanat Asia",
         "subtitle": "ワイヤーハーネス産業機器EC",
-        "image": "/images/portfolio/tsasia.jpg",
+        "image": "/images/portfolio/tsa.webp",
         "alt": "カテゴリフィルタ付きのTSA製品グリッドページ",
         "url": "https://tsasia.ir/",
         "description": "ワイヤーハーネスの原材料および製造・試験装置向けB2B EC。産業カタログ、カテゴリ絞り込み、オンライン注文。"
@@ -243,7 +243,7 @@
       {
         "title": "iRakhsh",
         "subtitle": "ソーシャル・シンクタンク基盤",
-        "image": "/images/portfolio/irakhsh.jpg",
+        "image": "/images/portfolio/irakhsh.webp",
         "alt": "トピックカードと設計フローナビを備えたiRakhshの提案トピックページ",
         "url": "https://irakhsh.ir/",
         "description": "テーマ提案、課題設計、解決策設計、そしてシンクタンク会議室の議論に基づく組織設計を行うソーシャルプラットフォーム。"

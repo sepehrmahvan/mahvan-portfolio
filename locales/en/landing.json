@@ -219,7 +219,7 @@
       {
         "title": "TVTO Ranking Platform",
         "subtitle": "National TVTO evaluation & ranking dashboard",
-        "image": "/images/portfolio/tvto.png",
+        "image": "/images/portfolio/tvto.webp",
         "alt": "TVTO Ranking Platform dashboard with KPIs, radar and bar charts",
         "url": "https://tvto.evalchi.ir/",
         "description": "National 360° evaluation and ranking platform for TVTO training centers — KPI boards, provincial vs national benchmarks, and indicator growth reports."
@@ -227,7 +227,7 @@
       {
         "title": "IranYari",
         "subtitle": "Financial aid platform for patients in need",
-        "image": "/images/portfolio/iranyari.jpg",
+        "image": "/images/portfolio/iranyari.webp",
         "alt": "IranYari finance dashboard with transaction reports, charts, and social-worker list",
         "url": "https://iranyari.com/",
         "description": "A platform for financially supporting patients in need. Funds are deposited—on behalf of social workers nationwide—into the Iran University of Medical Sciences account to cover treatment."
@@ -235,7 +235,7 @@
       {
         "title": "Tamin Sanat Asia",
         "subtitle": "Industrial wire-harness e-commerce",
-        "image": "/images/portfolio/tsasia.jpg",
+        "image": "/images/portfolio/tsa.webp",
         "alt": "TSA products page with wire-harness equipment grid and category filters",
         "url": "https://tsasia.ir/",
         "description": "B2B e-commerce for wire-harness raw materials and production/test equipment — industrial catalog, category filters, and online ordering."
@@ -243,7 +243,7 @@
       {
         "title": "iRakhsh",
         "subtitle": "Social think-tank platform",
-        "image": "/images/portfolio/irakhsh.jpg",
+        "image": "/images/portfolio/irakhsh.webp",
         "alt": "iRakhsh proposed-topics page with topic cards and design-flow navigation",
         "url": "https://irakhsh.ir/",
         "description": "A social platform to propose topics, design problems on those topics, design solutions for the problems, and design organizations from think-tank room discussions."
