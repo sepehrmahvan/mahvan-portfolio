@@ -151,7 +151,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
               'pointer-events-auto absolute top-[11%] bottom-[3%] z-10 flex max-w-none flex-col items-stretch justify-start gap-3 overflow-y-auto sm:top-[12%] sm:justify-center sm:gap-4 md:top-[8%] md:bottom-[5%] md:gap-4 md:overflow-visible md:px-3 lg:gap-5 lg:px-4',
               // Physical LEFT rail (same as English) — ! so nothing overrides under RTL html.
               LANDING_INSET_START,
-              '!right-3 w-auto md:!right-auto md:w-[min(52vw,28rem)] lg:w-[min(50vw,40rem)] xl:w-[min(50vw,44rem)]',
+              'right-3! w-auto md:right-auto! md:w-[min(52vw,28rem)] lg:w-[min(50vw,40rem)] xl:w-[min(50vw,44rem)]',
               copyFont,
             )}
           >
@@ -233,7 +233,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                 ))}
               </motion.ul>
 
-              <div className="mx-auto h-[min(42dvh,320px)] w-full max-w-[18rem] sm:h-[min(48dvh,400px)] sm:max-w-[22rem] md:h-[min(52dvh,440px)] md:max-w-full lg:h-[min(58dvh,520px)]">
+              <div className="mx-auto h-[min(42dvh,320px)] w-full max-w-[18rem] sm:h-[min(48dvh,400px)] sm:max-w-88 md:h-[min(52dvh,440px)] md:max-w-full lg:h-[min(58dvh,520px)]">
                 <CardSwap
                   items={galleryItems}
                   width={480}
