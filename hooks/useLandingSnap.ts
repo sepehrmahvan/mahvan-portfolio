@@ -18,14 +18,16 @@ import {
   type ChapterId,
 } from '@/components/landing/timeline';
 
-const SCROLL_DURATION = 0.45;
-/** Hero → skills: match the sped-up forward video wall-clock. */
+/** Non-hero section snap — keep short for weak devices. */
+const SCROLL_DURATION = 0.32;
+/** Hero ↔ skills: match the sped-up forward/reverse video wall-clock. */
 const HERO_EXIT_DURATION = HERO_FORWARD_WALL_S;
-const GESTURE_LOCK_MS = 520;
 const TOUCH_THRESHOLD = 48;
 const EDGE_EPS = 4;
 const KEY_PAGE_FACTOR = 0.9;
 const SMOOTH_EASE = [0.45, 0.05, 0.25, 1] as const;
+/** Extra ms after scroll tween before accepting the next gesture. */
+const UNLOCK_TAIL_MS = 48;
 
 type ProjectsBounds = {
   top: number;
@@ -49,7 +51,7 @@ function projectsBounds(section: HTMLElement): ProjectsBounds {
 }
 
 export type LandingSnapHooks = {
-  /** Fired when leaving the hero snap (e.g. resume hero video 2→4). */
+  /** Fired when leaving the hero snap (any destination). */
   onLeaveHero?: () => void;
   /** Fired when returning to the hero snap. */
   onEnterHero?: () => void;
@@ -81,6 +83,8 @@ export type LandingSectionRefs = {
 
 /**
  * One wheel / swipe / key press = one full-viewport section.
+ * Scroll lock is held until the tween finishes (not a fixed timer) to avoid
+ * step/video desync on slow devices.
  */
 export function useLandingSnap(
   sections: LandingSectionRefs,
@@ -107,14 +111,30 @@ export function useLandingSnap(
     animationsRef.current = [];
   }, []);
 
-  const lockFor = useCallback((ms: number) => {
-    lockedRef.current = true;
-    if (unlockTimer.current) clearTimeout(unlockTimer.current);
-    unlockTimer.current = setTimeout(() => {
-      lockedRef.current = false;
+  const clearUnlockTimer = useCallback(() => {
+    if (unlockTimer.current) {
+      clearTimeout(unlockTimer.current);
       unlockTimer.current = null;
-    }, ms);
+    }
   }, []);
+
+  const unlock = useCallback(() => {
+    clearUnlockTimer();
+    lockedRef.current = false;
+  }, [clearUnlockTimer]);
+
+  /** Hard lock until unlock(); safety timeout only as a fallback. */
+  const lockWithFallback = useCallback(
+    (fallbackMs: number) => {
+      lockedRef.current = true;
+      clearUnlockTimer();
+      unlockTimer.current = setTimeout(() => {
+        lockedRef.current = false;
+        unlockTimer.current = null;
+      }, fallbackMs);
+    },
+    [clearUnlockTimer],
+  );
 
   const sectionForStep = useCallback((index: number): HTMLElement | null => {
     const s = sectionsRef.current;
@@ -126,6 +146,18 @@ export function useLandingSnap(
     return s.experience.current;
   }, []);
 
+  const resolveTargetScroll = useCallback(
+    (next: number, previous: number): number => {
+      const section = sectionForStep(next);
+      if (!section) return window.scrollY;
+      if (next === SNAP_PROJECTS_INDEX && previous === SNAP_CONTACT_INDEX) {
+        return projectsBounds(section).maxScroll;
+      }
+      return sectionScrollTop(section);
+    },
+    [sectionForStep],
+  );
+
   const goToStep = useCallback(
     (rawIndex: number) => {
       const next = clampStep(rawIndex);
@@ -133,9 +165,9 @@ export function useLandingSnap(
       if (next === previous) return;
 
       const reduce = reduceMotionRef.current;
-      const leavingHero = previous === 0 && next === 1;
+      // Any exit from hero must drive the shared video (nav can skip skills).
+      const leavingHero = previous === 0 && next > 0;
       const enteringHero = previous !== 0 && next === 0;
-      // Match the 2s video beat both ways (2→4 out, 4→2 back).
       const duration =
         reduce ? 0 : leavingHero || enteringHero ? HERO_EXIT_DURATION : SCROLL_DURATION;
       const scrollMs = Math.round(duration * 1000);
@@ -144,59 +176,55 @@ export function useLandingSnap(
       if (enteringHero) hooksRef.current.onEnterHero?.();
 
       stepRef.current = next;
-      lockFor(reduce ? 80 : Math.max(GESTURE_LOCK_MS, scrollMs + 40));
       stopAnimations();
+      // Hold gestures until tween settles; fallback covers stalled animations.
+      lockWithFallback(Math.max(scrollMs + UNLOCK_TAIL_MS + 200, 900));
 
       const targetProgress = next / (SNAP_STEP_COUNT - 1);
-      const section = sectionForStep(next);
-      // Recalculate after a frame so sticky/neg-margin layout is current.
-      let targetScroll = section ? sectionScrollTop(section) : window.scrollY;
-      // Entering projects from contact → land on the bottom of tall projects content.
-      if (
-        next === SNAP_PROJECTS_INDEX &&
-        previous === SNAP_CONTACT_INDEX &&
-        section
-      ) {
-        const { maxScroll } = projectsBounds(section);
-        targetScroll = maxScroll;
-      }
-
       time.set(snapTimeForIndex(next));
       progress.set(targetProgress);
 
-      if (scrollMs === 0) {
-        window.scrollTo({ top: targetScroll, behavior: 'auto' });
-        return;
-      }
+      const finishScroll = () => {
+        const liveTop = resolveTargetScroll(next, previous);
+        window.scrollTo({ top: liveTop, behavior: 'auto' });
+        clearUnlockTimer();
+        unlockTimer.current = setTimeout(unlock, UNLOCK_TAIL_MS);
+      };
 
-      const fromScroll = window.scrollY;
-      animationsRef.current = [
-        animate(fromScroll, targetScroll, {
-          duration,
-          ease: SMOOTH_EASE,
-          onUpdate: (value) => {
-            window.scrollTo({ top: value, behavior: 'auto' });
-          },
-          onComplete: () => {
-            // Snap exactly to the live section edge (layout may have shifted).
-            const live = sectionForStep(next);
-            if (!live) return;
-            if (
-              next === SNAP_PROJECTS_INDEX &&
-              previous === SNAP_CONTACT_INDEX
-            ) {
-              window.scrollTo({
-                top: projectsBounds(live).maxScroll,
-                behavior: 'auto',
-              });
-              return;
-            }
-            window.scrollTo({ top: sectionScrollTop(live), behavior: 'auto' });
-          },
-        }),
-      ];
+      // Recalculate after layout (sticky / negative margin) settles.
+      const run = () => {
+        const targetScroll = resolveTargetScroll(next, previous);
+
+        if (scrollMs === 0) {
+          window.scrollTo({ top: targetScroll, behavior: 'auto' });
+          finishScroll();
+          return;
+        }
+
+        const fromScroll = window.scrollY;
+        animationsRef.current = [
+          animate(fromScroll, targetScroll, {
+            duration,
+            ease: SMOOTH_EASE,
+            onUpdate: (value) => {
+              window.scrollTo({ top: value, behavior: 'auto' });
+            },
+            onComplete: finishScroll,
+          }),
+        ];
+      };
+
+      requestAnimationFrame(run);
     },
-    [lockFor, progress, sectionForStep, stopAnimations, time],
+    [
+      clearUnlockTimer,
+      lockWithFallback,
+      progress,
+      resolveTargetScroll,
+      stopAnimations,
+      time,
+      unlock,
+    ],
   );
 
   const goToStepRef = useRef(goToStep);
@@ -210,14 +238,12 @@ export function useLandingSnap(
     goToStepRef.current(SNAP_CONTACT_INDEX);
   }, []);
 
-  // Mount once — never stop an in-flight hero→skills scroll on parent re-renders.
   useEffect(() => {
     if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
     window.scrollTo({ top: 0, behavior: 'auto' });
 
-    /** Scroll inside tall projects before snapping to neighbors. */
     const scrollProjectsBy = (delta: number): boolean => {
       if (stepRef.current !== SNAP_PROJECTS_INDEX) return false;
       const section = sectionsRef.current.projects.current;
@@ -242,6 +268,7 @@ export function useLandingSnap(
         Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
       if (delta === 0) return;
       event.preventDefault();
+      if (lockedRef.current) return;
       if (scrollProjectsBy(delta)) return;
       move(delta > 0 ? 1 : -1);
     };
@@ -275,7 +302,6 @@ export function useLandingSnap(
       const dy = startY - endY;
       if (Math.abs(dy) < TOUCH_THRESHOLD) return;
 
-      // Tall projects: in-section touchmove already handled scroll; snap only at edges.
       if (stepRef.current === SNAP_PROJECTS_INDEX) {
         const section = sectionsRef.current.projects.current;
         if (section) {
@@ -293,6 +319,20 @@ export function useLandingSnap(
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null;
       if (target?.closest('input, textarea, select, [contenteditable="true"]')) return;
+      if (lockedRef.current) {
+        if (
+          event.key === 'ArrowDown' ||
+          event.key === 'ArrowUp' ||
+          event.key === 'PageDown' ||
+          event.key === 'PageUp' ||
+          event.key === ' ' ||
+          event.key === 'Home' ||
+          event.key === 'End'
+        ) {
+          event.preventDefault();
+        }
+        return;
+      }
 
       const page = Math.round(window.innerHeight * KEY_PAGE_FACTOR);
 
@@ -343,10 +383,10 @@ export function useLandingSnap(
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('keydown', onKeyDown);
-      if (unlockTimer.current) clearTimeout(unlockTimer.current);
+      clearUnlockTimer();
       stopAnimations();
     };
-  }, [stopAnimations]);
+  }, [clearUnlockTimer, stopAnimations]);
 
   return { time, progress, scrollToChapter, scrollToContact };
 }

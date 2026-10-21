@@ -44,108 +44,108 @@
     "body": "用 TypeScript、Next.js 与 React 设计并构建产品软件。从想法到可交付平台——架构、API、界面与生产部署，与产品团队端到端合作。"
   },
   "skills": {
-    "eyebrow": "02 · Discover",
+    "eyebrow": "02 · 洞察",
     "title": "编码前的产品发现",
     "body": "在第一个 React 组件之前，用正确的问题打磨产品简报，明确领域、用户与最小可交付切片——是构建计划，不是愿望清单。",
-    "listenLabel": "I'm asking about",
+    "listenLabel": "正在询问",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
+        "description": "全栈产品工程师——软件架构、界面，以及从数据库到客户端的类型安全细节。"
       },
       {
-        "title": "Discover first",
-        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
+        "title": "先做发现",
+        "description": "打压验证想法，直到简报可用于 Next.js 与 React 交付。"
       },
       {
-        "title": "TypeScript stack",
-        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
+        "title": "TypeScript 技术栈",
+        "description": "React、Next.js、Node.js、PostgreSQL——从模式到最后一个按钮的全栈。"
       },
       {
-        "title": "Platform work",
+        "title": "平台工作",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
+        "alt": "Sepehr Mahvan 构建的 Web 平台分析仪表盘"
       },
       {
-        "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
+        "title": "可交付就绪",
+        "description": "仪表盘、CRM 与管理后台——线上运行、可度量、可增长。"
       },
       {
-        "title": "Open for work",
-        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
+        "title": "可接项目",
+        "description": "与产品团队合作，把想法变成可上线的全栈软件。"
       }
     ],
     "facets": [
       {
-        "label": "The business problem",
-        "detail": "What has to change for the product to win — and the cost if it does not."
+        "label": "业务问题",
+        "detail": "产品要赢必须改变什么——以及不改变的代价。"
       },
       {
-        "label": "Users & stakeholders",
-        "detail": "Who uses it, who pays, and who can stop the project."
+        "label": "用户与干系人",
+        "detail": "谁使用、谁付费、谁能叫停项目。"
       },
       {
-        "label": "Real constraints",
-        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
+        "label": "真实约束",
+        "detail": "时间、TypeScript 技术栈、团队产能，以及已在生产中的系统。"
       },
       {
-        "label": "MVP slice",
-        "detail": "The smallest shippable cut that proves the idea before a full build."
+        "label": "MVP 切片",
+        "detail": "在完整构建前证明想法的最小可交付切面。"
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Building platforms with full-stack engineering skills",
-    "eyebrow": "03 · Build",
+    "ariaLabel": "用全栈工程能力构建平台",
+    "eyebrow": "03 · 构建",
     "title": "用 TypeScript 与 Next.js 构建平台",
     "typeLines": [
-      "I turn your idea into a shippable web platform.",
-      "TypeScript from PostgreSQL to the last React button.",
-      "Fast enough to use. Clean enough to extend."
+      "把你的想法变成可交付的 Web 平台。",
+      "从 PostgreSQL 到最后一个 React 按钮全程 TypeScript。",
+      "够快可用。够干净可扩展。"
     ],
-    "processLabel": "Translating the brief into architecture",
-    "doneLabel": "Technical delivery plan ready",
+    "processLabel": "将简报转译为架构",
+    "doneLabel": "技术交付计划已就绪",
     "steps": [
-      "Model the domain and user roles",
-      "Design type-safe APIs and data contracts",
-      "Pick the smallest useful slice to ship",
-      "Instrument monitoring and quality checks"
+      "建模领域与用户角色",
+      "设计类型安全的 API 与数据契约",
+      "选定最小有用可交付切片",
+      "接入监控与质量检查"
     ],
     "focus": [
-      "Product architecture",
-      "Type-safe APIs",
-      "Design systems",
-      "Weekly delivery"
+      "产品架构",
+      "类型安全 API",
+      "设计系统",
+      "每周交付"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a full-stack product",
-      "eyebrow": "Build pipeline",
+      "ariaLabel": "构建全栈产品的技术阶段",
+      "eyebrow": "构建流水线",
       "stages": [
         {
           "index": "01",
-          "title": "Schema",
-          "detail": "PostgreSQL tables, relations, indexes, and migrations."
+          "title": "模式",
+          "detail": "PostgreSQL 表、关系、索引与迁移。"
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typed Node.js routes, auth, validation, and errors."
+          "detail": "带类型的 Node.js 路由、鉴权、校验与错误处理。"
         },
         {
           "index": "03",
-          "title": "Contracts",
-          "detail": "Shared TypeScript types from database to client."
+          "title": "契约",
+          "detail": "从数据库到客户端的共享 TypeScript 类型。"
         },
         {
           "index": "04",
-          "title": "UI",
-          "detail": "Next.js/React screens, forms, and design-system components."
+          "title": "界面",
+          "detail": "Next.js/React 页面、表单与设计系统组件。"
         },
         {
           "index": "05",
-          "title": "Deploy",
-          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
+          "title": "部署",
+          "detail": "Docker、CI/CD、监控与安全发布。"
         }
       ]
     },
@@ -162,50 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected full-stack platform work",
-    "eyebrow": "04 · Ship",
+    "galleryLabel": "精选全栈平台作品",
+    "eyebrow": "04 · 交付",
     "title": "将平台交付到生产环境",
     "typeLines": [
-      "Your web platform is in real users' hands.",
-      "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to scale."
+      "你的 Web 平台已在真实用户手中。",
+      "仪表盘、CRM、管理工具——线上可用。",
+      "可度量、有文档、可扩展。"
     ],
     "focus": [
-      "Production-ready",
-      "Observable",
-      "Documented handoff"
+      "生产就绪",
+      "可观测",
+      "有文档交接"
     ],
-    "status": "Deployed to production",
+    "status": "已部署到生产环境",
     "gallery": [
       {
-        "title": "Analytics dashboard",
+        "title": "分析仪表盘",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
+        "alt": "全栈 Web 分析仪表盘上的 KPI 磁贴与收入图表"
       },
       {
-        "title": "Sales CRM pipeline",
+        "title": "销售 CRM 管道",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Sales CRM pipeline board with deal cards and amounts"
+        "alt": "带交易卡片与金额的销售 CRM 管道看板"
       },
       {
-        "title": "Finance & billing",
+        "title": "财务与账单",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table and payment status on a finance web console"
+        "alt": "财务 Web 控制台中的发票表与付款状态"
       },
       {
-        "title": "Platform operations",
+        "title": "平台运维",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime and incident timeline"
+        "alt": "带正常运行时间与事件时间线的服务状态网格"
       },
       {
-        "title": "Project workspace",
+        "title": "项目工作区",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
+        "alt": "交付工作区中带状态、优先级与负责人的问题列表"
       },
       {
-        "title": "Customer success",
+        "title": "客户成功",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
+        "alt": "客户成功仪表盘上的留存热力图与入职漏斗"
       }
     ]
   },

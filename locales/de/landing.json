@@ -44,108 +44,108 @@
     "body": "Ich entwerfe und baue Produktsoftware mit TypeScript, Next.js und React. Von der Idee zur lieferbaren Plattform — Architektur, APIs, UI und Production-Deploy mit Product-Teams."
   },
   "skills": {
-    "eyebrow": "02 · Discover",
+    "eyebrow": "02 · Entdecken",
     "title": "Product Discovery vor dem Code",
     "body": "Vor der ersten React-Komponente schärfe ich das Product Brief mit den richtigen Fragen — Domain, Nutzer und kleinster lieferbarer Slice klar. Ein Build-Plan, keine Wunschliste.",
-    "listenLabel": "I'm asking about",
+    "listenLabel": "Ich frage nach",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
+        "description": "Full-Stack Product Engineer — Softwarearchitektur, UI und typsichere Details von der Datenbank bis zum Client."
       },
       {
-        "title": "Discover first",
-        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
+        "title": "Zuerst entdecken",
+        "description": "Ich prüfe die Idee, bis das Brief für Next.js- und React-Lieferung bereit ist."
       },
       {
-        "title": "TypeScript stack",
-        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
+        "title": "TypeScript-Stack",
+        "description": "React, Next.js, Node.js, PostgreSQL — Full-Stack vom Schema bis zum letzten Button."
       },
       {
-        "title": "Platform work",
+        "title": "Plattformarbeit",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
+        "alt": "Analytics-Dashboard einer von Sepehr Mahvan gebauten Webplattform"
       },
       {
-        "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
+        "title": "Ship-bereit",
+        "description": "Dashboards, CRMs und Admin-Panels — live, messbar, wachstumsbereit."
       },
       {
-        "title": "Open for work",
-        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
+        "title": "Verfügbar für Projekte",
+        "description": "Mit Product-Teams Ideen in produktionsreifes Full-Stack-Software verwandeln."
       }
     ],
     "facets": [
       {
-        "label": "The business problem",
-        "detail": "What has to change for the product to win — and the cost if it does not."
+        "label": "Das Geschäftsproblem",
+        "detail": "Was sich ändern muss, damit das Produkt gewinnt — und die Kosten, wenn nicht."
       },
       {
-        "label": "Users & stakeholders",
-        "detail": "Who uses it, who pays, and who can stop the project."
+        "label": "Nutzer & Stakeholder",
+        "detail": "Wer nutzt, wer zahlt und wer das Projekt stoppen kann."
       },
       {
-        "label": "Real constraints",
-        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
+        "label": "Echte Constraints",
+        "detail": "Zeit, TypeScript-Stack, Teamkapazität und Systeme bereits in Production."
       },
       {
-        "label": "MVP slice",
-        "detail": "The smallest shippable cut that proves the idea before a full build."
+        "label": "MVP-Slice",
+        "detail": "Der kleinste lieferbare Schnitt, der die Idee vor dem Vollbau beweist."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Building platforms with full-stack engineering skills",
-    "eyebrow": "03 · Build",
+    "ariaLabel": "Plattformen mit Full-Stack-Engineering bauen",
+    "eyebrow": "03 · Bauen",
     "title": "Plattformen mit TypeScript & Next.js bauen",
     "typeLines": [
-      "I turn your idea into a shippable web platform.",
-      "TypeScript from PostgreSQL to the last React button.",
-      "Fast enough to use. Clean enough to extend."
+      "Ich mache aus Ihrer Idee eine lieferbare Webplattform.",
+      "TypeScript von PostgreSQL bis zum letzten React-Button.",
+      "Schnell genug zum Nutzen. Sauber genug zum Erweitern."
     ],
-    "processLabel": "Translating the brief into architecture",
-    "doneLabel": "Technical delivery plan ready",
+    "processLabel": "Brief in Architektur übersetzen",
+    "doneLabel": "Technischer Lieferplan bereit",
     "steps": [
-      "Model the domain and user roles",
-      "Design type-safe APIs and data contracts",
-      "Pick the smallest useful slice to ship",
-      "Instrument monitoring and quality checks"
+      "Domain und Nutzerrollen modellieren",
+      "Typsichere APIs und Datenverträge entwerfen",
+      "Kleinsten nützlichen Slice zum Shippen wählen",
+      "Monitoring und Qualitätschecks instrumentieren"
     ],
     "focus": [
-      "Product architecture",
-      "Type-safe APIs",
-      "Design systems",
-      "Weekly delivery"
+      "Produktarchitektur",
+      "Typsichere APIs",
+      "Designsysteme",
+      "Wöchentliche Lieferung"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a full-stack product",
-      "eyebrow": "Build pipeline",
+      "ariaLabel": "Technische Stufen eines Full-Stack-Produkts",
+      "eyebrow": "Build-Pipeline",
       "stages": [
         {
           "index": "01",
           "title": "Schema",
-          "detail": "PostgreSQL tables, relations, indexes, and migrations."
+          "detail": "PostgreSQL-Tabellen, Relationen, Indizes und Migrationen."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typed Node.js routes, auth, validation, and errors."
+          "detail": "Getypte Node.js-Routen, Auth, Validierung und Fehler."
         },
         {
           "index": "03",
-          "title": "Contracts",
-          "detail": "Shared TypeScript types from database to client."
+          "title": "Verträge",
+          "detail": "Geteilte TypeScript-Typen von der Datenbank bis zum Client."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Next.js/React screens, forms, and design-system components."
+          "detail": "Next.js/React-Screens, Formulare und Designsystem-Komponenten."
         },
         {
           "index": "05",
           "title": "Deploy",
-          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
+          "detail": "Docker, CI/CD, Monitoring und sicherer Rollout."
         }
       ]
     },
@@ -162,50 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected full-stack platform work",
-    "eyebrow": "04 · Ship",
+    "galleryLabel": "Ausgewählte Full-Stack-Plattformarbeit",
+    "eyebrow": "04 · Ausliefern",
     "title": "Plattformen in Production shippen",
     "typeLines": [
-      "Your web platform is in real users' hands.",
-      "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to scale."
+      "Ihre Webplattform ist in den Händen echter Nutzer.",
+      "Dashboards, CRMs, Admin-Tools — live und nutzbar.",
+      "Gemessen, dokumentiert, skalierbar."
     ],
     "focus": [
       "Production-ready",
-      "Observable",
-      "Documented handoff"
+      "Observierbar",
+      "Dokumentierte Übergabe"
     ],
-    "status": "Deployed to production",
+    "status": "In Production deployed",
     "gallery": [
       {
-        "title": "Analytics dashboard",
+        "title": "Analytics-Dashboard",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
+        "alt": "KPI-Kacheln und Umsatzdiagramm auf einem Full-Stack-Web-Analytics-Dashboard"
       },
       {
-        "title": "Sales CRM pipeline",
+        "title": "Sales-CRM-Pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Sales CRM pipeline board with deal cards and amounts"
+        "alt": "Sales-CRM-Pipeline-Board mit Deal-Karten und Beträgen"
       },
       {
-        "title": "Finance & billing",
+        "title": "Finanzen & Billing",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table and payment status on a finance web console"
+        "alt": "Rechnungstabelle und Zahlungsstatus in einer Finance-Webkonsole"
       },
       {
-        "title": "Platform operations",
+        "title": "Plattformbetrieb",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime and incident timeline"
+        "alt": "Service-Statusraster mit Uptime und Incident-Timeline"
       },
       {
-        "title": "Project workspace",
+        "title": "Projekt-Workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
+        "alt": "Issue-Liste mit Status, Priorität und Assignees im Delivery-Workspace"
       },
       {
-        "title": "Customer success",
+        "title": "Customer Success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
+        "alt": "Retention-Heatmap und Onboarding-Funnel auf einem Customer-Success-Dashboard"
       }
     ]
   },

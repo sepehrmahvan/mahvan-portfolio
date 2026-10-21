@@ -1,9 +1,9 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   // Static export → `npm run build` writes to `out/`
-  // Note: Cache Components / PPR are incompatible with `output: 'export'`.
-  // Proxy/middleware is also disabled under export — root `/` needs a static redirect.
+  // Note: Cache Components / PPR and Proxy (`proxy.ts`) are incompatible with export.
+  // Root `/` uses a static redirect below (proxy/middleware disabled under export).
   output: 'export',
   images: {
     unoptimized: true,
@@ -11,12 +11,22 @@ const nextConfig: NextConfig = {
   experimental: {
     agentFeedback: true,
   },
+  // Replaces root proxy while on static export (dev + hosts that honor Next redirects).
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/fa',
+        permanent: false,
+      },
+    ];
+  },
   turbopack: {
     root: process.cwd(),
     rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+      '*.css': {
+        loaders: ['@tailwindcss/turbopack'],
+        as: '*.css',
       },
     },
   },

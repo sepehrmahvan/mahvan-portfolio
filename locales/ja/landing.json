@@ -44,108 +44,108 @@
     "body": "TypeScript・Next.js・Reactでプロダクトソフトウェアを設計・開発します。アイデアから出荷可能なプラットフォームまで — アーキテクチャ、API、UI、本番デプロイをプロダクトチームと推進します。"
   },
   "skills": {
-    "eyebrow": "02 · Discover",
+    "eyebrow": "02 · 発見",
     "title": "実装前のプロダクト探索",
-    "body": "最初のReactコンポーネントの前に、正しい問い打でブリーフを研ぎ、ドメイン・ユーザー・最小の出荷単位を明確にします。ウィッシュリストではなくビルド計画です。",
-    "listenLabel": "I'm asking about",
+    "body": "最初のReactコンポーネントの前に、正しい問いでブリーフを研ぎ、ドメイン・ユーザー・最小の出荷単位を明確にします。ウィッシュリストではなくビルド計画です。",
+    "listenLabel": "聞いていること",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
         "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
+        "description": "フルスタックプロダクトエンジニア。ソフトウェアアーキテクチャ、UI、データベースからクライアントまでの型安全な詳細。"
       },
       {
-        "title": "Discover first",
-        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
+        "title": "まず発見",
+        "description": "アイデアを検証し、Next.jsとReactでの納品に備えたブリーフに仕上げます。"
       },
       {
-        "title": "TypeScript stack",
-        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
+        "title": "TypeScriptスタック",
+        "description": "React、Next.js、Node.js、PostgreSQL — スキーマから最後のボタンまでのフルスタック。"
       },
       {
-        "title": "Platform work",
+        "title": "プラットフォーム開発",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
+        "alt": "Sepehr Mahvanが構築したWebプラットフォームの分析ダッシュボード"
       },
       {
-        "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
+        "title": "出荷準備完了",
+        "description": "ダッシュボード、CRM、管理パネル — 稼働中、測定可能、成長に対応。"
       },
       {
-        "title": "Open for work",
-        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
+        "title": "案件受付中",
+        "description": "プロダクトチームと共にアイデアを本番対応のフルスタックソフトへ。"
       }
     ],
     "facets": [
       {
-        "label": "The business problem",
-        "detail": "What has to change for the product to win — and the cost if it does not."
+        "label": "ビジネス課題",
+        "detail": "プロダクトが勝つために何を変えるか — 変わらなければ何を失うか。"
       },
       {
-        "label": "Users & stakeholders",
-        "detail": "Who uses it, who pays, and who can stop the project."
+        "label": "ユーザーとステークホルダー",
+        "detail": "誰が使うか、誰が払うか、誰がプロジェクトを止められるか。"
       },
       {
-        "label": "Real constraints",
-        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
+        "label": "現実の制約",
+        "detail": "時間、TypeScriptスタック、チームの余力、本番稼働中のシステム。"
       },
       {
-        "label": "MVP slice",
-        "detail": "The smallest shippable cut that proves the idea before a full build."
+        "label": "MVPスライス",
+        "detail": "フルビルド前にアイデアの価値を証明する最小の出荷単位。"
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Building platforms with full-stack engineering skills",
-    "eyebrow": "03 · Build",
+    "ariaLabel": "フルスタックエンジニアリングでプラットフォームを構築",
+    "eyebrow": "03 · 構築",
     "title": "TypeScriptとNext.jsでプラットフォームを構築",
     "typeLines": [
-      "I turn your idea into a shippable web platform.",
-      "TypeScript from PostgreSQL to the last React button.",
-      "Fast enough to use. Clean enough to extend."
+      "アイデアを出荷可能なWebプラットフォームに変えます。",
+      "PostgreSQLから最後のReactボタンまでTypeScript。",
+      "使える速さ。拡張できるきれいさ。"
     ],
-    "processLabel": "Translating the brief into architecture",
-    "doneLabel": "Technical delivery plan ready",
+    "processLabel": "ブリーフをアーキテクチャへ翻訳中",
+    "doneLabel": "技術デリバリー計画の準備完了",
     "steps": [
-      "Model the domain and user roles",
-      "Design type-safe APIs and data contracts",
-      "Pick the smallest useful slice to ship",
-      "Instrument monitoring and quality checks"
+      "ドメインとユーザーロールのモデリング",
+      "型安全なAPIとデータ契約の設計",
+      "出荷する最小の有用スライスを選定",
+      "モニタリングと品質チェックの導入"
     ],
     "focus": [
-      "Product architecture",
-      "Type-safe APIs",
-      "Design systems",
-      "Weekly delivery"
+      "プロダクトアーキテクチャ",
+      "型安全なAPI",
+      "デザインシステム",
+      "週次デリバリー"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a full-stack product",
-      "eyebrow": "Build pipeline",
+      "ariaLabel": "フルスタックプロダクト構築の技術ステージ",
+      "eyebrow": "ビルドパイプライン",
       "stages": [
         {
           "index": "01",
-          "title": "Schema",
-          "detail": "PostgreSQL tables, relations, indexes, and migrations."
+          "title": "スキーマ",
+          "detail": "PostgreSQLのテーブル、リレーション、インデックス、マイグレーション。"
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typed Node.js routes, auth, validation, and errors."
+          "detail": "型付きNode.jsルート、認証、バリデーション、エラー。"
         },
         {
           "index": "03",
-          "title": "Contracts",
-          "detail": "Shared TypeScript types from database to client."
+          "title": "契約",
+          "detail": "データベースからクライアントまでの共有TypeScript型。"
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Next.js/React screens, forms, and design-system components."
+          "detail": "Next.js/React画面、フォーム、デザインシステムコンポーネント。"
         },
         {
           "index": "05",
-          "title": "Deploy",
-          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
+          "title": "デプロイ",
+          "detail": "Docker、CI/CD、モニタリング、安全なロールアウト。"
         }
       ]
     },
@@ -162,50 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected full-stack platform work",
-    "eyebrow": "04 · Ship",
+    "galleryLabel": "選りすぐりのフルスタックプラットフォーム実績",
+    "eyebrow": "04 · 出荷",
     "title": "プラットフォームを本番へ出荷",
     "typeLines": [
-      "Your web platform is in real users' hands.",
-      "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to scale."
+      "Webプラットフォームは実際のユーザーの手に渡っています。",
+      "ダッシュボード、CRM、管理ツール — 稼働し、使える状態。",
+      "測定され、文書化され、スケールの準備完了。"
     ],
     "focus": [
-      "Production-ready",
-      "Observable",
-      "Documented handoff"
+      "本番対応",
+      "観測可能",
+      "文書化された引き継ぎ"
     ],
-    "status": "Deployed to production",
+    "status": "本番にデプロイ済み",
     "gallery": [
       {
-        "title": "Analytics dashboard",
+        "title": "分析ダッシュボード",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
+        "alt": "フルスタックWeb分析ダッシュボードのKPIタイルと収益チャート"
       },
       {
-        "title": "Sales CRM pipeline",
+        "title": "セールスCRMパイプライン",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Sales CRM pipeline board with deal cards and amounts"
+        "alt": "案件カードと金額付きのセールスCRMパイプラインボード"
       },
       {
-        "title": "Finance & billing",
+        "title": "財務・請求",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table and payment status on a finance web console"
+        "alt": "財務Webコンソールの請求テーブルと支払いステータス"
       },
       {
-        "title": "Platform operations",
+        "title": "プラットフォーム運用",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime and incident timeline"
+        "alt": "稼働率とインシデントタイムライン付きのサービス状態グリッド"
       },
       {
-        "title": "Project workspace",
+        "title": "プロジェクトワークスペース",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
+        "alt": "ステータス・優先度・担当者付きの課題リスト"
       },
       {
-        "title": "Customer success",
+        "title": "カスタマーサクセス",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
+        "alt": "カスタマーサクセスダッシュボードのリテンションヒートマップとオンボーディングファネル"
       }
     ]
   },

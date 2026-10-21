@@ -44,108 +44,108 @@
     "body": "أصمم وأبني برمجيات المنتجات بـ TypeScript و Next.js و React. من الفكرة إلى منصة قابلة للتسليم — البنية، واجهات API، الواجهة، والنشر للإنتاج مع فرق المنتج."
   },
   "skills": {
-    "eyebrow": "02 · Discover",
+    "eyebrow": "٠٢ · اكتشاف",
     "title": "اكتشاف المنتج قبل البرمجة",
     "body": "قبل أول مكوّن React أصقل موجز المنتج بالأسئلة الصحيحة حتى يتضح النطاق والمستخدم وأصغر شريحة قابلة للتسليم — خطة بناء لا قائمة أمنيات.",
-    "listenLabel": "I'm asking about",
-    "folderLabel": "Mahvan",
+    "listenLabel": "أسأل عن",
+    "folderLabel": "مهوان",
     "folderItems": [
       {
-        "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
+        "title": "سبهر مهوان",
+        "description": "مهندس منتجات فول ستاك؛ هندسة البرمجيات والواجهة وتفاصيل آمنة الأنواع من قاعدة البيانات إلى العميل."
       },
       {
-        "title": "Discover first",
-        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
+        "title": "الاكتشاف أولاً",
+        "description": "أختبر الفكرة حتى يصبح الموجز جاهزاً للتسليم بـ Next.js و React."
       },
       {
-        "title": "TypeScript stack",
-        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
+        "title": "مكدس TypeScript",
+        "description": "React و Next.js و Node.js و PostgreSQL — فول ستاك من المخطط إلى آخر زر."
       },
       {
-        "title": "Platform work",
+        "title": "عمل المنصات",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
+        "alt": "لوحة تحليلات من منصة ويب بناها سبهر مهوان"
       },
       {
-        "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
+        "title": "جاهز للتسليم",
+        "description": "لوحات تحكم وCRM ولوحات إدارة — حيّة وقابلة للقياس وجاهزة للنمو."
       },
       {
-        "title": "Open for work",
-        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
+        "title": "متاح للعمل",
+        "description": "مع فرق المنتج لتحويل الأفكار إلى برمجيات فول ستاك جاهزة للإنتاج."
       }
     ],
     "facets": [
       {
-        "label": "The business problem",
-        "detail": "What has to change for the product to win — and the cost if it does not."
+        "label": "مشكلة العمل",
+        "detail": "ما الذي يجب أن يتغير ليفوز المنتج — وتكلفة الفشل إن لم يحدث."
       },
       {
-        "label": "Users & stakeholders",
-        "detail": "Who uses it, who pays, and who can stop the project."
+        "label": "المستخدمون وأصحاب المصلحة",
+        "detail": "من يستخدم، ومن يدفع، ومن يمكنه إيقاف المشروع."
       },
       {
-        "label": "Real constraints",
-        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
+        "label": "القيود الحقيقية",
+        "detail": "الوقت ومكدس TypeScript وقدرة الفريق والأنظمة الحالية في الإنتاج."
       },
       {
-        "label": "MVP slice",
-        "detail": "The smallest shippable cut that proves the idea before a full build."
+        "label": "شريحة MVP",
+        "detail": "أصغر نسخة قابلة للتسليم تثبت قيمة الفكرة قبل البناء الكامل."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Building platforms with full-stack engineering skills",
-    "eyebrow": "03 · Build",
+    "ariaLabel": "بناء المنصات بمهارات هندسة فول ستاك",
+    "eyebrow": "٠٣ · بناء",
     "title": "بناء المنصات بـ TypeScript و Next.js",
     "typeLines": [
-      "I turn your idea into a shippable web platform.",
-      "TypeScript from PostgreSQL to the last React button.",
-      "Fast enough to use. Clean enough to extend."
+      "أحوّل فكرتك إلى منصة ويب قابلة للتسليم.",
+      "TypeScript من PostgreSQL إلى آخر زر React.",
+      "سريعة للاستخدام. نظيفة للتوسعة."
     ],
-    "processLabel": "Translating the brief into architecture",
-    "doneLabel": "Technical delivery plan ready",
+    "processLabel": "ترجمة الموجز إلى معمارية",
+    "doneLabel": "خطة التسليم التقنية جاهزة",
     "steps": [
-      "Model the domain and user roles",
-      "Design type-safe APIs and data contracts",
-      "Pick the smallest useful slice to ship",
-      "Instrument monitoring and quality checks"
+      "نمذجة النطاق وأدوار المستخدم",
+      "تصميم واجهات API آمنة الأنواع وعقود البيانات",
+      "اختيار أصغر شريحة مفيدة للتسليم",
+      "تجهيز المراقبة وفحوصات الجودة"
     ],
     "focus": [
-      "Product architecture",
-      "Type-safe APIs",
-      "Design systems",
-      "Weekly delivery"
+      "معمارية المنتج",
+      "واجهات API آمنة الأنواع",
+      "نظام التصميم",
+      "تسليم أسبوعي"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a full-stack product",
-      "eyebrow": "Build pipeline",
+      "ariaLabel": "المراحل التقنية لبناء منتج فول ستاك",
+      "eyebrow": "خط أنابيب البناء",
       "stages": [
         {
-          "index": "01",
-          "title": "Schema",
-          "detail": "PostgreSQL tables, relations, indexes, and migrations."
+          "index": "٠١",
+          "title": "المخطط",
+          "detail": "جداول PostgreSQL والعلاقات والفهارس والترحيلات."
         },
         {
-          "index": "02",
+          "index": "٠٢",
           "title": "API",
-          "detail": "Typed Node.js routes, auth, validation, and errors."
+          "detail": "مسارات Node.js مكتوبة الأنواع والمصادقة والتحقق والأخطاء."
         },
         {
-          "index": "03",
-          "title": "Contracts",
-          "detail": "Shared TypeScript types from database to client."
+          "index": "٠٣",
+          "title": "العقود",
+          "detail": "أنواع TypeScript مشتركة من قاعدة البيانات إلى العميل."
         },
         {
-          "index": "04",
-          "title": "UI",
-          "detail": "Next.js/React screens, forms, and design-system components."
+          "index": "٠٤",
+          "title": "الواجهة",
+          "detail": "شاشات Next.js/React والنماذج ومكوّنات نظام التصميم."
         },
         {
-          "index": "05",
-          "title": "Deploy",
-          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
+          "index": "٠٥",
+          "title": "النشر",
+          "detail": "Docker و CI/CD والمراقبة وطرح آمن."
         }
       ]
     },
@@ -162,50 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected full-stack platform work",
-    "eyebrow": "04 · Ship",
+    "galleryLabel": "أعمال منصات فول ستاك مختارة",
+    "eyebrow": "٠٤ · تسليم",
     "title": "تسليم المنصات إلى الإنتاج",
     "typeLines": [
-      "Your web platform is in real users' hands.",
-      "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to scale."
+      "منصتك الويب بين أيدي مستخدمين حقيقيين.",
+      "لوحات تحكم وCRM وأدوات إدارة — حيّة وقابلة للاستخدام.",
+      "مقاسة وموثّقة وجاهزة للتوسّع."
     ],
     "focus": [
-      "Production-ready",
-      "Observable",
-      "Documented handoff"
+      "جاهز للإنتاج",
+      "قابل للمراقبة",
+      "تسليم موثّق"
     ],
-    "status": "Deployed to production",
+    "status": "منشور في الإنتاج",
     "gallery": [
       {
-        "title": "Analytics dashboard",
+        "title": "لوحة تحليلات",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
+        "alt": "بلاطات مؤشرات ورسوم إيرادات على لوحة تحليلات ويب فول ستاك"
       },
       {
-        "title": "Sales CRM pipeline",
+        "title": "خط أنابيب مبيعات CRM",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Sales CRM pipeline board with deal cards and amounts"
+        "alt": "لوحة خط أنابيب مبيعات CRM مع بطاقات الصفقات والمبالغ"
       },
       {
-        "title": "Finance & billing",
+        "title": "المالية والفواتير",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table and payment status on a finance web console"
+        "alt": "جدول فواتير وحالة الدفع في وحدة مالية ويب"
       },
       {
-        "title": "Platform operations",
+        "title": "تشغيل المنصة",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime and incident timeline"
+        "alt": "شبكة حالة الخدمات مع وقت التشغيل والحوادث"
       },
       {
-        "title": "Project workspace",
+        "title": "مساحة عمل المشروع",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
+        "alt": "قائمة مهام بالحالة والأولوية والمسؤولين في مساحة تسليم"
       },
       {
-        "title": "Customer success",
+        "title": "نجاح العملاء",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
+        "alt": "خريطة احتفاظ وقمع تهيئة على لوحة نجاح العملاء"
       }
     ]
   },

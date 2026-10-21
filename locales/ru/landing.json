@@ -44,108 +44,108 @@
     "body": "Проектирую и разрабатываю продуктовый софт на TypeScript, Next.js и React. От идеи до поставляемой платформы — архитектура, API, UI и production-деплой вместе с product-командами."
   },
   "skills": {
-    "eyebrow": "02 · Discover",
+    "eyebrow": "02 · Идея",
     "title": "Product discovery до кода",
     "body": "До первого React-компонента уточняю бриф правильными вопросами — домен, пользователи и минимальный shippable slice. План сборки, не wish list.",
-    "listenLabel": "I'm asking about",
+    "listenLabel": "Спрашиваю о",
     "folderLabel": "Mahvan",
     "folderItems": [
       {
-        "title": "Sepehr Mahvan",
-        "description": "Full-stack product engineer — software architecture, UI, and type-safe details from database to client."
+        "title": "Сепехр Махван",
+        "description": "Full-stack product engineer — архитектура ПО, UI и типобезопасные детали от базы данных до клиента."
       },
       {
-        "title": "Discover first",
-        "description": "I pressure-test the idea until the brief is ready for Next.js and React delivery."
+        "title": "Сначала discovery",
+        "description": "Проверяю идею, пока бриф не готов к поставке на Next.js и React."
       },
       {
-        "title": "TypeScript stack",
-        "description": "React, Next.js, Node.js, PostgreSQL — full-stack from schema to the last button."
+        "title": "Стек TypeScript",
+        "description": "React, Next.js, Node.js, PostgreSQL — full-stack от схемы до последней кнопки."
       },
       {
-        "title": "Platform work",
+        "title": "Платформенная работа",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "Analytics dashboard from a web platform built by Sepehr Mahvan"
+        "alt": "Аналитический дашборд веб-платформы, созданной Сепехром Махваном"
       },
       {
-        "title": "Ship ready",
-        "description": "Dashboards, CRMs, and admin panels — live, measurable, ready to grow."
+        "title": "Готово к релизу",
+        "description": "Дашборды, CRM и админ-панели — в проде, измеримы, готовы расти."
       },
       {
-        "title": "Open for work",
-        "description": "Partnering with product teams to turn ideas into production-ready full-stack software."
+        "title": "Открыт к проектам",
+        "description": "С product-командами превращаю идеи в production-ready full-stack софт."
       }
     ],
     "facets": [
       {
-        "label": "The business problem",
-        "detail": "What has to change for the product to win — and the cost if it does not."
+        "label": "Бизнес-проблема",
+        "detail": "Что должно измениться, чтобы продукт победил — и цена, если нет."
       },
       {
-        "label": "Users & stakeholders",
-        "detail": "Who uses it, who pays, and who can stop the project."
+        "label": "Пользователи и стейкхолдеры",
+        "detail": "Кто пользуется, кто платит и кто может остановить проект."
       },
       {
-        "label": "Real constraints",
-        "detail": "Time, TypeScript stack, team capacity, and systems already in production."
+        "label": "Реальные ограничения",
+        "detail": "Время, стек TypeScript, ёмкость команды и системы уже в production."
       },
       {
-        "label": "MVP slice",
-        "detail": "The smallest shippable cut that proves the idea before a full build."
+        "label": "MVP-срез",
+        "detail": "Минимальный shippable срез, который доказывает идею до полной сборки."
       }
     ]
   },
   "softSkills": {
-    "ariaLabel": "Building platforms with full-stack engineering skills",
-    "eyebrow": "03 · Build",
+    "ariaLabel": "Сборка платформ навыками full-stack инженерии",
+    "eyebrow": "03 · Сборка",
     "title": "Сборка платформ на TypeScript и Next.js",
     "typeLines": [
-      "I turn your idea into a shippable web platform.",
-      "TypeScript from PostgreSQL to the last React button.",
-      "Fast enough to use. Clean enough to extend."
+      "Превращаю вашу идею в поставляемую веб-платформу.",
+      "TypeScript от PostgreSQL до последней кнопки React.",
+      "Достаточно быстро для использования. Достаточно чисто для расширения."
     ],
-    "processLabel": "Translating the brief into architecture",
-    "doneLabel": "Technical delivery plan ready",
+    "processLabel": "Перевод брифа в архитектуру",
+    "doneLabel": "Технический план поставки готов",
     "steps": [
-      "Model the domain and user roles",
-      "Design type-safe APIs and data contracts",
-      "Pick the smallest useful slice to ship",
-      "Instrument monitoring and quality checks"
+      "Моделирование домена и ролей пользователей",
+      "Проектирование типобезопасных API и контрактов данных",
+      "Выбор минимального полезного среза к релизу",
+      "Инструментирование мониторинга и проверок качества"
     ],
     "focus": [
-      "Product architecture",
-      "Type-safe APIs",
-      "Design systems",
-      "Weekly delivery"
+      "Продуктовая архитектура",
+      "Типобезопасные API",
+      "Дизайн-системы",
+      "Еженедельная поставка"
     ],
     "stepper": {
-      "ariaLabel": "Technical stages of building a full-stack product",
-      "eyebrow": "Build pipeline",
+      "ariaLabel": "Технические этапы сборки full-stack продукта",
+      "eyebrow": "Build-пайплайн",
       "stages": [
         {
           "index": "01",
-          "title": "Schema",
-          "detail": "PostgreSQL tables, relations, indexes, and migrations."
+          "title": "Схема",
+          "detail": "Таблицы PostgreSQL, связи, индексы и миграции."
         },
         {
           "index": "02",
           "title": "API",
-          "detail": "Typed Node.js routes, auth, validation, and errors."
+          "detail": "Типизированные маршруты Node.js, auth, валидация и ошибки."
         },
         {
           "index": "03",
-          "title": "Contracts",
-          "detail": "Shared TypeScript types from database to client."
+          "title": "Контракты",
+          "detail": "Общие типы TypeScript от базы данных до клиента."
         },
         {
           "index": "04",
           "title": "UI",
-          "detail": "Next.js/React screens, forms, and design-system components."
+          "detail": "Экраны Next.js/React, формы и компоненты дизайн-системы."
         },
         {
           "index": "05",
-          "title": "Deploy",
-          "detail": "Docker, CI/CD, monitoring, and a safe rollout."
+          "title": "Деплой",
+          "detail": "Docker, CI/CD, мониторинг и безопасный rollout."
         }
       ]
     },
@@ -162,50 +162,50 @@
     ]
   },
   "experience": {
-    "galleryLabel": "Selected full-stack platform work",
-    "eyebrow": "04 · Ship",
+    "galleryLabel": "Избранные full-stack платформенные работы",
+    "eyebrow": "04 · Релиз",
     "title": "Поставка платформ в production",
     "typeLines": [
-      "Your web platform is in real users' hands.",
-      "Dashboards, CRMs, admin tools — live and usable.",
-      "Measured, documented, ready to scale."
+      "Ваша веб-платформа в руках реальных пользователей.",
+      "Дашборды, CRM, админ-инструменты — живые и usable.",
+      "Измерено, задокументировано, готово к масштабу."
     ],
     "focus": [
       "Production-ready",
-      "Observable",
-      "Documented handoff"
+      "Наблюдаемость",
+      "Документированная передача"
     ],
-    "status": "Deployed to production",
+    "status": "Развёрнуто в production",
     "gallery": [
       {
-        "title": "Analytics dashboard",
+        "title": "Аналитический дашборд",
         "image": "/images/carousel/platform-analytics.jpg",
-        "alt": "KPI tiles and revenue chart on a full-stack web analytics dashboard"
+        "alt": "KPI-плитки и график выручки на full-stack веб-дашборде аналитики"
       },
       {
         "title": "Sales CRM pipeline",
         "image": "/images/carousel/platform-crm.jpg",
-        "alt": "Sales CRM pipeline board with deal cards and amounts"
+        "alt": "Доска sales CRM pipeline с карточками сделок и суммами"
       },
       {
-        "title": "Finance & billing",
+        "title": "Финансы и биллинг",
         "image": "/images/carousel/platform-reports.jpg",
-        "alt": "Invoice table and payment status on a finance web console"
+        "alt": "Таблица счетов и статус оплаты в финансовой веб-консоли"
       },
       {
-        "title": "Platform operations",
+        "title": "Операции платформы",
         "image": "/images/carousel/platform-ops.jpg",
-        "alt": "Service status grid with uptime and incident timeline"
+        "alt": "Сетка статуса сервисов с uptime и таймлайном инцидентов"
       },
       {
-        "title": "Project workspace",
+        "title": "Проектный workspace",
         "image": "/images/carousel/platform-project.jpg",
-        "alt": "Issue list with status, priority, and assignees in a delivery workspace"
+        "alt": "Список задач со статусом, приоритетом и ответственными"
       },
       {
         "title": "Customer success",
         "image": "/images/carousel/platform-customers.jpg",
-        "alt": "Retention heatmap and onboarding funnel on a customer-success dashboard"
+        "alt": "Heatmap удержания и воронка онбординга на дашборде customer success"
       }
     ]
   },

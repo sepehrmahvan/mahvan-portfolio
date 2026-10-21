@@ -25,8 +25,11 @@ export const HERO_VIDEO_SCROLL_END = 4.08;
 const FORWARD_RATE_BASE = 1.08;
 const FORWARD_RATE_PEAK = 1.4;
 
-const CAPTURE_FPS = 30;
+/** Lower capture rate — reverse strip is lighter on weak CPUs/GPUs. */
+const CAPTURE_FPS = 18;
 const CAPTURE_INTERVAL_MS = 1000 / CAPTURE_FPS;
+/** Hard cap so reverse never holds dozens of full-res canvases. */
+const MAX_CAPTURE_FRAMES = 28;
 const BEAT_MS = (HERO_VIDEO_SCROLL_END - HERO_VIDEO_INTRO_END) * 1000;
 /** Fire hero re-enter before reverse finishes (~0.6s early). */
 const REVERSE_ANNOUNCE_AT = 0.3;
@@ -93,6 +96,8 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
     const framesRef = useRef<HTMLCanvasElement[]>([]);
     const rafRef = useRef(0);
     const lastGrabRef = useRef(0);
+    /** Bumps on every playScrollOut / resetToHold to drop stale async work. */
+    const generationRef = useRef(0);
     const onIntroHoldRef = useRef(onIntroHold);
     const onScrollDoneRef = useRef(onScrollDone);
     onIntroHoldRef.current = onIntroHold;
@@ -133,7 +138,11 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
       const sctx = sheet.getContext('2d', { alpha: false });
       if (!sctx) return;
       sctx.drawImage(grab, 0, 0);
-      framesRef.current.push(sheet);
+      const list = framesRef.current;
+      list.push(sheet);
+      if (list.length > MAX_CAPTURE_FRAMES) {
+        list.splice(0, list.length - MAX_CAPTURE_FRAMES);
+      }
 
       const overlay = overlayRef.current;
       if (overlay && (overlay.width !== w || overlay.height !== h)) {
@@ -171,19 +180,25 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
     }, []);
 
     const reachHold = useCallback(
-      async (announce: boolean) => {
+      async (announce: boolean, gen?: number) => {
+        const expected = gen ?? generationRef.current;
         const video = videoRef.current;
         stopRaf();
+        if (generationRef.current !== expected) return;
         phaseRef.current = 'hold';
         // Seek under the overlay first. Do NOT await requestVideoFrameCallback —
         // it often never fires on a paused video after seek, which freezes the
         // overlay and blocks hero re-enter. Double-rAF is enough for a paint.
         if (video) await seekPaused(video, HERO_VIDEO_INTRO_END);
+        if (generationRef.current !== expected) return;
         await new Promise<void>((resolve) => {
           requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
         });
+        if (generationRef.current !== expected) return;
         showOverlayNow(false);
-        requestAnimationFrame(() => clearFrames());
+        requestAnimationFrame(() => {
+          if (generationRef.current === expected) clearFrames();
+        });
         if (announce) onIntroHoldRef.current?.();
       },
       [clearFrames, showOverlayNow, stopRaf],
@@ -191,51 +206,71 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
 
     const playScrollOut = useCallback(() => {
       const video = videoRef.current;
+      const gen = ++generationRef.current;
       stopRaf();
       clearFrames();
       showOverlayNow(false);
+      if (video) {
+        video.pause();
+        video.playbackRate = 1;
+      }
 
       if (!video || reduceMotion) {
         void (async () => {
           if (video) await seekPaused(video, HERO_VIDEO_SCROLL_END);
+          if (generationRef.current !== gen) return;
           phaseRef.current = 'done';
           onScrollDoneRef.current?.();
         })();
         return;
       }
 
-      if (phaseRef.current === 'forward') return;
-
       void (async () => {
         phaseRef.current = 'forward';
         lastGrabRef.current = 0;
         video.playbackRate = FORWARD_RATE_BASE;
         await seekPaused(video, HERO_VIDEO_INTRO_END);
+        if (generationRef.current !== gen || phaseRef.current !== 'forward') return;
+
         try {
           await video.play();
         } catch {
+          if (generationRef.current !== gen) return;
           video.playbackRate = 1;
           await seekPaused(video, HERO_VIDEO_SCROLL_END);
+          if (generationRef.current !== gen) return;
           phaseRef.current = 'done';
           onScrollDoneRef.current?.();
+          return;
+        }
+
+        if (generationRef.current !== gen || phaseRef.current !== 'forward') {
+          video.pause();
           return;
         }
 
         const span = HERO_VIDEO_SCROLL_END - HERO_VIDEO_INTRO_END;
 
         const tick = (now: number) => {
-          if (phaseRef.current !== 'forward') return;
+          if (
+            generationRef.current !== gen ||
+            phaseRef.current !== 'forward'
+          ) {
+            return;
+          }
 
           const u = Math.min(
             1,
             Math.max(0, (video.currentTime - HERO_VIDEO_INTRO_END) / span),
           );
-          // Sin bump: ease in, faster mid, ease out — quicker but still natural.
           const bump = Math.sin(u * Math.PI);
           video.playbackRate =
             FORWARD_RATE_BASE + bump * (FORWARD_RATE_PEAK - FORWARD_RATE_BASE);
 
-          if (now - lastGrabRef.current >= CAPTURE_INTERVAL_MS) {
+          if (
+            !document.hidden &&
+            now - lastGrabRef.current >= CAPTURE_INTERVAL_MS
+          ) {
             lastGrabRef.current = now;
             grabFrame(video);
           }
@@ -247,7 +282,7 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
             video.currentTime = HERO_VIDEO_SCROLL_END;
             phaseRef.current = 'done';
             rafRef.current = 0;
-            onScrollDoneRef.current?.();
+            if (generationRef.current === gen) onScrollDoneRef.current?.();
             return;
           }
 
@@ -260,6 +295,7 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
 
     const resetToHold = useCallback(() => {
       const video = videoRef.current;
+      const gen = ++generationRef.current;
       stopRaf();
       if (!video) return;
 
@@ -267,13 +303,13 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
       video.playbackRate = 1;
 
       if (reduceMotion) {
-        void reachHold(true);
+        void reachHold(true, gen);
         return;
       }
 
       const frames = framesRef.current;
       if (frames.length < 2) {
-        // No strip — realtime reverse scrub with seeked waits.
+        // No strip — lightweight reverse scrub (fewer seeks than before).
         void (async () => {
           phaseRef.current = 'reverse';
           let announced = false;
@@ -281,9 +317,14 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
             HERO_VIDEO_SCROLL_END,
             Math.max(video.currentTime, HERO_VIDEO_INTRO_END),
           );
-          const steps = 30;
+          const steps = 18;
           for (let i = 1; i <= steps; i++) {
-            if (phaseRef.current !== 'reverse') return;
+            if (
+              generationRef.current !== gen ||
+              phaseRef.current !== 'reverse'
+            ) {
+              return;
+            }
             const t = i / steps;
             const eased = t * t * (3 - 2 * t);
             await seekPaused(video, from + (HERO_VIDEO_INTRO_END - from) * eased);
@@ -292,25 +333,29 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
               onIntroHoldRef.current?.();
             }
           }
-          await reachHold(!announced);
+          if (generationRef.current !== gen) return;
+          await reachHold(!announced, gen);
         })();
         return;
       }
 
       phaseRef.current = 'reverse';
       const last = frames.length - 1;
-      // Hold the end frame on the overlay before the loop so the handoff is instant.
       paintOverlay(frames[last]!);
       showOverlayNow(true, false);
 
       let announced = false;
       let lastIndex = last;
-      // Ease-out: moves on the first tick (no flat start), softens into hold.
       const easeOut = (t: number) => 1 - (1 - t) ** 2.4;
       const started = performance.now();
 
       const tick = (now: number) => {
-        if (phaseRef.current !== 'reverse') return;
+        if (
+          generationRef.current !== gen ||
+          phaseRef.current !== 'reverse'
+        ) {
+          return;
+        }
         const t = Math.min(1, (now - started) / BEAT_MS);
         const eased = easeOut(t);
         const index = Math.max(0, Math.min(last, Math.round(last * (1 - eased))));
@@ -330,7 +375,7 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
           return;
         }
 
-        void reachHold(!announced);
+        void reachHold(!announced, gen);
       };
 
       rafRef.current = requestAnimationFrame(tick);

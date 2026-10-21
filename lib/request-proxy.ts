@@ -1,3 +1,11 @@
+/**
+ * Locale + auth request proxy logic.
+ *
+ * NOT registered as Next.js `proxy.ts` while `output: 'export'` is enabled —
+ * Proxy/Middleware is unsupported for static export and breaks `next dev` (/ → 404).
+ * Host redirects live in `public/_redirects` and `next.config.ts` `redirects`.
+ * Restore as root `proxy.ts` only if you leave static export for a Node/Edge host.
+ */
 import acceptLanguage from 'accept-language';
 import { NextResponse, type NextRequest } from 'next/server';
 
@@ -31,7 +39,7 @@ function getLocale(request: NextRequest): Locale {
   return defaultLocale;
 }
 
-export function proxy(request: NextRequest) {
+export function requestProxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -77,7 +85,3 @@ export function proxy(request: NextRequest) {
   response.cookies.set('NEXT_LOCALE', locale, { path: '/' });
   return response;
 }
-
-export const config = {
-  matcher: ['/((?!_next/static|_next/image|favicon.ico|.*\\..*).*)'],
-};

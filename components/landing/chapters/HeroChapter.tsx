@@ -248,16 +248,21 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
           ) : null}
         </AnimatePresence>
 
-        {/* Hairline Keyboard — desktop only (mobile/iPad use bottom-centered copy). */}
+        {/* Hairline Keyboard — desktop only; opposite the copy (LTR right / RTL left). */}
         <AnimatePresence mode="sync">
           {active ? (
             <motion.div
               key="hero-keyboard"
-              initial={reduceMotion ? false : { opacity: 0, x: 36 }}
+              initial={
+                reduceMotion ? false : { opacity: 0, x: isRtl ? -36 : 36 }
+              }
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 28 }}
+              exit={reduceMotion ? undefined : { opacity: 0, x: isRtl ? -28 : 28 }}
               transition={{ duration: 0.5, ease, delay: reduceMotion ? 0 : 0.06 }}
-              className="pointer-events-auto absolute top-1/2 -right-16 hidden w-[min(52vw,36rem)] -translate-y-1/2 flex-col justify-center lg:flex"
+              className={cn(
+                'pointer-events-auto absolute top-1/2 hidden w-[min(52vw,36rem)] -translate-y-1/2 flex-col justify-center lg:flex',
+                isRtl ? '-left-16' : '-right-16',
+              )}
               style={KEYBOARD_VARS}
             >
               {/* Docs: https://hairline.lucasmarkes.com/docs#figures */}
