@@ -10,6 +10,7 @@ import {
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+import { useIsLaptopUp } from '@/hooks/useMinWidth';
 import type { LandingDictionary } from '@/types/landing';
 import type { Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
@@ -56,6 +57,7 @@ function sectionIsActive(active: ChapterId | null, id: ChapterId) {
 
 export function LandingNav({ content, locale }: LandingNavProps) {
   const { time, progress, scrollToChapter, scrollToContact, reduceMotion } = useLandingScroll();
+  const laptopUp = useIsLaptopUp();
   const [active, setActive] = useState<ChapterId | null>('hero');
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -98,9 +100,9 @@ export function LandingNav({ content, locale }: LandingNavProps) {
     scrollToChapter(id);
   };
 
-  /** Section 3 (Build): light page → dark ink, fully transparent header (no veil/blur). */
-  const onLight = active === 'soft-skills';
-  /** Sections 1–2 + 4+: dark top shadow veil (same as hero/skills). */
+  /** Build is light only on laptop+; mobile Build matches hero kinetic dark stage. */
+  const onLight = active === 'soft-skills' && laptopUp;
+  /** Dark top veil on kinetic stages (hero, skills, mobile Build, ship…). */
   const showDarkVeil = !onLight;
 
   return (

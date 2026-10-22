@@ -1,0 +1,104 @@
+/* Mobile-only landing atmospheres — court green kinetic field */
+
+@keyframes mahvan-bloom-a {
+  0%,
+  100% {
+    transform: translate3d(-8%, -4%, 0) scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translate3d(6%, 8%, 0) scale(1.18);
+    opacity: 0.85;
+  }
+}
+
+@keyframes mahvan-bloom-b {
+  0%,
+  100% {
+    transform: translate3d(10%, 12%, 0) scale(1.05);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate3d(-12%, -6%, 0) scale(1.22);
+    opacity: 0.7;
+  }
+}
+
+@keyframes mahvan-scan {
+  0% {
+    transform: translateY(-20%);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.7;
+  }
+  88% {
+    opacity: 0.55;
+  }
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes mahvan-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mahvan-pulse-ring {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.55;
+  }
+  70% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes mahvan-dash {
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+.mahvan-bloom-a {
+  animation: mahvan-bloom-a 14s ease-in-out infinite;
+}
+
+.mahvan-bloom-b {
+  animation: mahvan-bloom-b 18s ease-in-out infinite;
+}
+
+.mahvan-scan {
+  animation: mahvan-scan 7.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.mahvan-orbit {
+  animation: mahvan-orbit 48s linear infinite;
+}
+
+.mahvan-pulse-ring {
+  animation: mahvan-pulse-ring 2.4s ease-out infinite;
+}
+
+.mahvan-dash {
+  animation: mahvan-dash 1.8s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mahvan-bloom-a,
+  .mahvan-bloom-b,
+  .mahvan-scan,
+  .mahvan-orbit,
+  .mahvan-pulse-ring,
+  .mahvan-dash {
+    animation: none;
+  }
+}

@@ -126,7 +126,12 @@ export function LandingPage({ content, locale }: LandingPageProps) {
               ref={heroRef}
               className="relative z-10 -mt-[100dvh] min-h-[100dvh] overflow-hidden bg-transparent"
             >
-              <HeroChapter content={content.hero} locale={locale} />
+              <HeroChapter
+                content={content.hero}
+                contactLabel={content.nav.contact}
+                portraitSrc={content.contact.portrait}
+                locale={locale}
+              />
             </section>
 
             <section
@@ -141,7 +146,7 @@ export function LandingPage({ content, locale }: LandingPageProps) {
           <section
             id="soft-skills"
             ref={softSkillsRef}
-            className="relative min-h-[100dvh] overflow-hidden bg-white"
+            className="relative min-h-[100dvh] overflow-hidden bg-[#03140f] lg:bg-white"
           >
             <SoftSkillsChapter content={content.softSkills} locale={locale} />
           </section>
@@ -149,7 +154,7 @@ export function LandingPage({ content, locale }: LandingPageProps) {
           <section
             id="experience"
             ref={experienceRef}
-            className="relative min-h-[100dvh] overflow-hidden bg-zinc-100"
+            className="relative min-h-[100dvh] overflow-hidden bg-[#05080a] lg:bg-zinc-100"
           >
             <ExperienceChapter content={content.experience} locale={locale} />
           </section>

@@ -19,6 +19,8 @@ interface ProductStepperProps {
   stages: ProductStage[];
   /** When false, hide entrance. */
   active?: boolean;
+  /** Dark kinetic stage (mobile Build) vs light desktop Build. */
+  tone?: 'light' | 'dark';
   className?: string;
 }
 
@@ -49,9 +51,11 @@ export function ProductStepper({
   eyebrow,
   stages,
   active = true,
+  tone = 'light',
   className,
 }: ProductStepperProps) {
   const { reduceMotion } = useLandingScroll();
+  const dark = tone === 'dark';
 
   return (
     <motion.div
@@ -65,7 +69,10 @@ export function ProductStepper({
     >
       <motion.p
         variants={reduceMotion ? undefined : itemVariants}
-        className="mb-2 shrink-0 text-[0.58rem] font-black tracking-[0.2em] text-zinc-400 uppercase sm:mb-2.5 sm:text-[0.62rem] md:mb-3.5 md:text-[0.8rem] lg:mb-4 lg:text-[0.85rem] xl:mb-3.5 xl:text-[0.75rem]"
+        className={cn(
+          'mb-2 shrink-0 text-[0.58rem] font-black tracking-[0.2em] uppercase sm:mb-2.5 sm:text-[0.62rem] md:mb-3.5 md:text-[0.8rem] lg:mb-4 lg:text-[0.85rem] xl:mb-3.5 xl:text-[0.75rem]',
+          dark ? 'text-white/45' : 'text-zinc-400',
+        )}
       >
         {eyebrow}
       </motion.p>
@@ -104,10 +111,20 @@ export function ProductStepper({
             </span>
 
             <div className="min-w-0 flex-1 pt-px md:pt-1 xl:pt-px">
-              <p className="text-[0.7rem] font-black uppercase tracking-tight text-[#0B6E4F] sm:text-[0.78rem] md:text-[1.05rem] lg:text-[1.1rem] xl:text-base">
+              <p
+                className={cn(
+                  'text-[0.7rem] font-black uppercase tracking-tight sm:text-[0.78rem] md:text-[1.05rem] lg:text-[1.1rem] xl:text-base',
+                  dark ? 'text-emerald-300' : 'text-[#0B6E4F]',
+                )}
+              >
                 {stage.title}
               </p>
-              <p className="mt-0.5 line-clamp-2 text-[0.65rem] font-medium leading-snug text-zinc-500 sm:line-clamp-none sm:text-[0.7rem] md:mt-1 md:text-[0.9rem] md:leading-snug lg:text-[0.95rem] xl:mt-1 xl:text-[0.88rem]">
+              <p
+                className={cn(
+                  'mt-0.5 line-clamp-2 text-[0.65rem] font-medium leading-snug sm:line-clamp-none sm:text-[0.7rem] md:mt-1 md:text-[0.9rem] md:leading-snug lg:text-[0.95rem] xl:mt-1 xl:text-[0.88rem]',
+                  dark ? 'text-white/50' : 'text-zinc-500',
+                )}
+              >
                 {stage.detail}
               </p>
             </div>

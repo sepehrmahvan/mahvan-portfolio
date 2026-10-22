@@ -9,6 +9,7 @@ import {
 } from 'motion/react';
 import { type CSSProperties, useState } from 'react';
 
+import DitherVeil from '@/components/ui/DitherVeil/DitherVeil';
 import TechText from '@/components/ui/TechText/TechText';
 import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
@@ -30,6 +31,10 @@ const KEYBOARD_VARS = {
 
 interface HeroChapterProps {
   content: LandingDictionary['hero'];
+  /** Same label as the nav contact control. */
+  contactLabel: string;
+  /** Contact portrait — shown on mobile hero between name and about. */
+  portraitSrc: string;
   locale: Locale;
 }
 
@@ -90,9 +95,57 @@ const lineVariants: Variants = {
   }),
 };
 
+/** Mobile-only: stacked stage — brand first, no glass card. */
+const mobileListVariants: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.05,
+    },
+  },
+  exit: {
+    transition: {
+      staggerChildren: 0.06,
+      staggerDirection: -1,
+    },
+  },
+};
+
+const mobileLineVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 36,
+    filter: 'blur(14px)',
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      type: 'spring',
+      stiffness: 120,
+      damping: 18,
+      mass: 0.8,
+      filter: { duration: 0.55, ease },
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    filter: 'blur(10px)',
+    transition: { duration: 0.32, ease },
+  },
+};
+
 /** Left-band intro: each line enters/exits on its own, one after another. */
-export function HeroChapter({ content, locale }: HeroChapterProps) {
-  const { time, heroRevealReady, reduceMotion } = useLandingScroll();
+export function HeroChapter({
+  content,
+  contactLabel,
+  portraitSrc,
+  locale,
+}: HeroChapterProps) {
+  const { time, heroRevealReady, reduceMotion, scrollToContact } = useLandingScroll();
   const [onHeroStep, setOnHeroStep] = useState(() => isChapterStep(time.get(), 'hero'));
   const isRtl = isRtlLocale(locale);
   /** Enter/exit from the outer edge of the open side band. */
@@ -108,20 +161,16 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
     {
       key: 'role',
       className: cn(
-        // Mobile/iPad: separated band under a hairline. Desktop: original green role.
-        'mt-4 w-full border-t border-white/25 pt-4 text-sm tracking-[0.14em] text-white/90 uppercase sm:mt-5 sm:pt-5 sm:text-base md:text-lg',
-        'lg:mt-4 lg:w-auto lg:border-0 lg:pt-0 lg:text-[1.50rem] lg:normal-case lg:tracking-tight lg:text-[#0B6E4F]',
-        isRtl ? 'font-normal lg:tracking-[0.01em]' : 'font-black lg:tracking-tight',
+        'mt-4 text-[1.50rem] tracking-tight text-[#0B6E4F]',
+        isRtl ? 'font-normal tracking-[0.01em]' : 'font-black',
       ),
       text: content.role,
     },
     {
       key: 'body',
       className: cn(
-        // Mobile/iPad: softer secondary copy. Desktop: original zinc body.
-        'mt-3 max-w-[28ch] text-sm leading-relaxed text-white/65 sm:mt-3.5 sm:max-w-[26ch] sm:text-base md:max-w-[28ch] md:text-lg',
-        'lg:mt-3 lg:max-w-[24ch] lg:text-[1.25rem] lg:leading-snug lg:text-zinc-700',
-        isRtl ? 'font-normal' : 'font-medium lg:font-bold',
+        'mt-3 max-w-[24ch] text-[1.25rem] leading-snug text-zinc-700',
+        isRtl ? 'font-normal' : 'font-bold',
       ),
       text: content.body,
     },
@@ -135,6 +184,135 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
       */}
       <div className={cn(LANDING_SHELL, 'h-full pt-16 pb-10 md:pt-20')}>
         <div className="relative h-full">
+        {/* ── Mobile / tablet: full-bleed kinetic stage (no glass) ── */}
+        <AnimatePresence mode="sync">
+          {active ? (
+            <motion.div
+              key="hero-mobile"
+              dir={isRtl ? 'rtl' : 'ltr'}
+              lang={locale}
+              variants={mobileListVariants}
+              initial={reduceMotion ? false : 'hidden'}
+              animate="show"
+              exit="exit"
+              className={cn(
+                'absolute inset-0 z-10 flex flex-col px-1 pt-2 pb-2 lg:hidden',
+                isRtl
+                  ? 'font-(family-name:--font-fa)'
+                  : 'font-(family-name:--font-en)',
+              )}
+            >
+              {/* Top band — greeting + name */}
+              <div className="flex shrink-0 flex-col gap-3 pt-2">
+                <motion.div
+                  variants={reduceMotion ? undefined : mobileLineVariants}
+                  className="flex items-center gap-3"
+                >
+                  <span
+                    aria-hidden
+                    className="h-px w-8 shrink-0 bg-[#0B6E4F]"
+                  />
+                  <p
+                    className={cn(
+                      'text-[0.68rem] tracking-[0.28em] text-emerald-200/80 uppercase',
+                      isRtl ? 'font-normal' : 'font-black',
+                    )}
+                  >
+                    {content.greeting}
+                  </p>
+                </motion.div>
+
+                <motion.h1
+                  variants={reduceMotion ? undefined : mobileLineVariants}
+                  className={cn(
+                    'max-w-[11ch] text-[clamp(2.35rem,11vw,3.75rem)] leading-[0.9] tracking-[-0.03em] text-white',
+                    isRtl ? 'font-normal' : 'font-black',
+                  )}
+                >
+                  {content.name}
+                </motion.h1>
+
+                <motion.div
+                  variants={reduceMotion ? undefined : mobileLineVariants}
+                  className="relative h-6 w-full max-w-[14rem]"
+                  aria-hidden
+                >
+                  <span className="absolute top-1/2 start-0 h-[2px] w-full origin-start bg-[#0B6E4F] shadow-[0_0_18px_rgb(11_110_79_/_0.55)]" />
+                  <span className="absolute top-1/2 start-0 size-2 -translate-y-1/2 rounded-full bg-emerald-300" />
+                </motion.div>
+              </div>
+
+              {/* Mid — contact portrait (same asset as section 6) */}
+              <motion.div
+                variants={reduceMotion ? undefined : mobileLineVariants}
+                className="pointer-events-auto relative mx-auto my-2 h-[min(34dvh,15.5rem)] w-full max-w-[15rem] min-h-0 flex-1"
+              >
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-[-10%] bottom-0 h-[55%] bg-[radial-gradient(ellipse_at_bottom,rgb(11_110_79_/_0.4)_0%,transparent_72%)]"
+                />
+                <DitherVeil
+                  src={portraitSrc}
+                  pattern="floyd"
+                  pixelSize={3}
+                  inkColor="#000000"
+                  paperColor="#f2f2f2"
+                  revealRadius={160}
+                  softness={0.55}
+                  linger={1.1}
+                  fit="contain"
+                  rimColor="#0B6E4F"
+                  palette="duotone"
+                  levels={2}
+                  contrast={1.25}
+                  brightness={0.05}
+                  rim={0}
+                  reverse={false}
+                  wander={false}
+                  clickBurst={!reduceMotion}
+                  transparentBackdrop
+                  className="absolute inset-0 h-full w-full"
+                />
+              </motion.div>
+
+              {/* Bottom band — about + contact CTA */}
+              <div className="flex shrink-0 flex-col gap-2.5 pb-1">
+                <motion.p
+                  variants={reduceMotion ? undefined : mobileLineVariants}
+                  className={cn(
+                    'max-w-[22ch] text-base leading-snug tracking-[0.04em] text-emerald-100/95 sm:text-lg',
+                    isRtl ? 'font-normal' : 'font-black',
+                  )}
+                >
+                  {content.role}
+                </motion.p>
+                <motion.p
+                  variants={reduceMotion ? undefined : mobileLineVariants}
+                  className={cn(
+                    'max-w-[32ch] text-sm leading-relaxed text-white/55 sm:text-[0.95rem]',
+                    isRtl ? 'font-normal' : 'font-medium',
+                  )}
+                >
+                  {content.body}
+                </motion.p>
+                <motion.div variants={reduceMotion ? undefined : mobileLineVariants}>
+                  <button
+                    type="button"
+                    onClick={scrollToContact}
+                    className={cn(
+                      'pointer-events-auto mt-1 inline-flex h-11 items-center justify-center border border-white bg-white px-5 text-[0.8rem] tracking-[0.08em] text-zinc-950 uppercase transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#0B6E4F] hover:border-[#0B6E4F] hover:text-white active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white',
+                      isRtl ? 'font-normal' : 'font-black',
+                    )}
+                  >
+                    {contactLabel}
+                  </button>
+                </motion.div>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
+        {/* ── Desktop: original left-band layout ── */}
         <AnimatePresence mode="sync">
           {active ? (
             <motion.div
@@ -146,42 +324,23 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
               animate="show"
               exit="exit"
               className={cn(
-                // Mobile / iPad: centered white copy, 30px from bottom, soft glass panel.
-                'absolute inset-x-0 bottom-0 z-10 mx-auto flex w-[min(100%,22rem)] flex-col items-center px-4 py-5 text-center perspective-[1100px] sm:w-[min(28rem,88vw)] sm:px-5 sm:py-6 md:w-[min(34rem,72vw)]',
-                'rounded-2xl border border-white/15 bg-zinc-950/35 shadow-[0_8px_32px_rgb(0_0_0/0.2)] backdrop-blur-md backdrop-saturate-150',
-                // Desktop: original left-band layout (no glass).
-                'lg:inset-x-auto lg:inset-s-0 lg:top-[47%] lg:bottom-auto lg:mx-0 lg:w-[min(37rem,45vw)] lg:-translate-y-1/2 lg:items-start lg:rounded-none lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:text-start lg:shadow-none lg:backdrop-blur-none lg:backdrop-saturate-100',
+                'absolute inset-s-0 top-[47%] z-10 hidden w-[min(37rem,45vw)] -translate-y-1/2 flex-col items-start text-start perspective-[1100px] lg:flex',
                 isRtl
                   ? 'font-(family-name:--font-fa)'
                   : 'font-(family-name:--font-en)',
               )}
             >
-              {/* greeting — eyebrow on glass; full green weight on desktop */}
               <motion.p
                 key="greeting"
                 custom={{ index: 0, from: fromEdge } satisfies LineCustom}
                 variants={reduceMotion ? undefined : lineVariants}
                 className={cn(
-                  'text-[0.7rem] font-black tracking-[0.22em] text-white/70 uppercase md:text-[0.75rem]',
-                  'lg:text-[1.75rem] lg:normal-case lg:tracking-wide lg:text-[#0B6E4F]',
-                  isRtl ? 'font-normal lg:font-normal' : 'lg:font-black',
+                  'text-[1.75rem] tracking-wide text-[#0B6E4F]',
+                  isRtl ? 'font-normal' : 'font-black',
                 )}
               >
                 {content.greeting}
               </motion.p>
-
-              {/* Mobile/iPad: solid white name. Desktop: TechText (EN) or solid (RTL). */}
-              <motion.h1
-                key="name-compact"
-                custom={{ index: 1, from: fromEdge } satisfies LineCustom}
-                variants={reduceMotion ? undefined : lineVariants}
-                className={cn(
-                  'mt-3 max-w-[12ch] text-4xl leading-[0.95] text-white sm:mt-3.5 sm:text-5xl md:text-6xl lg:hidden',
-                  isRtl ? 'font-normal' : 'font-black',
-                )}
-              >
-                {content.name}
-              </motion.h1>
 
               {isRtl ? (
                 <motion.h1
@@ -189,7 +348,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
                   custom={{ index: 1, from: fromEdge } satisfies LineCustom}
                   variants={reduceMotion ? undefined : lineVariants}
                   id="hero-title"
-                  className="mt-2 -ms-1 hidden max-w-[8.5ch] text-4xl font-normal leading-[0.95] text-zinc-950 lg:block lg:text-[5.25rem] xl:text-[6rem]"
+                  className="mt-2 -ms-1 max-w-[8.5ch] text-4xl font-normal leading-[0.95] text-zinc-950 lg:text-[5.25rem] xl:text-[6rem]"
                 >
                   {content.name}
                 </motion.h1>
@@ -201,7 +360,7 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
                   id="hero-title"
                   role="heading"
                   aria-level={1}
-                  className="pointer-events-auto relative -ms-2 hidden h-10 w-full max-w-[16rem] text-zinc-950 lg:block lg:h-30 lg:max-w-104 xl:h-33 xl:max-w-md"
+                  className="pointer-events-auto relative -ms-2 h-30 w-full max-w-104 text-zinc-950 xl:h-33 xl:max-w-md"
                 >
                   <TechText
                     text={content.name}
@@ -239,11 +398,28 @@ export function HeroChapter({ content, locale }: HeroChapterProps) {
                   key={line.key}
                   custom={{ index: index + 2, from: fromEdge } satisfies LineCustom}
                   variants={reduceMotion ? undefined : lineVariants}
-                  className={cn(line.className, 'max-lg:mx-auto')}
+                  className={line.className}
                 >
                   {line.text}
                 </motion.p>
               ))}
+
+              <motion.div
+                custom={{ index: 4, from: fromEdge } satisfies LineCustom}
+                variants={reduceMotion ? undefined : lineVariants}
+                className="mt-6"
+              >
+                <button
+                  type="button"
+                  onClick={scrollToContact}
+                  className={cn(
+                    'pointer-events-auto inline-flex h-11 items-center justify-center border border-[#0B6E4F] bg-[#0B6E4F] px-5 text-[0.85rem] tracking-tight text-white transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-zinc-950 hover:border-zinc-950 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0B6E4F]',
+                    isRtl ? 'font-normal' : 'font-semibold',
+                  )}
+                >
+                  {contactLabel}
+                </button>
+              </motion.div>
             </motion.div>
           ) : null}
         </AnimatePresence>

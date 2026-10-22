@@ -8,12 +8,13 @@ import {
 import { useEffect, useMemo, useState } from 'react';
 
 import Folder from '@/components/ui/Folder/Folder';
+import { useMinWidth } from '@/hooks/useMinWidth';
 import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
 
 import { useLandingScroll } from '../LandingScrollContext';
-import { LANDING_COURT_GREEN, LANDING_COURT_GREEN_CLASS } from '../shell';
+import { LANDING_COURT_GREEN, LANDING_COURT_GREEN_CLASS, LANDING_SHELL } from '../shell';
 import { isChapterStep } from '../timeline';
 
 interface SkillsChapterProps {
@@ -23,13 +24,17 @@ interface SkillsChapterProps {
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const PROMPT_CYCLE_MS = 3800;
+/** Matches Tailwind `xl` — desktop side rail / mid folder. */
+const DESKTOP_RAIL_MIN = 1280;
 
 /**
  * Section 2 — Discover.
- * Character (video) left → Folder fills the mid gap → intake stage on the right.
+ * Mobile/tablet: open kinetic stage (no white panel) matching hero language.
+ * Desktop xl+: folder mid + transparent copy rail over the video.
  */
 export function SkillsChapter({ content, locale }: SkillsChapterProps) {
   const { time, skillsRevealReady, reduceMotion } = useLandingScroll();
+  const desktopRail = useMinWidth(DESKTOP_RAIL_MIN);
   const [onSkillsStep, setOnSkillsStep] = useState(() =>
     isChapterStep(time.get(), 'skills'),
   );
@@ -74,19 +79,18 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
     <div
       aria-label={content.title}
       role="region"
-      className="pointer-events-none absolute inset-0 z-30 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-30 overflow-x-hidden overflow-y-hidden xl:overflow-hidden"
     >
-      {/* Mid stage — Folder holds the gaze between character and copy. */}
+      {/* Mid stage Folder — desktop only */}
       <AnimatePresence mode="sync">
-        {active ? (
+        {active && desktopRail ? (
           <motion.div
             key="skills-folder"
             initial={reduceMotion ? false : { opacity: 0, scale: 0.9, y: 16 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 8 }}
             transition={{ duration: 0.65, ease, delay: reduceMotion ? 0 : 0.06 }}
-            // Desktop only (xl+). Phone + iPad use the in-panel folder below.
-            className="pointer-events-auto absolute top-1/2 left-[42%] hidden -translate-x-1/2 -translate-y-1/2 xl:block 2xl:left-[44%]"
+            className="pointer-events-auto absolute top-1/2 left-[42%] -translate-x-1/2 -translate-y-1/2 2xl:left-[44%]"
           >
             <Folder
               label={folderLabel}
@@ -116,20 +120,25 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
         ) : null}
       </AnimatePresence>
 
-      {/* Right intake stage */}
+      {/* Copy stage */}
       <AnimatePresence mode="sync">
         {active ? (
           <motion.div
             key="skills-stage"
-            initial={reduceMotion ? false : { opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 24 }}
+            initial={reduceMotion ? false : { opacity: 0, y: desktopRail ? 0 : 28, x: desktopRail ? 36 : 0 }}
+            animate={{ opacity: 1, y: 0, x: 0 }}
+            exit={{ opacity: 0, y: desktopRail ? 0 : 16, x: desktopRail ? 24 : 0 }}
             transition={{ duration: 0.55, ease, delay: reduceMotion ? 0 : 0.1 }}
             dir={isRtl ? 'rtl' : 'ltr'}
             lang={locale}
             className={cn(
-              // Phone + iPad Pro: stacked panel (same as iPhone SE). Desktop xl+: side rail.
-              'pointer-events-auto absolute inset-x-3 top-16 bottom-4 z-10 flex max-w-none flex-col justify-start gap-3 overflow-y-auto bg-white/90 px-4 py-5 backdrop-blur-sm sm:inset-x-4 sm:top-18 sm:gap-4 sm:px-5 sm:py-6 sm:bg-white/85 md:inset-x-6 md:top-20 md:px-6 md:py-7 xl:inset-y-0 xl:left-auto xl:right-5 xl:inset-x-auto xl:w-[min(44vw,32rem)] xl:justify-center xl:gap-5 xl:overflow-visible xl:bg-transparent xl:px-0 xl:py-16 xl:backdrop-blur-none 2xl:right-10 2xl:w-[min(38vw,36rem)]',
+              'pointer-events-auto absolute z-10 flex max-w-none flex-col',
+              // Mobile/tablet: copy scrolls above a reserved folder foot (avoids crop).
+              'inset-x-0 top-0 bottom-0 min-h-0',
+              LANDING_SHELL,
+              'pt-20 pb-3',
+              // Desktop: side rail over video.
+              'xl:inset-y-0 xl:left-auto xl:right-5 xl:inset-x-auto xl:w-[min(44vw,32rem)] xl:justify-center xl:gap-5 xl:overflow-visible xl:px-0 xl:py-16 2xl:right-10 2xl:w-[min(38vw,36rem)]',
               isRtl
                 ? 'font-(family-name:--font-fa)'
                 : 'font-(family-name:--font-en)',
@@ -137,121 +146,163 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
             onPointerEnter={() => setPaused(true)}
             onPointerLeave={() => setPaused(false)}
           >
+            <div className="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto overscroll-contain sm:gap-4 xl:flex-none xl:gap-5 xl:overflow-visible">
+              {/* Eyebrow + rule — mobile kinetic language */}
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.12, ease }}
+                className="flex items-center gap-3 xl:hidden"
+              >
+                <span aria-hidden className="h-px w-8 shrink-0 bg-[#0B6E4F]" />
+                <p
+                  className={cn(
+                    'text-[0.68rem] tracking-[0.28em] text-emerald-200/80 uppercase',
+                    isRtl ? 'font-normal' : 'font-black',
+                  )}
+                >
+                  {content.eyebrow}
+                </p>
+              </motion.div>
 
-            <motion.h2
-              initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.16, ease }}
-              className="max-w-[20ch] text-xl font-black uppercase leading-[0.96] tracking-tight text-zinc-950 sm:max-w-[22ch] sm:text-2xl md:text-3xl xl:max-w-[22ch] xl:text-4xl 2xl:max-w-[24ch] 2xl:text-[2.65rem]"
-            >
-              {content.title}
-            </motion.h2>
+              <motion.h2
+                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.16, ease }}
+                className={cn(
+                  'max-w-[16ch] text-[clamp(1.65rem,7.5vw,2.35rem)] leading-[0.95] tracking-[-0.02em] text-white xl:max-w-[22ch] xl:text-4xl xl:uppercase xl:tracking-tight xl:text-zinc-950 2xl:max-w-[24ch] 2xl:text-[2.65rem]',
+                  isRtl ? 'font-normal' : 'font-black',
+                )}
+              >
+                {content.title}
+              </motion.h2>
 
-            <motion.p
-              initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.2, ease }}
-              className="max-w-[42ch] text-sm font-medium leading-relaxed text-zinc-600 sm:text-[0.95rem] md:text-base xl:max-w-[48ch]"
-            >
-              {content.body}
-            </motion.p>
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: reduceMotion ? 0 : 0.18, ease }}
+                className="relative h-8 w-full max-w-[14rem] xl:hidden"
+                aria-hidden
+              >
+                <span className="absolute top-1/2 start-0 h-[2px] w-full origin-start bg-[#0B6E4F] shadow-[0_0_18px_rgb(11_110_79_/_0.55)]" />
+                <span className="absolute top-1/2 start-0 size-2 -translate-y-1/2 rounded-full bg-emerald-300" />
+              </motion.div>
 
-            <motion.div
-              initial={reduceMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: reduceMotion ? 0 : 0.24, ease }}
-              className="flex flex-col gap-4"
-            >
-              <p className="text-[0.65rem] font-black tracking-[0.22em] text-zinc-400 uppercase">
-                {content.listenLabel}
-              </p>
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: reduceMotion ? 0 : 0.2, ease }}
+                className="max-w-[36ch] text-sm font-medium leading-relaxed text-white/55 sm:text-[0.95rem] xl:max-w-[48ch] xl:text-base xl:text-zinc-600"
+              >
+                {content.body}
+              </motion.p>
 
-              {/* One prompt at a time — wider copy keeps this block shorter. */}
-              <div className="relative min-h-24 sm:min-h-28 md:min-h-30 xl:min-h-32">
-                <AnimatePresence mode="wait">
-                  {current ? (
-                    <motion.div
-                      key={current.label}
-                      initial={
-                        reduceMotion ? false : { opacity: 0, y: 18, filter: 'blur(8px)' }
-                      }
-                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                      exit={
-                        reduceMotion
-                          ? undefined
-                          : { opacity: 0, y: -12, filter: 'blur(6px)' }
-                      }
-                      transition={{ duration: 0.4, ease }}
-                      className="absolute inset-x-0 top-0"
-                    >
-                      <p
+              <motion.div
+                initial={reduceMotion ? false : { opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: reduceMotion ? 0 : 0.24, ease }}
+                className="flex flex-col gap-4"
+              >
+                <p className="text-[0.65rem] font-black tracking-[0.22em] text-white/40 uppercase xl:text-zinc-400">
+                  {content.listenLabel}
+                </p>
+
+                <div className="relative min-h-24 sm:min-h-28 md:min-h-30 xl:min-h-32">
+                  <AnimatePresence mode="wait">
+                    {current ? (
+                      <motion.div
+                        key={current.label}
+                        initial={
+                          reduceMotion
+                            ? false
+                            : { opacity: 0, y: 18, filter: 'blur(8px)' }
+                        }
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        exit={
+                          reduceMotion
+                            ? undefined
+                            : { opacity: 0, y: -12, filter: 'blur(6px)' }
+                        }
+                        transition={{ duration: 0.4, ease }}
+                        className="absolute inset-x-0 top-0"
+                      >
+                        <p
+                          className={cn(
+                            'text-[0.65rem] font-black tracking-[0.2em] uppercase sm:text-[0.7rem]',
+                            desktopRail
+                              ? LANDING_COURT_GREEN_CLASS
+                              : 'text-emerald-300',
+                          )}
+                        >
+                          {String(activePrompt + 1).padStart(2, '0')}
+                        </p>
+                        <p className="mt-1.5 text-xl font-black uppercase leading-[1.05] tracking-tight text-white sm:mt-2 sm:text-2xl md:text-[1.65rem] xl:text-[1.85rem] xl:text-zinc-950">
+                          {current.label}
+                        </p>
+                        <p className="mt-2 max-w-[40ch] text-sm font-medium leading-relaxed text-white/50 sm:mt-3 sm:text-[0.95rem] xl:max-w-[48ch] xl:text-zinc-500">
+                          {current.detail}
+                        </p>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+
+                <div className="flex flex-wrap items-center gap-2" role="tablist">
+                  {facets.map((facet, index) => {
+                    const isOn = index === activePrompt;
+                    return (
+                      <button
+                        key={facet.label}
+                        type="button"
+                        role="tab"
+                        aria-selected={isOn}
+                        aria-label={facet.label}
+                        onClick={() => setActivePrompt(index)}
                         className={cn(
-                          'text-[0.65rem] font-black tracking-[0.2em] uppercase sm:text-[0.7rem]',
-                          LANDING_COURT_GREEN_CLASS,
+                          'h-9 min-w-9 px-2.5 font-mono text-[0.7rem] font-semibold tracking-[0.14em] tabular-nums transition-colors duration-300',
+                          'border focus-visible:outline-2 focus-visible:outline-offset-4',
+                          isOn
+                            ? 'border-[#0B6E4F] bg-[#0B6E4F] text-white focus-visible:outline-emerald-200 xl:focus-visible:outline-zinc-900'
+                            : 'border-white/20 text-white/45 hover:border-emerald-400/50 hover:text-emerald-100 focus-visible:outline-white xl:border-zinc-200 xl:text-zinc-400 xl:hover:border-zinc-400 xl:hover:text-zinc-700 xl:focus-visible:outline-zinc-900',
                         )}
                       >
-                        {String(activePrompt + 1).padStart(2, '0')}
-                      </p>
-                      <p className="mt-1.5 text-xl font-black uppercase leading-[1.05] tracking-tight text-zinc-950 sm:mt-2 sm:text-2xl md:text-[1.65rem] xl:text-[1.85rem]">
-                        {current.label}
-                      </p>
-                      <p className="mt-2 max-w-[40ch] text-sm font-medium leading-relaxed text-zinc-500 sm:mt-3 sm:text-[0.95rem] xl:max-w-[48ch]">
-                        {current.detail}
-                      </p>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </div>
+                        {String(index + 1).padStart(2, '0')}
+                      </button>
+                    );
+                  })}
+                </div>
 
-              <div className="flex flex-wrap items-center gap-2" role="tablist">
-                {facets.map((facet, index) => {
-                  const isOn = index === activePrompt;
-                  return (
-                    <button
-                      key={facet.label}
-                      type="button"
-                      role="tab"
-                      aria-selected={isOn}
-                      aria-label={facet.label}
-                      onClick={() => setActivePrompt(index)}
-                      className={cn(
-                        'h-9 min-w-9 px-2.5 font-mono text-[0.7rem] font-semibold tracking-[0.14em] tabular-nums transition-colors duration-300',
-                        'border focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-zinc-900',
-                        isOn
-                          ? 'border-[#0B6E4F] bg-[#0B6E4F] text-white'
-                          : 'border-zinc-200 text-zinc-400 hover:border-zinc-400 hover:text-zinc-700',
-                      )}
-                    >
-                      {String(index + 1).padStart(2, '0')}
-                    </button>
-                  );
-                })}
-              </div>
+                <div className="h-px w-full overflow-hidden bg-white/15 xl:bg-zinc-200">
+                  <motion.div
+                    key={activePrompt}
+                    className="h-full origin-left"
+                    style={{ backgroundColor: LANDING_COURT_GREEN }}
+                    initial={reduceMotion ? false : { scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={
+                      reduceMotion
+                        ? { duration: 0 }
+                        : { duration: PROMPT_CYCLE_MS / 1000, ease: 'linear' }
+                    }
+                  />
+                </div>
+              </motion.div>
+            </div>
 
-              {/* Progress bar under the selectors */}
-              <div className="h-px w-full overflow-hidden bg-zinc-200">
-                <motion.div
-                  key={activePrompt}
-                  className="h-full origin-left"
-                  style={{ backgroundColor: LANDING_COURT_GREEN }}
-                  initial={reduceMotion ? false : { scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={
-                    reduceMotion
-                      ? { duration: 0 }
-                      : { duration: PROMPT_CYCLE_MS / 1000, ease: 'linear' }
-                  }
-                />
-              </div>
-            </motion.div>
-
-            {/* Phone + iPad — folder under copy; desktop uses mid-stage folder. */}
+            {/*
+              Phone + tablet folder: light paper/ink (readable titles), green shell.
+              Reserved foot + overflow-visible so flap/peek is not cropped.
+            */}
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y: 16, scale: 0.92 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.55, delay: reduceMotion ? 0 : 0.28, ease }}
-              className="mt-auto flex shrink-0 justify-center pt-6 pb-1 xl:hidden"
+              className="relative z-20 mt-3 flex h-[13.5rem] w-full shrink-0 items-end justify-center overflow-visible pb-2 sm:h-[14.5rem] xl:hidden"
             >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] bg-[radial-gradient(ellipse_at_bottom,rgb(11_110_79_/_0.35)_0%,transparent_70%)]"
+              />
               <Folder
                 label={folderLabel}
                 items={folderItems}
@@ -264,7 +315,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                 paperColor="#ffffff"
                 tabPosition="right"
                 openOn="click"
-                size={0.92}
+                size={0.82}
                 frost={0.2}
                 tilt={0.4}
                 speed={1}
@@ -274,6 +325,7 @@ export function SkillsChapter({ content, locale }: SkillsChapterProps) {
                 draggable
                 zoomOnClick
                 theme="light"
+                className="relative z-1"
               />
             </motion.div>
           </motion.div>

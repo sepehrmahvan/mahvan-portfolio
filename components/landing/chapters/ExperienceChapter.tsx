@@ -8,8 +8,10 @@ import {
 } from 'motion/react';
 import { type CSSProperties, useEffect, useMemo, useRef, useState } from 'react';
 
+import { MobileShipAtmosphere } from '@/components/landing/mobile/MobileShipAtmosphere';
 import CardSwap from '@/components/ui/CardSwap/CardSwap';
 import TextType from '@/components/ui/TextType/TextType';
+import { useIsLaptopUp } from '@/hooks/useMinWidth';
 import type { LandingDictionary } from '@/types/landing';
 import { isRtlLocale, type Locale } from '@/types/locale';
 import { cn } from '@/utils/cn';
@@ -49,6 +51,7 @@ const PHONE_VARS = {
  */
 export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
   const { time, reduceMotion } = useLandingScroll();
+  const laptopUp = useIsLaptopUp();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [active, setActive] = useState(() =>
     isChapterStep(time.get(), 'experience'),
@@ -70,7 +73,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !laptopUp) return;
 
     const onTimeUpdate = () => {
       if (video.currentTime >= BG_VIDEO_END - 0.04) {
@@ -113,7 +116,7 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
       video.removeEventListener('timeupdate', onTimeUpdate);
       video.removeEventListener('loadedmetadata', start);
     };
-  }, [active, reduceMotion]);
+  }, [active, laptopUp, reduceMotion]);
 
   const copyFont = isRtl
     ? 'font-(family-name:--font-fa)'
@@ -127,31 +130,36 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
       dir="ltr"
       className="pointer-events-none absolute inset-0 z-25"
     >
-      <video
-        ref={videoRef}
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
-        src={BG_VIDEO_SRC}
-        muted
-        playsInline
-        preload="metadata"
-        disablePictureInPicture
-        controls={false}
-      />
+      {laptopUp ? (
+        <video
+          ref={videoRef}
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+          src={BG_VIDEO_SRC}
+          muted
+          playsInline
+          preload="metadata"
+          disablePictureInPicture
+          controls={false}
+        />
+      ) : (
+        <MobileShipAtmosphere />
+      )}
 
       <AnimatePresence mode="sync">
         {active ? (
           <motion.div
             key="experience-stage"
-            initial={reduceMotion ? false : { opacity: 0, x: -56 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.6, ease }}
+            initial={reduceMotion ? false : { opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: 0.55, ease }}
             className={cn(
               'pointer-events-auto absolute top-[11%] bottom-[3%] z-10 flex max-w-none flex-col items-stretch justify-start gap-3 overflow-y-auto sm:top-[12%] sm:justify-center sm:gap-4 md:top-[8%] md:bottom-[5%] md:gap-4 md:overflow-visible md:px-3 lg:gap-5 lg:px-4',
               // Physical LEFT rail (same as English) — ! so nothing overrides under RTL html.
               LANDING_INSET_START,
               'right-3! w-auto md:right-auto! md:w-[min(52vw,28rem)] lg:w-[min(50vw,40rem)] xl:w-[min(50vw,44rem)]',
+              // Desktop keeps slide-from-left feel via child motion; mobile uses vertical stage.
               copyFont,
             )}
           >
@@ -160,6 +168,29 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
               dir={isRtl ? 'rtl' : 'ltr'}
               className="flex w-full flex-col items-stretch gap-3 sm:gap-4 md:gap-4 lg:gap-5"
             >
+              {/* Mobile: live status beacon (phone is desktop-only) */}
+              <motion.p
+                initial={reduceMotion ? false : { opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: reduceMotion ? 0 : 0.04,
+                  ease,
+                }}
+                className={cn(
+                  'mx-auto flex items-center gap-2 rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3.5 py-1.5 text-[0.65rem] font-black tracking-[0.2em] text-emerald-200/95 uppercase backdrop-blur-sm lg:hidden',
+                )}
+              >
+                <span
+                  aria-hidden
+                  className="relative flex size-2"
+                >
+                  <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400 opacity-60" />
+                  <span className="relative size-2 rounded-full bg-emerald-400" />
+                </span>
+                {content.status}
+              </motion.p>
+
               <motion.p
                 initial={reduceMotion ? false : { opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -168,7 +199,10 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                   delay: reduceMotion ? 0 : 0.08,
                   ease,
                 }}
-                className="text-center text-[0.7rem] font-black tracking-[0.22em] text-zinc-500 uppercase md:text-xs"
+                className={cn(
+                  'text-center text-[0.7rem] font-black tracking-[0.22em] uppercase md:text-xs',
+                  laptopUp ? 'text-zinc-500' : 'text-white/45',
+                )}
               >
                 {content.eyebrow}
               </motion.p>
@@ -206,7 +240,9 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                 loop={!reduceMotion}
                 className={cn(
                   'w-full text-center text-lg font-black uppercase leading-snug tracking-tight sm:text-xl md:text-2xl lg:text-[1.75rem]',
-                  LANDING_COURT_GREEN_CLASS,
+                  laptopUp
+                    ? LANDING_COURT_GREEN_CLASS
+                    : 'text-emerald-300',
                 )}
               />
 
@@ -218,14 +254,20 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                   delay: reduceMotion ? 0 : 0.18,
                   ease,
                 }}
-                className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.68rem] font-black tracking-[0.16em] text-zinc-500 uppercase md:text-[0.72rem]"
+                className={cn(
+                  'flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.68rem] font-black tracking-[0.16em] uppercase md:text-[0.72rem]',
+                  laptopUp ? 'text-zinc-500' : 'text-white/40',
+                )}
               >
                 {content.focus.map((item, index) => (
                   <li key={item} className="flex items-center gap-3">
                     {index > 0 ? (
                       <span
                         aria-hidden
-                        className="h-1 w-1 rounded-full bg-zinc-400"
+                        className={cn(
+                          'h-1 w-1 rounded-full',
+                          laptopUp ? 'bg-zinc-400' : 'bg-emerald-500/60',
+                        )}
                       />
                     ) : null}
                     <span>{item}</span>
@@ -233,7 +275,14 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                 ))}
               </motion.ul>
 
-              <div className="mx-auto h-[min(42dvh,320px)] w-full max-w-[18rem] sm:h-[min(48dvh,400px)] sm:max-w-88 md:h-[min(52dvh,440px)] md:max-w-full lg:h-[min(58dvh,520px)]">
+              {/* Gallery sits in the pulse band on mobile */}
+              <div
+                className={cn(
+                  'mx-auto h-[min(42dvh,320px)] w-full max-w-[18rem] sm:h-[min(48dvh,400px)] sm:max-w-88 md:h-[min(52dvh,440px)] md:max-w-full lg:h-[min(58dvh,520px)]',
+                  !laptopUp &&
+                    'relative before:pointer-events-none before:absolute before:inset-[-12%] before:rounded-[2rem] before:bg-[radial-gradient(circle,rgb(11_110_79_/_0.22)_0%,transparent_68%)] before:content-[""]',
+                )}
+              >
                 <CardSwap
                   items={galleryItems}
                   width={480}
@@ -253,8 +302,8 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
                   autoplay={!reduceMotion}
                   pauseOnHover
                   draggable
-                  theme="light"
-                  className="h-full w-full"
+                  theme={laptopUp ? 'light' : 'dark'}
+                  className="relative z-1 h-full w-full"
                 />
               </div>
             </div>
@@ -271,7 +320,8 @@ export function ExperienceChapter({ content, locale }: ExperienceChapterProps) {
             exit={{ opacity: 0, x: 24 }}
             transition={{ duration: 0.55, ease, delay: reduceMotion ? 0 : 0.14 }}
             className={cn(
-              'pointer-events-auto absolute top-[58%] z-10 hidden w-[min(26vw,11rem)] -translate-y-1/2 flex-col items-center gap-3 md:flex lg:top-1/2 lg:w-[min(32vw,16rem)] lg:gap-4 xl:w-[min(40vw,18rem)]',
+              // Phone stays laptop+ — dark Hairline strokes need the light video stage.
+              'pointer-events-auto absolute top-1/2 z-10 hidden w-[min(32vw,16rem)] -translate-y-1/2 flex-col items-center gap-3 lg:flex lg:gap-4 xl:w-[min(40vw,18rem)]',
               LANDING_INSET_END,
               copyFont,
             )}

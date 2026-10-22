@@ -1,5 +1,6 @@
 'use client';
 
+import { useMotionValueEvent } from 'motion/react';
 import {
   forwardRef,
   useCallback,
@@ -9,6 +10,10 @@ import {
   useState,
 } from 'react';
 
+import { useLandingScroll } from '@/components/landing/LandingScrollContext';
+import { MobileHeroAtmosphere } from '@/components/landing/mobile/MobileHeroAtmosphere';
+import { isChapterStep } from '@/components/landing/timeline';
+import { useIsLaptopUp } from '@/hooks/useMinWidth';
 import { cn } from '@/utils/cn';
 
 const VIDEO_SRC = '/video/asli.mp4';
@@ -89,7 +94,16 @@ async function seekPaused(video: HTMLVideoElement, time: number) {
  */
 export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgroundProps>(
   function HeroVideoBackground({ reduceMotion, onIntroHold, onScrollDone }, ref) {
+    const laptopUp = useIsLaptopUp();
+    const { time } = useLandingScroll();
+    const [atmosphereIndex, setAtmosphereIndex] = useState('01');
+    /** Mobile/tablet: no playback — still fire reveal callbacks. */
+    const skipPlay = reduceMotion || !laptopUp;
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    useMotionValueEvent(time, 'change', (value) => {
+      setAtmosphereIndex(isChapterStep(value, 'skills') ? '02' : '01');
+    });
     const overlayRef = useRef<HTMLCanvasElement>(null);
     const grabRef = useRef<HTMLCanvasElement | null>(null);
     const phaseRef = useRef<Phase>('boot');
@@ -215,9 +229,9 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
         video.playbackRate = 1;
       }
 
-      if (!video || reduceMotion) {
+      if (!video || skipPlay) {
         void (async () => {
-          if (video) await seekPaused(video, HERO_VIDEO_SCROLL_END);
+          if (video?.src) await seekPaused(video, HERO_VIDEO_SCROLL_END);
           if (generationRef.current !== gen) return;
           phaseRef.current = 'done';
           onScrollDoneRef.current?.();
@@ -291,18 +305,21 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
 
         rafRef.current = requestAnimationFrame(tick);
       })();
-    }, [clearFrames, grabFrame, reduceMotion, showOverlayNow, stopRaf]);
+    }, [clearFrames, grabFrame, skipPlay, showOverlayNow, stopRaf]);
 
     const resetToHold = useCallback(() => {
       const video = videoRef.current;
       const gen = ++generationRef.current;
       stopRaf();
-      if (!video) return;
+      if (!video) {
+        void reachHold(true, gen);
+        return;
+      }
 
       video.pause();
       video.playbackRate = 1;
 
-      if (reduceMotion) {
+      if (skipPlay) {
         void reachHold(true, gen);
         return;
       }
@@ -379,7 +396,7 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
       };
 
       rafRef.current = requestAnimationFrame(tick);
-    }, [paintOverlay, reachHold, reduceMotion, showOverlayNow, stopRaf]);
+    }, [paintOverlay, reachHold, skipPlay, showOverlayNow, stopRaf]);
 
     useImperativeHandle(ref, () => ({ playScrollOut, resetToHold }), [
       playScrollOut,
@@ -388,8 +405,6 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
 
     useEffect(() => {
       const video = videoRef.current;
-      if (!video) return;
-
       let cancelled = false;
       stopRaf();
       clearFrames();
@@ -397,19 +412,24 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
       setReady(false);
       phaseRef.current = 'boot';
 
+      // Phone / tablet: skip media entirely; unlock hero copy immediately.
+      if (skipPlay) {
+        setReady(true);
+        phaseRef.current = 'hold';
+        onIntroHoldRef.current?.();
+        return () => {
+          cancelled = true;
+          stopRaf();
+          clearFrames();
+        };
+      }
+
+      if (!video) return;
+
       const run = async () => {
         video.muted = true;
         video.defaultMuted = true;
         video.playsInline = true;
-
-        if (reduceMotion) {
-          await seekPaused(video, HERO_VIDEO_INTRO_END);
-          if (cancelled) return;
-          setReady(true);
-          phaseRef.current = 'hold';
-          onIntroHoldRef.current?.();
-          return;
-        }
 
         try {
           video.load();
@@ -471,23 +491,33 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
         clearFrames();
         video.pause();
       };
-    }, [clearFrames, reduceMotion, stopRaf]);
+    }, [clearFrames, skipPlay, stopRaf]);
 
     return (
-      <div aria-hidden className="relative h-full w-full overflow-hidden bg-zinc-950">
-        <video
-          ref={videoRef}
-          className={cn(
-            'h-full w-full object-cover',
-            ready ? 'opacity-100' : 'opacity-0',
-          )}
-          src={VIDEO_SRC}
-          muted
-          playsInline
-          preload="auto"
-          disablePictureInPicture
-          controls={false}
-        />
+      <div
+        aria-hidden
+        className={cn(
+          'relative h-full w-full overflow-hidden',
+          laptopUp ? 'bg-zinc-950' : 'bg-[#03140f]',
+        )}
+      >
+        {laptopUp ? (
+          <video
+            ref={videoRef}
+            className={cn(
+              'h-full w-full object-cover',
+              ready ? 'opacity-100' : 'opacity-0',
+            )}
+            src={VIDEO_SRC}
+            muted
+            playsInline
+            preload="auto"
+            disablePictureInPicture
+            controls={false}
+          />
+        ) : (
+          <MobileHeroAtmosphere index={atmosphereIndex} />
+        )}
         <canvas
           ref={overlayRef}
           className={cn(
