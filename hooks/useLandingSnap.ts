@@ -81,16 +81,26 @@ export type LandingSectionRefs = {
   contact: RefObject<HTMLElement | null>;
 };
 
+export type UseLandingSnapOptions = LandingSnapHooks & {
+  /**
+   * When false (mobile), native document scroll — no section hijack.
+   * Chapter `time` / `progress` still sync from scroll position.
+   */
+  snapEnabled?: boolean;
+};
+
 /**
- * One wheel / swipe / key press = one full-viewport section.
- * Scroll lock is held until the tween finishes (not a fixed timer) to avoid
- * step/video desync on slow devices.
+ * Laptop+: one wheel / swipe / key = one full-viewport section.
+ * Mobile: normal scroll; nav still jumps via smooth scrollTo.
  */
 export function useLandingSnap(
   sections: LandingSectionRefs,
   reduceMotion: boolean,
-  hooks: LandingSnapHooks = {},
+  options: UseLandingSnapOptions = {},
 ): LandingSnapApi {
+  const { snapEnabled = true, onLeaveHero, onEnterHero } = options;
+  const hooks = { onLeaveHero, onEnterHero };
+
   const time = useMotionValue(0);
   const progress = useMotionValue(0);
   const stepRef = useRef(0);
@@ -102,9 +112,11 @@ export function useLandingSnap(
   const hooksRef = useRef(hooks);
   const sectionsRef = useRef(sections);
   const reduceMotionRef = useRef(reduceMotion);
+  const snapEnabledRef = useRef(snapEnabled);
   hooksRef.current = hooks;
   sectionsRef.current = sections;
   reduceMotionRef.current = reduceMotion;
+  snapEnabledRef.current = snapEnabled;
 
   const stopAnimations = useCallback(() => {
     animationsRef.current.forEach((animation) => animation.stop());
@@ -158,31 +170,57 @@ export function useLandingSnap(
     [sectionForStep],
   );
 
+  const applyStepMeta = useCallback(
+    (next: number, previous: number) => {
+      const leavingHero = previous === 0 && next > 0;
+      const enteringHero = previous !== 0 && next === 0;
+      if (leavingHero) hooksRef.current.onLeaveHero?.();
+      if (enteringHero) hooksRef.current.onEnterHero?.();
+      stepRef.current = next;
+      time.set(snapTimeForIndex(next));
+      progress.set(next / (SNAP_STEP_COUNT - 1));
+    },
+    [progress, time],
+  );
+
   const goToStep = useCallback(
     (rawIndex: number) => {
       const next = clampStep(rawIndex);
       const previous = stepRef.current;
-      if (next === previous) return;
+      if (next === previous) {
+        // Still scroll into place (nav tap on current chapter).
+        const section = sectionForStep(next);
+        if (section) {
+          window.scrollTo({
+            top: sectionScrollTop(section),
+            behavior: reduceMotionRef.current ? 'auto' : 'smooth',
+          });
+        }
+        return;
+      }
 
       const reduce = reduceMotionRef.current;
-      // Any exit from hero must drive the shared video (nav can skip skills).
+
+      // Mobile / free scroll: native smooth jump, no gesture lock.
+      if (!snapEnabledRef.current) {
+        applyStepMeta(next, previous);
+        const targetScroll = resolveTargetScroll(next, previous);
+        window.scrollTo({
+          top: targetScroll,
+          behavior: reduce ? 'auto' : 'smooth',
+        });
+        return;
+      }
+
       const leavingHero = previous === 0 && next > 0;
       const enteringHero = previous !== 0 && next === 0;
       const duration =
         reduce ? 0 : leavingHero || enteringHero ? HERO_EXIT_DURATION : SCROLL_DURATION;
       const scrollMs = Math.round(duration * 1000);
 
-      if (leavingHero) hooksRef.current.onLeaveHero?.();
-      if (enteringHero) hooksRef.current.onEnterHero?.();
-
-      stepRef.current = next;
+      applyStepMeta(next, previous);
       stopAnimations();
-      // Hold gestures until tween settles; fallback covers stalled animations.
       lockWithFallback(Math.max(scrollMs + UNLOCK_TAIL_MS + 200, 900));
-
-      const targetProgress = next / (SNAP_STEP_COUNT - 1);
-      time.set(snapTimeForIndex(next));
-      progress.set(targetProgress);
 
       const finishScroll = () => {
         const liveTop = resolveTargetScroll(next, previous);
@@ -191,7 +229,6 @@ export function useLandingSnap(
         unlockTimer.current = setTimeout(unlock, UNLOCK_TAIL_MS);
       };
 
-      // Recalculate after layout (sticky / negative margin) settles.
       const run = () => {
         const targetScroll = resolveTargetScroll(next, previous);
 
@@ -217,12 +254,12 @@ export function useLandingSnap(
       requestAnimationFrame(run);
     },
     [
+      applyStepMeta,
       clearUnlockTimer,
       lockWithFallback,
-      progress,
       resolveTargetScroll,
+      sectionForStep,
       stopAnimations,
-      time,
       unlock,
     ],
   );
@@ -238,7 +275,49 @@ export function useLandingSnap(
     goToStepRef.current(SNAP_CONTACT_INDEX);
   }, []);
 
+  /** Free-scroll: map viewport to the active snap step. */
+  const syncStepFromScroll = useCallback(() => {
+    const probe = window.scrollY + window.innerHeight * 0.4;
+    let best = 0;
+    for (let index = 0; index < SNAP_STEP_COUNT; index++) {
+      const section = sectionForStep(index);
+      if (!section) continue;
+      if (sectionScrollTop(section) <= probe + EDGE_EPS) best = index;
+    }
+    if (best === stepRef.current) return;
+    applyStepMeta(best, stepRef.current);
+  }, [applyStepMeta, sectionForStep]);
+
+  // Free scroll mode (mobile / tablet below laptop).
   useEffect(() => {
+    if (snapEnabled) return;
+
+    if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+      history.scrollRestoration = 'auto';
+    }
+
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        syncStepFromScroll();
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    syncStepFromScroll();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [snapEnabled, syncStepFromScroll]);
+
+  // Snap mode (laptop+).
+  useEffect(() => {
+    if (!snapEnabled) return;
+
     if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
@@ -386,7 +465,7 @@ export function useLandingSnap(
       clearUnlockTimer();
       stopAnimations();
     };
-  }, [clearUnlockTimer, stopAnimations]);
+  }, [clearUnlockTimer, snapEnabled, stopAnimations]);
 
   return { time, progress, scrollToChapter, scrollToContact };
 }

@@ -219,7 +219,7 @@ SEO = {
         },
         "hero": {
             "greeting": "Hello",
-            "name": "I'm Mahvan",
+            "name": "I'm MAHVAN",
             "role": "Full-stack Product Engineer · TypeScript",
             "body": (
                 "I design and build product software with TypeScript, Next.js, and React. "

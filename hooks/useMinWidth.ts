@@ -1,20 +1,18 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useSyncExternalStore } from 'react';
 
-/** Client-only `matchMedia('(min-width: …px)')` — starts `false` until mounted. */
+/** Client-only `matchMedia('(min-width: …px)')` — sync on first client paint. */
 export function useMinWidth(minWidth: number): boolean {
-  const [matches, setMatches] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia(`(min-width: ${minWidth}px)`);
-    const sync = () => setMatches(mq.matches);
-    sync();
-    mq.addEventListener('change', sync);
-    return () => mq.removeEventListener('change', sync);
-  }, [minWidth]);
-
-  return matches;
+  return useSyncExternalStore(
+    (onStoreChange) => {
+      const mq = window.matchMedia(`(min-width: ${minWidth}px)`);
+      mq.addEventListener('change', onStoreChange);
+      return () => mq.removeEventListener('change', onStoreChange);
+    },
+    () => window.matchMedia(`(min-width: ${minWidth}px)`).matches,
+    () => false,
+  );
 }
 
 /** Tailwind `lg` — treat as laptop and up for heavy media. */

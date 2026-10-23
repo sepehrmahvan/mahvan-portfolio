@@ -1,11 +1,13 @@
 'use client';
 
 import { MotionConfig } from 'motion/react';
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useLandingSnap } from '@/hooks/useLandingSnap';
+import { useIsLaptopUp } from '@/hooks/useMinWidth';
 import type { LandingDictionary } from '@/types/landing';
 import type { Locale } from '@/types/locale';
+import { cn } from '@/utils/cn';
 
 import { ContactChapter } from './chapters/ContactChapter';
 import { ExperienceChapter } from './chapters/ExperienceChapter';
@@ -33,9 +35,14 @@ export function LandingPage({ content, locale }: LandingPageProps) {
   const projectsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HeroVideoHandle>(null);
+  const laptopUp = useIsLaptopUp();
   const reduceMotion = false;
   const [heroRevealReady, setHeroRevealReady] = useState(false);
   const [skillsRevealReady, setSkillsRevealReady] = useState(false);
+
+  const onIntroReset = useCallback(() => {
+    setHeroRevealReady(false);
+  }, []);
 
   const onIntroHold = useCallback(() => {
     setHeroRevealReady(true);
@@ -44,6 +51,11 @@ export function LandingPage({ content, locale }: LandingPageProps) {
   const onScrollDone = useCallback(() => {
     setSkillsRevealReady(true);
   }, []);
+
+  // Desktop: never keep copy from a pre-hydrate mobile skip while the mp4 boots.
+  useEffect(() => {
+    if (laptopUp) setHeroRevealReady(false);
+  }, [laptopUp]);
 
   const sections = useMemo(
     () => ({
@@ -74,7 +86,12 @@ export function LandingPage({ content, locale }: LandingPageProps) {
   const { time, progress, scrollToChapter, scrollToContact } = useLandingSnap(
     sections,
     reduceMotion,
-    { onLeaveHero, onEnterHero },
+    {
+      // Mobile: native scroll (snap was buggy on touch). Laptop+: section snap.
+      snapEnabled: laptopUp,
+      onLeaveHero,
+      onEnterHero,
+    },
   );
 
   const value = useMemo<LandingScrollContextValue>(
@@ -103,7 +120,12 @@ export function LandingPage({ content, locale }: LandingPageProps) {
       <LandingScrollContext.Provider value={value}>
         <LandingNav content={content.nav} locale={locale} />
 
-        <main className="relative overscroll-none bg-white">
+        <main
+          className={cn(
+            'relative bg-white',
+            laptopUp ? 'overscroll-none' : 'overscroll-y-auto',
+          )}
+        >
           {/*
             Sticky pin: video holds in the viewport while skills slides up over it.
             Parent only wraps hero + skills so later chapters unpin cleanly.
@@ -116,6 +138,7 @@ export function LandingPage({ content, locale }: LandingPageProps) {
               <HeroVideoBackground
                 ref={videoRef}
                 reduceMotion={reduceMotion}
+                onIntroReset={onIntroReset}
                 onIntroHold={onIntroHold}
                 onScrollDone={onScrollDone}
               />

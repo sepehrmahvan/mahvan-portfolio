@@ -56,6 +56,21 @@ export default async function HomePage({ params }: PageProps<'/[lang]'>) {
 
   return (
     <>
+      {/* Desktop hero: paint a still immediately, then stream the mp4. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/video/asli-poster.webp"
+        type="image/webp"
+        fetchPriority="high"
+      />
+      <link
+        rel="preload"
+        as="video"
+        href="/video/asli.mp4"
+        type="video/mp4"
+        media="(min-width: 1024px)"
+      />
       <LandingJsonLd content={content} locale={lang} />
       <LandingPage content={content} locale={lang} />
     </>

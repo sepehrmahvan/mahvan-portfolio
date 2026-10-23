@@ -17,6 +17,8 @@ import { useIsLaptopUp } from '@/hooks/useMinWidth';
 import { cn } from '@/utils/cn';
 
 const VIDEO_SRC = '/video/asli.mp4';
+/** Still from the hold beat — fills the stage while mp4 buffers. */
+const VIDEO_POSTER = '/video/asli-poster.webp';
 
 /** Skip poster / turnaround still. */
 export const HERO_VIDEO_INTRO_START = 0.25;
@@ -53,6 +55,9 @@ type Phase = 'boot' | 'intro' | 'hold' | 'forward' | 'done' | 'reverse';
 
 interface HeroVideoBackgroundProps {
   reduceMotion: boolean;
+  /** Desktop: clear hero copy while the mp4 boots (avoids flash before video). */
+  onIntroReset?: () => void;
+  /** Fired when intro is far enough that hero copy may enter. */
   onIntroHold?: () => void;
   onScrollDone?: () => void;
 }
@@ -93,7 +98,10 @@ async function seekPaused(video: HTMLVideoElement, time: number) {
  * reverse paints captures 4→2 → hold
  */
 export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgroundProps>(
-  function HeroVideoBackground({ reduceMotion, onIntroHold, onScrollDone }, ref) {
+  function HeroVideoBackground(
+    { reduceMotion, onIntroReset, onIntroHold, onScrollDone },
+    ref,
+  ) {
     const laptopUp = useIsLaptopUp();
     const { time } = useLandingScroll();
     const [atmosphereIndex, setAtmosphereIndex] = useState('01');
@@ -112,8 +120,10 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
     const lastGrabRef = useRef(0);
     /** Bumps on every playScrollOut / resetToHold to drop stale async work. */
     const generationRef = useRef(0);
+    const onIntroResetRef = useRef(onIntroReset);
     const onIntroHoldRef = useRef(onIntroHold);
     const onScrollDoneRef = useRef(onScrollDone);
+    onIntroResetRef.current = onIntroReset;
     onIntroHoldRef.current = onIntroHold;
     onScrollDoneRef.current = onScrollDone;
 
@@ -412,7 +422,7 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
       setReady(false);
       phaseRef.current = 'boot';
 
-      // Phone / tablet: skip media entirely; unlock hero copy immediately.
+      // Phone / tablet / reduced-motion: no mp4 — unlock copy immediately.
       if (skipPlay) {
         setReady(true);
         phaseRef.current = 'hold';
@@ -423,6 +433,9 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
           clearFrames();
         };
       }
+
+      // Desktop: hide hero copy until the intro is on screen.
+      onIntroResetRef.current?.();
 
       if (!video) return;
 
@@ -437,8 +450,13 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
           // ignore
         }
 
+        // Prefer first decodable frame over full buffer — keeps poster short-lived.
         if (video.readyState < 2) {
-          await Promise.race([waitFor(video, 'loadeddata'), waitFor(video, 'canplay')]);
+          await Promise.race([
+            waitFor(video, 'loadeddata', 4000),
+            waitFor(video, 'canplay', 4000),
+            waitFor(video, 'canplaythrough', 4000),
+          ]);
         }
         if (cancelled) return;
 
@@ -461,12 +479,18 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
           video.pause();
           return;
         }
+        // Video is painting — poster can fade. Copy still waits for reveal beat.
         setReady(true);
 
         let announced = false;
         const tick = () => {
           if (cancelled || phaseRef.current !== 'intro') return;
-          if (!announced && video.currentTime >= HERO_CONTENT_REVEAL_AT) {
+          // Only after the video is actually playing past the reveal mark.
+          if (
+            !announced &&
+            video.readyState >= 2 &&
+            video.currentTime >= HERO_CONTENT_REVEAL_AT
+          ) {
             announced = true;
             onIntroHoldRef.current?.();
           }
@@ -502,26 +526,40 @@ export const HeroVideoBackground = forwardRef<HeroVideoHandle, HeroVideoBackgrou
         )}
       >
         {laptopUp ? (
-          <video
-            ref={videoRef}
-            className={cn(
-              'h-full w-full object-cover',
-              ready ? 'opacity-100' : 'opacity-0',
-            )}
-            src={VIDEO_SRC}
-            muted
-            playsInline
-            preload="auto"
-            disablePictureInPicture
-            controls={false}
-          />
+          <>
+            {/* Instant paint while the mp4 buffers — kill the long black stage. */}
+            <img
+              src={VIDEO_POSTER}
+              alt=""
+              decoding="async"
+              fetchPriority="high"
+              className={cn(
+                'absolute inset-0 z-0 h-full w-full object-cover transition-opacity duration-500',
+                ready ? 'opacity-0' : 'opacity-100',
+              )}
+            />
+            <video
+              ref={videoRef}
+              className={cn(
+                'relative z-[1] h-full w-full object-cover transition-opacity duration-500',
+                ready ? 'opacity-100' : 'opacity-0',
+              )}
+              src={VIDEO_SRC}
+              poster={VIDEO_POSTER}
+              muted
+              playsInline
+              preload="auto"
+              disablePictureInPicture
+              controls={false}
+            />
+          </>
         ) : (
           <MobileHeroAtmosphere index={atmosphereIndex} />
         )}
         <canvas
           ref={overlayRef}
           className={cn(
-            'absolute inset-0 z-1 h-full w-full object-cover',
+            'absolute inset-0 z-[2] h-full w-full object-cover',
             overlayOn ? 'opacity-100' : 'pointer-events-none opacity-0',
           )}
         />
